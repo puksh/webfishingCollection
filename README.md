@@ -19,6 +19,6 @@ compile and run a live server for development:
 npm run dev
 ```
 
-##license
+## license
 
 this project is licensed under the MIT license - see the LICENSE file for details!
