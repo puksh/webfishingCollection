@@ -20,7 +20,7 @@
           class="cell"
           v-for="fish in filteredFish(1)"
           :key="fish.id"
-          @mouseover="showPopup(fish)"
+          @mouseover="showPopup(fish, $event)"
           @mouseleave="hidePopup"
         >
           <!-- Circles -->
@@ -46,13 +46,12 @@
             class="fish-img"
           />
           <!-- Popup that appears on hover -->
-          <div v-if="popupFish && popupFish.id === fish.id" class="popup">
-            <p style="font-weight: bold">
-              {{ fish.name }} - Tier {{ fish.tier }}
-            </p>
-            <p class="latin">{{ fish.latinName }}</p>
-            <p>{{ fish.catchPhrase }}</p>
-          </div>
+          <FishPopup
+            v-if="popupFish && popupFish.id === fish.id"
+            :fish="popupFish"
+            :visible="true"
+            :position="popupPosition"
+          />
         </div>
       </div>
 
@@ -61,7 +60,7 @@
           class="cell"
           v-for="fish in filteredFish(2)"
           :key="fish.id"
-          @mouseover="showPopup(fish)"
+          @mouseover="showPopup(fish, $event)"
           @mouseleave="hidePopup"
         >
           <div class="circles">
@@ -86,13 +85,12 @@
             class="fish-img"
           />
           <!-- Popup that appears on hover -->
-          <div v-if="popupFish && popupFish.id === fish.id" class="popup">
-            <p style="font-weight: bold">
-              {{ fish.name }} - Tier {{ fish.tier }}
-            </p>
-            <p class="latin">{{ fish.latinName }}</p>
-            <p>{{ fish.catchPhrase }}</p>
-          </div>
+          <FishPopup
+            v-if="popupFish && popupFish.id === fish.id"
+            :fish="popupFish"
+            :visible="true"
+            :position="popupPosition"
+          />
         </div>
       </div>
 
@@ -101,7 +99,7 @@
           class="cell"
           v-for="fish in filteredFish(3)"
           :key="fish.id"
-          @mouseover="showPopup(fish)"
+          @mouseover="showPopup(fish, $event)"
           @mouseleave="hidePopup"
         >
           <div class="circles">
@@ -126,11 +124,12 @@
             class="fish-img"
           />
           <!-- Popup that appears on hover -->
-          <div v-if="popupFish && popupFish.id === fish.id" class="popup">
-            <p class="fishname-popup">{{ fish.name }} - Tier {{ fish.tier }}</p>
-            <p class="latin">{{ fish.latinName }}</p>
-            <p class="catchphrase">{{ fish.catchPhrase }}</p>
-          </div>
+          <FishPopup
+            v-if="popupFish && popupFish.id === fish.id"
+            :fish="popupFish"
+            :visible="true"
+            :position="popupPosition"
+          />
         </div>
       </div>
     </div>
@@ -141,14 +140,19 @@
 // Import the placeholder image
 import placeholderImage from "@/assets/images/placeholder.png";
 
+import FishPopup from "./FishPopup.vue";
 // Dynamically import all fish images
 const fishImages = import.meta.glob("@/assets/images/*.png");
 //console.log("Available fish images:", fishImages); // Log all available image paths
 export default {
+  components: { FishPopup },
   data() {
     return {
       selectedTab: 1, // Default tab is Freshwater (tab 1)
-      popupFish: null, // Fish data for popup
+
+      popupFish: null,
+      popupPosition: { top: "0", left: "0" },
+
       fishImages: {}, // To store resolved image URLs
 
       placeholderImage,
@@ -908,7 +912,7 @@ export default {
         this.clicked = JSON.parse(savedStates);
       }
     },
-    showPopup(fish) {
+    showPopup(fish, event) {
       this.popupFish = fish;
     },
     hidePopup() {
@@ -1007,28 +1011,5 @@ img {
   height: 100%;
   width: 100%;
   align-items: center;
-}
-.popup {
-  position: absolute;
-  top: 0;
-  left: 100%; /* Position next to the item */
-  background-color: #d5aa73;
-  border: 1px solid #d5aa73;
-  border-radius: 25px;
-  color: #734e2b;
-  padding: 10px;
-  z-index: 10; /* Ensure the popup overlays other elements */
-  white-space: nowrap; /* Prevents text from wrapping */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-.latin {
-  font-style: italic;
-  color: #b48141;
-}
-.fishname-popup {
-  color: #6a4420;
-}
-.catchphrase {
-  color: #ffeed5;
 }
 </style>
