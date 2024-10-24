@@ -42,11 +42,14 @@ export default {
 .latin {
   font-style: italic;
   color: #b48141;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
 }
 .fishname-popup {
   color: #6a4420;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
 }
 .catchphrase {
   color: #ffeed5;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
 }
 </style>
