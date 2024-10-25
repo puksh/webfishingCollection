@@ -409,7 +409,7 @@ img {
   height: auto; /* Maintain aspect ratio */
 }
 .circle {
-  width: 10px;
+  width: 10px !important; /* Safari width bug */
   height: 10px;
   border-radius: 50%;
   border: 1px solid #101c31;
