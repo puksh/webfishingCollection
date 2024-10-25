@@ -272,7 +272,7 @@ export default {
   cursor: pointer;
   box-sizing: border-box;
   border-radius: 2vb;
-  height: 30px;
+  height: 35px;
   font-size: 20px;
   line-height: 10px;
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease,
@@ -291,7 +291,7 @@ export default {
   transform: scale(1.08);
 }
 /* Responsive adjustments */
-@media (max-width: 600px) {
+@media (max-width: 550px) {
   .tab-button {
     line-height: 0px !important;
     font-size: 0 !important; /* Hide text by reducing font size to 0 */
@@ -336,7 +336,7 @@ export default {
   }
 }
 /* Restore text on larger screens */
-@media (min-width: 601px) {
+@media (min-width: 551px) {
   .tab-button {
     font-size: 16px; /* Restore font size for larger screens */
   }
@@ -362,19 +362,19 @@ export default {
 }
 
 /* Responsive adjustments */
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .table {
     grid-template-columns: repeat(3, 1fr); /* 3 columns for medium screens */
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 800px) {
   .table {
     grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
   }
 }
 
-@media (max-width: 200px) {
+@media (max-width: 550px) {
   .table {
     grid-template-columns: 1fr; /* 1 column for very small screens */
   }
@@ -383,9 +383,9 @@ export default {
   transform: scale(2);
 }
 .cell {
-  width: 100px;
+  width: 140px;
   border-radius: 15px;
-  padding: 10px;
+  padding: 16px;
   background-color: #ffeed5;
   display: flex;
   flex-direction: column; /* Stack the circles and image vertically */
@@ -399,23 +399,46 @@ export default {
 
 .circles {
   display: flex; /* Align circles in a row */
-  gap: 2px; /* Space between circles */
+  gap: 4px; /* Space between circles */
   /* Fallback for Safari */
   flex-wrap: nowrap; /* Prevent wrapping in case of small widths */
 }
 img {
-  height: 35px !important;
+  height: 40px !important;
+  margin-top: 10px;
   max-width: 100%; /* Ensure images don't overflow their container */
   height: auto; /* Maintain aspect ratio */
 }
 .circle {
-  width: 10px !important; /* Safari width bug */
-  height: 10px;
+  width: 15px !important; /* Safari width bug */
+  height: 15px;
   border-radius: 50%;
   border: 1px solid #101c31;
   cursor: pointer;
 }
+/* Responsive styles */
+@media (max-width: 900px) {
+  /* Adjust the max-width as needed */
+  .cell {
+    width: 100%; /* Full width on small screens */
+    padding: 20px; /* Increased padding */
+  }
 
+  .tabs button {
+    padding: 15px; /* Increased padding */
+    font-size: 30px; /* Increased font size */
+    height: 40px; /* Increased button height */
+  }
+
+  img {
+    height: 70px !important; /* Increased image height */
+  }
+
+  .circle {
+    width: 30px !important; /* Increased circle width */
+    height: 30px; /* Increased circle height */
+  }
+}
 .fish-info {
   display: none; /* Hide additional info by default */
 }
