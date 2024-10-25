@@ -314,8 +314,8 @@ img {
 .circle {
   width: 10px; /* Size of the circle */
   height: 10px; /* Size of the circle */
-  border-radius: 50%;
-  border: 1px solid #101c31;
+  border-radius: 25px;
+  border: 0.2px solid #101c31;
   cursor: pointer;
 }
 
