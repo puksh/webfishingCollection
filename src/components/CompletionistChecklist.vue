@@ -2,13 +2,25 @@
   <div class="app-container">
     <!-- Tabs -->
     <div class="tabs">
-      <button @click="selectedTab = 1" :class="{ active: selectedTab === 1 }">
+      <button
+        @click="selectedTab = 1"
+        :class="{ active: selectedTab === 1 }"
+        class="tab-button"
+      >
         FRESHWATER
       </button>
-      <button @click="selectedTab = 2" :class="{ active: selectedTab === 2 }">
+      <button
+        @click="selectedTab = 2"
+        :class="{ active: selectedTab === 2 }"
+        class="tab-button"
+      >
         SALTWATER
       </button>
-      <button @click="selectedTab = 3" :class="{ active: selectedTab === 3 }">
+      <button
+        @click="selectedTab = 3"
+        :class="{ active: selectedTab === 3 }"
+        class="tab-button"
+      >
         MISC
       </button>
     </div>
@@ -34,7 +46,7 @@
                   : '#ffeed5',
                 borderColor: clicked[`table1-fish${fish.id}-circle${index}`]
                   ? color
-                  : '#101c31',
+                  : color,
               }"
               @click="toggleCircle('1', fish.id, index)"
               class="circle"
@@ -68,14 +80,14 @@
               v-for="(color, index) in colors"
               :key="`circle-${fish.id}-${index}`"
               :style="{
-                backgroundColor: clicked[`table2-fish${fish.id}-circle${index}`]
+                backgroundColor: clicked[`table1-fish${fish.id}-circle${index}`]
                   ? color
                   : '#ffeed5',
-                borderColor: clicked[`table2-fish${fish.id}-circle${index}`]
+                borderColor: clicked[`table1-fish${fish.id}-circle${index}`]
                   ? color
-                  : '#101c31',
+                  : color,
               }"
-              @click="toggleCircle('2', fish.id, index)"
+              @click="toggleCircle('1', fish.id, index)"
               class="circle"
             ></button>
           </div>
@@ -107,14 +119,14 @@
               v-for="(color, index) in colors"
               :key="`circle-${fish.id}-${index}`"
               :style="{
-                backgroundColor: clicked[`table3-fish${fish.id}-circle${index}`]
+                backgroundColor: clicked[`table1-fish${fish.id}-circle${index}`]
                   ? color
                   : '#ffeed5',
-                borderColor: clicked[`table3-fish${fish.id}-circle${index}`]
+                borderColor: clicked[`table1-fish${fish.id}-circle${index}`]
                   ? color
-                  : '#101c31',
+                  : color,
               }"
-              @click="toggleCircle('3', fish.id, index)"
+              @click="toggleCircle('1', fish.id, index)"
               class="circle"
             ></button>
           </div>
@@ -247,6 +259,9 @@ export default {
 <style scoped>
 .tabs {
   margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* Ensure buttons are spaced evenly */
 }
 .tabs button {
   padding: 10px;
@@ -257,13 +272,15 @@ export default {
   cursor: pointer;
   box-sizing: border-box;
   border-radius: 2vb;
-  width: 200px;
   height: 30px;
   font-size: 20px;
   line-height: 10px;
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease,
     font-weight 0.3s ease;
   font-family: "IBMPlexMono", monospace;
+}
+.tab-button {
+  flex: 1 1 33.33%; /* Make all buttons one-third of the width */
 }
 .tabs button.active {
   background-color: #5a755a;
@@ -273,13 +290,68 @@ export default {
 .tabs button:not(.active):hover {
   transform: scale(1.08);
 }
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .tab-button {
+    line-height: 0px !important;
+    font-size: 0 !important; /* Hide text by reducing font size to 0 */
+  }
+
+  /* Change text to emojis */
+  .tab-button {
+    font-size: 0; /* Hide text by reducing font size to 0 */
+    position: relative; /* Keep position for pseudo-element */
+  }
+
+  /* Change text to emojis */
+  .tab-button::after {
+    display: block; /* Ensure emojis are shown */
+    content: ""; /* Clear content initially */
+    font-size: 24px; /* Adjust emoji size */
+    text-align: center; /* Center emojis */
+  }
+
+  .tab-button:nth-child(1)::after {
+    content: "🐟"; /* FRESHWATER */
+  }
+
+  .tab-button:nth-child(2)::after {
+    content: "🌊"; /* SALTWATER */
+  }
+
+  .tab-button:nth-child(3)::after {
+    content: "🌿"; /* MISC */
+  }
+
+  /* Keep active button text */
+  .tab-button.active:nth-child(1)::after {
+    content: "🐟"; /* FRESHWATER */
+  }
+
+  .tab-button.active:nth-child(2)::after {
+    content: "🌊"; /* SALTWATER */
+  }
+  .tab-button.active:nth-child(3)::after {
+    content: "🌿"; /* SALTWATER */
+  }
+}
+/* Restore text on larger screens */
+@media (min-width: 601px) {
+  .tab-button {
+    font-size: 16px; /* Restore font size for larger screens */
+  }
+
+  .tab-button::after {
+    content: ""; /* Clear emojis */
+  }
+}
 .tables-container {
   display: block;
 }
 
 .table {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Create 4 equal columns */
+  grid-template-columns: repeat(4, 1fr); /* Default to 4 equal columns */
   gap: 10px;
   height: auto;
   margin-top: 10px;
@@ -289,6 +361,27 @@ export default {
   padding: 10px;
 }
 
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .table {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for medium screens */
+  }
+}
+
+@media (max-width: 400px) {
+  .table {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+  }
+}
+
+@media (max-width: 200px) {
+  .table {
+    grid-template-columns: 1fr; /* 1 column for very small screens */
+  }
+}
+.cell .table {
+  transform: scale(2);
+}
 .cell {
   width: 100px;
   border-radius: 15px;
