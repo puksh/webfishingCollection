@@ -965,19 +965,20 @@ export default {
   margin-top: 10px;
   background-color: #d5aa73;
   border: 3px solid #8d7858;
-  border-radius: 5%;
+  border-radius: 25px;
   padding: 10px;
 }
 
 .cell {
   width: 100px;
-  border-radius: 10%;
+  border-radius: 15px;
   padding: 10px;
   background-color: #ffeed5;
   display: flex;
   flex-direction: column; /* Stack the circles and image vertically */
   align-items: center;
   justify-content: space-between;
+  box-sizing: border-box;
   margin: 0 auto;
   position: relative;
 }

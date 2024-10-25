@@ -1,5 +1,5 @@
 <template>
-  <div v-if="visible" class="popup">
+  <div v-if="visible" class="popup" :style="popupStyle">
     <p class="fishname-popup">{{ fish.name }} - Tier {{ fish.tier }}</p>
     <p class="latin">{{ fish.latinName }}</p>
     <p class="catchphrase">{{ fish.catchPhrase }}</p>
@@ -19,10 +19,8 @@ export default {
     },
     position: {
       type: Object,
-      default: () => ({ top: "0", left: "0" }),
     },
   },
-  computed: {},
 };
 </script>
 
@@ -43,13 +41,16 @@ export default {
   font-style: italic;
   color: #b48141;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+  margin: 0;
 }
 .fishname-popup {
   color: #6a4420;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+  margin: 0;
 }
 .catchphrase {
   color: #ffeed5;
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
+  margin: 0;
 }
 </style>
