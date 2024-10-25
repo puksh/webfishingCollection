@@ -6,6 +6,7 @@
         @click="selectedTab = 1"
         :class="{ active: selectedTab === 1 }"
         class="tab-button"
+        aria-label="Select Freshwater tab"
       >
         FRESHWATER
       </button>
@@ -13,6 +14,7 @@
         @click="selectedTab = 2"
         :class="{ active: selectedTab === 2 }"
         class="tab-button"
+        aria-label="Select Saltwater tab"
       >
         SALTWATER
       </button>
@@ -20,6 +22,7 @@
         @click="selectedTab = 3"
         :class="{ active: selectedTab === 3 }"
         class="tab-button"
+        aria-label="Select Miscellaneous tab"
       >
         MISC
       </button>
