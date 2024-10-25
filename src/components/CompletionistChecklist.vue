@@ -400,21 +400,20 @@ export default {
 .circles {
   display: flex; /* Align circles in a row */
   gap: 2px; /* Space between circles */
+  /* Fallback for Safari */
+  flex-wrap: nowrap; /* Prevent wrapping in case of small widths */
 }
 img {
   height: 35px !important;
+  max-width: 100%; /* Ensure images don't overflow their container */
+  height: auto; /* Maintain aspect ratio */
 }
 .circle {
-  width: 10px; /* Size of the circle */
-  height: 10px; /* Size of the circle */
-  border-radius: 25px;
-  border: 0.2px solid #101c31;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid #101c31;
   cursor: pointer;
-}
-
-.fish-img {
-  width: 50px; /* Adjust the size of the fish image */
-  height: auto;
 }
 
 .fish-info {
