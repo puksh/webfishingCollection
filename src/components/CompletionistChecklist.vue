@@ -3,13 +3,13 @@
     <!-- Tabs -->
     <div class="tabs">
       <button @click="selectedTab = 1" :class="{ active: selectedTab === 1 }">
-        Freshwater
+        FRESHWATER
       </button>
       <button @click="selectedTab = 2" :class="{ active: selectedTab === 2 }">
-        Saltwater
+        SALTWATER
       </button>
       <button @click="selectedTab = 3" :class="{ active: selectedTab === 3 }">
-        Misc
+        MISC
       </button>
     </div>
 
@@ -246,20 +246,32 @@ export default {
 
 <style scoped>
 .tabs {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .tabs button {
   padding: 10px;
   margin: 0 5px;
-  background-color: #f0f0f0;
+  background-color: #3f523f;
+  color: #b2a795;
   border: none;
   cursor: pointer;
+  box-sizing: border-box;
+  border-radius: 2vb;
+  width: 200px;
+  height: 30px;
+  font-size: 20px;
+  line-height: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease,
+    font-weight 0.3s ease;
+  font-family: "IBMPlexMono", monospace;
 }
 .tabs button.active {
-  background-color: #ddd;
+  background-color: #5a755a;
+  color: #faebd1;
   font-weight: bold;
+}
+.tabs button:not(.active):hover {
+  transform: scale(1.08);
 }
 .tables-container {
   display: block;
@@ -289,6 +301,7 @@ export default {
   box-sizing: border-box;
   margin: 0 auto;
   position: relative;
+  font-family: "IBMPlexMono", monospace;
 }
 
 .circles {
