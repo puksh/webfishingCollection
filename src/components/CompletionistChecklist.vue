@@ -3,24 +3,24 @@
     <!-- Tabs -->
     <div class="tabs">
       <button
-        @click="selectedTab = 1"
-        :class="{ active: selectedTab === 1 }"
+        @click="selectedTab = 'Freshwater'"
+        :class="{ active: selectedTab === 'Freshwater' }"
         class="tab-button"
         aria-label="Select Freshwater tab"
       >
         FRESHWATER
       </button>
       <button
-        @click="selectedTab = 2"
-        :class="{ active: selectedTab === 2 }"
+        @click="selectedTab = 'Saltwater'"
+        :class="{ active: selectedTab === 'Saltwater' }"
         class="tab-button"
         aria-label="Select Saltwater tab"
       >
         SALTWATER
       </button>
       <button
-        @click="selectedTab = 3"
-        :class="{ active: selectedTab === 3 }"
+        @click="selectedTab = 'Misc'"
+        :class="{ active: selectedTab === 'Misc' }"
         class="tab-button"
         aria-label="Select Miscellaneous tab"
       >
@@ -30,10 +30,10 @@
 
     <!-- Tables: Render based on selected tab -->
     <div class="tables-container">
-      <div v-if="selectedTab === 1" class="table freshwater" :key="'table-1'">
+      <div v-if="selectedTab === 'Freshwater'" class="table">
         <div
           class="cell"
-          v-for="fish in filteredFish(1)"
+          v-for="fish in filteredFish('Freshwater')"
           :key="fish.id"
           @mouseover="showPopup(fish, $event)"
           @mouseleave="hidePopup"
@@ -41,18 +41,19 @@
           <!-- Circles -->
           <div class="circles">
             <button
-              v-for="(color, index) in colors"
-              :key="`circle-${fish.id}-${index}`"
+              v-for="(name, index) in circleNames"
+              :key="`freshwater-${fish.id}-${index}`"
               :style="{
-                backgroundColor: clicked[`table1-fish${fish.id}-circle${index}`]
-                  ? color
+                backgroundColor: clicked[
+                  `freshwater-fish${fish.id}-circle${index}`
+                ]
+                  ? colors[index]
                   : '#ffeed5',
-                borderColor: clicked[`table1-fish${fish.id}-circle${index}`]
-                  ? color
-                  : color,
+                borderColor: colors[index],
               }"
-              @click="toggleCircle('1', fish.id, index)"
+              @click="toggleCircle('freshwater', fish.id, index)"
               class="circle"
+              :title="name"
             ></button>
           </div>
           <img
@@ -70,28 +71,29 @@
         </div>
       </div>
 
-      <div v-if="selectedTab === 2" class="table saltwater" :key="'table-2'">
+      <div v-if="selectedTab === 'Saltwater'" class="table">
         <div
           class="cell"
-          v-for="fish in filteredFish(2)"
+          v-for="fish in filteredFish('Saltwater')"
           :key="fish.id"
           @mouseover="showPopup(fish, $event)"
           @mouseleave="hidePopup"
         >
           <div class="circles">
             <button
-              v-for="(color, index) in colors"
-              :key="`circle-${fish.id}-${index}`"
+              v-for="(name, index) in circleNames"
+              :key="`saltwater-${fish.id}-${index}`"
               :style="{
-                backgroundColor: clicked[`table1-fish${fish.id}-circle${index}`]
-                  ? color
+                backgroundColor: clicked[
+                  `saltwater-fish${fish.id}-circle${index}`
+                ]
+                  ? colors[index]
                   : '#ffeed5',
-                borderColor: clicked[`table1-fish${fish.id}-circle${index}`]
-                  ? color
-                  : color,
+                borderColor: colors[index],
               }"
-              @click="toggleCircle('1', fish.id, index)"
+              @click="toggleCircle('saltwater', fish.id, index)"
               class="circle"
+              :title="name"
             ></button>
           </div>
           <img
@@ -109,28 +111,27 @@
         </div>
       </div>
 
-      <div v-if="selectedTab === 3" class="table misc" :key="'table-3'">
+      <div v-if="selectedTab === 'Misc'" class="table">
         <div
           class="cell"
-          v-for="fish in filteredFish(3)"
+          v-for="fish in filteredFish('Misc')"
           :key="fish.id"
           @mouseover="showPopup(fish, $event)"
           @mouseleave="hidePopup"
         >
           <div class="circles">
             <button
-              v-for="(color, index) in colors"
-              :key="`circle-${fish.id}-${index}`"
+              v-for="(name, index) in circleNames"
+              :key="`misc-${fish.id}-${index}`"
               :style="{
-                backgroundColor: clicked[`table1-fish${fish.id}-circle${index}`]
-                  ? color
+                backgroundColor: clicked[`misc-fish${fish.id}-circle${index}`]
+                  ? colors[index]
                   : '#ffeed5',
-                borderColor: clicked[`table1-fish${fish.id}-circle${index}`]
-                  ? color
-                  : color,
+                borderColor: colors[index],
               }"
-              @click="toggleCircle('1', fish.id, index)"
+              @click="toggleCircle('misc', fish.id, index)"
               class="circle"
+              :title="name"
             ></button>
           </div>
           <img
@@ -165,7 +166,7 @@ export default {
   components: { FishPopup },
   data() {
     return {
-      selectedTab: 1, // Default tab is Freshwater (tab 1)
+      selectedTab: "Freshwater", // Default tab is Freshwater
 
       popupFish: null,
       popupPosition: { top: "0", left: "0" },
@@ -182,18 +183,27 @@ export default {
         "#e69d00",
         "#cd0462",
       ],
+      circleNames: [
+        "Normal",
+        "Shining",
+        "Glistening",
+        "Opulent",
+        "Radiant",
+        "Alpha",
+      ],
+
       clicked: {}, // Store the clicked status of each circle
     };
   },
   methods: {
-    toggleCircle(table, fishId, index) {
-      const key = `table${table}-fish${fishId}-circle${index}`;
+    toggleCircle(tableCategory, fishId, index) {
+      const key = `${tableCategory}-fish${fishId}-circle${index}`;
       // Toggle the clicked state
       this.clicked[key] = !this.clicked[key];
-
       // Save the updated state to local storage
       this.saveToLocalStorage();
     },
+
     async loadFishImage(fish) {
       //console.log(
       //  `Attempting to load image for fish: ${fish.name} with imageName: ${fish.imageName}`
@@ -225,8 +235,8 @@ export default {
       // Convert the clicked object to a JSON string and save it to local storage
       localStorage.setItem("clickedStates", JSON.stringify(this.clicked));
     },
-    filteredFish(tabNumber) {
-      return this.fishList.filter((fish) => fish.table === tabNumber);
+    filteredFish(tabCategory) {
+      return this.fishList.filter((fish) => fish.category === tabCategory);
     },
     loadFromLocalStorage() {
       // Load the clicked states from local storage if they exist
@@ -245,8 +255,8 @@ export default {
   async mounted() {
     // Load the clicked states when the component mounts
     this.loadFromLocalStorage();
-    const tabNumbers = [1, 2, 3];
-    for (const tab of tabNumbers) {
+    const tabCategories = ["Freshwater", "Saltwater", "Misc"];
+    for (const tab of tabCategories) {
       const fishList = this.filteredFish(tab);
       //console.log(`Tab ${tab}: Loaded fish list`, fishList); // Debug the fish list for each tab
 

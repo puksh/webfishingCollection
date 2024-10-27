@@ -5,7 +5,7 @@ export default [
     latinName: "Alligator mississippiensis",
     catchPhrase: "See you later- !",
     tier: "3",
-    table: 1,
+    category: "Freshwater",
     imageName: "alligator.png",
   },
   {
@@ -14,7 +14,7 @@ export default [
     latinName: "Ambystoma mexicanum",
     catchPhrase: "Can I ax-olotl you a question? (...I tried, ok?)",
     tier: "3",
-    table: 1,
+    category: "Freshwater",
     imageName: "axolotl.png",
   },
   {
@@ -23,7 +23,7 @@ export default [
     latinName: "Micropterus salmoides",
     catchPhrase: "Seems out of tune to me.",
     tier: "1",
-    table: 1,
+    category: "Freshwater",
     imageName: "largemouth-bass.png",
   },
   {
@@ -32,7 +32,7 @@ export default [
     latinName: "Lepomis macrochirus",
     catchPhrase: "Bluegill? What a thrill!",
     tier: "1",
-    table: 1,
+    category: "Freshwater",
     imageName: "bluegill.png",
   },
   {
@@ -41,7 +41,7 @@ export default [
     latinName: "Amia calca",
     catchPhrase: "Bowfin deez n-",
     tier: "2",
-    table: 1,
+    category: "Freshwater",
     imageName: "bowfin.png",
   },
   {
@@ -50,7 +50,7 @@ export default [
     latinName: "Carcharhinus leucas",
     catchPhrase: "Bullshark? Bull S-",
     tier: "3",
-    table: 1,
+    category: "Freshwater",
     imageName: "bull-shark.png",
   },
   {
@@ -59,7 +59,7 @@ export default [
     latinName: "Cyprinus carpio",
     catchPhrase: "Carp? What a lark!",
     tier: "1",
-    table: 1,
+    category: "Freshwater",
     imageName: "carp.png",
   },
   {
@@ -68,7 +68,7 @@ export default [
     latinName: "Ictalurus punctatus",
     catchPhrase: "He's just like you! But yknow... more... fishy?",
     tier: "1",
-    table: 1,
+    category: "Freshwater",
     imageName: "catfish.png",
   },
   {
@@ -77,7 +77,7 @@ export default [
     latinName: "Uca minax",
     catchPhrase: "Arg!",
     tier: "2",
-    table: 1,
+    category: "Freshwater",
     imageName: "crab.png",
   },
   {
@@ -86,7 +86,7 @@ export default [
     latinName: "Pomoxis annularis",
     catchPhrase: "Holy Carppie!",
     tier: "2",
-    table: 1,
+    category: "Freshwater",
     imageName: "crappie.png",
   },
   {
@@ -95,7 +95,7 @@ export default [
     latinName: "Procambarus clarki",
     catchPhrase: "Blah blah blah.",
     tier: "1",
-    table: 1,
+    category: "Freshwater",
     imageName: "crayfish.png",
   },
   {
@@ -104,7 +104,7 @@ export default [
     latinName: "Aplodinotus grunnies",
     catchPhrase: "Also known as the Gobble Gobble.",
     tier: "1",
-    table: 1,
+    category: "Freshwater",
     imageName: "drum.png",
   },
   {
@@ -113,7 +113,7 @@ export default [
     latinName: "Rana temporaria",
     catchPhrase: "Cozy Staple.",
     tier: "1",
-    table: 1,
+    category: "Freshwater",
     imageName: "frog.png",
   },
   {
@@ -122,7 +122,7 @@ export default [
     latinName: "Atractosteus spatula!",
     catchPhrase: "Step-Brother of the Alligator!",
     tier: "3",
-    table: 1,
+    category: "Freshwater",
     imageName: "gar.png",
   },
   {
@@ -131,7 +131,7 @@ export default [
     latinName: "Micropterus aurum",
     catchPhrase: "Woah! What a catch!",
     tier: "3",
-    table: 1,
+    category: "Freshwater",
     imageName: "golden-bass.png",
   },
   {
@@ -140,7 +140,7 @@ export default [
     latinName: "Carassius auratus",
     catchPhrase: "We're rich!",
     tier: "1",
-    table: 1,
+    category: "Freshwater",
     imageName: "goldfish.png",
   },
   {
@@ -149,7 +149,7 @@ export default [
     latinName: "Poecilia reticulata",
     catchPhrase: "Guess you're a guppy puppy!",
     tier: "1",
-    table: 1,
+    category: "Freshwater",
     imageName: "guppy.png",
   },
   {
@@ -158,7 +158,7 @@ export default [
     latinName: "Oncorhynchus tshawytscha",
     catchPhrase: "Royalty!",
     tier: "3",
-    table: 1,
+    category: "Freshwater",
     imageName: "king-salmon.png",
   },
   {
@@ -167,7 +167,7 @@ export default [
     latinName: "Cyprinus rubrofuscus",
     catchPhrase: "This koi is the boy for me!",
     tier: "1",
-    table: 1,
+    category: "Freshwater",
     imageName: "koi.png",
   },
   {
@@ -176,7 +176,7 @@ export default [
     latinName: "Hirudo medicinalis",
     catchPhrase: "Bringing back oldschool medicine!",
     tier: "2",
-    table: 1,
+    category: "Freshwater",
     imageName: "leech.png",
   },
   {
@@ -185,7 +185,7 @@ export default [
     latinName: "Hiodon tergisus",
     catchPhrase: "Mooneye? At this time?",
     tier: "3",
-    table: 1,
+    category: "Freshwater",
     imageName: "mooneye.png",
   },
   {
@@ -194,7 +194,7 @@ export default [
     latinName: "Esox masquinongy",
     catchPhrase: "A muskie!",
     tier: "2",
-    table: 1,
+    category: "Freshwater",
     imageName: "muskellunge.png",
   },
   {
@@ -203,7 +203,7 @@ export default [
     latinName: "Perca flavescens",
     catchPhrase: "Man am I parched...",
     tier: "1",
-    table: 1,
+    category: "Freshwater",
     imageName: "perch.png",
   },
   {
@@ -212,7 +212,7 @@ export default [
     latinName: "Esox lucius",
     catchPhrase: "This Piked my interest!",
     tier: "2",
-    table: 1,
+    category: "Freshwater",
     imageName: "pike.png",
   },
   {
@@ -221,7 +221,7 @@ export default [
     latinName: "Cyprinodon pacycephalus",
     catchPhrase: "A little puppy!",
     tier: "3",
-    table: 1,
+    category: "Freshwater",
     imageName: "pupfish.png",
   },
   {
@@ -230,7 +230,7 @@ export default [
     latinName: "Oncorhynchus mykiss",
     catchPhrase: "These fishes gay. Good for them. Good for them.",
     tier: "1",
-    table: 1,
+    category: "Freshwater",
     imageName: "rainbow-trout.png",
   },
   {
@@ -239,7 +239,7 @@ export default [
     latinName: "Oncorhynchus nerka",
     catchPhrase: "It's Sal' good, 'mon!",
     tier: "1",
-    table: 1,
+    category: "Freshwater",
     imageName: "salmon.png",
   },
   {
@@ -248,7 +248,7 @@ export default [
     latinName: "Lymnaea stagnalis",
     catchPhrase: "Meow?",
     tier: "1",
-    table: 1,
+    category: "Freshwater",
     imageName: "snail.png",
   },
   {
@@ -257,7 +257,7 @@ export default [
     latinName: "Acipenser fulvescens",
     catchPhrase: "I want a econd opinion.",
     tier: "1",
-    table: 1,
+    category: "Freshwater",
     imageName: "sturgeon.png",
   },
   {
@@ -266,7 +266,7 @@ export default [
     latinName: "Bufo bufo",
     catchPhrase: "What a boy!",
     tier: "2",
-    table: 1,
+    category: "Freshwater",
     imageName: "toad.png",
   },
   {
@@ -275,7 +275,7 @@ export default [
     latinName: "Actinemys marmorata",
     catchPhrase: "This catch was quite the hurdle!",
     tier: "2",
-    table: 1,
+    category: "Freshwater",
     imageName: "turtle.png",
   },
   {
@@ -284,7 +284,7 @@ export default [
     latinName: "Sander vitreus",
     catchPhrase: "Walleye? What a guy!",
     tier: "1",
-    table: 1,
+    category: "Freshwater",
     imageName: "walleye.png",
   },
   {
@@ -293,7 +293,7 @@ export default [
     latinName: "Pterophyllum scalare",
     catchPhrase: "Obtuse or acute? (... did i read that right?)",
     tier: "1",
-    table: 2,
+    category: "Saltwater",
     imageName: "angelfish.png",
   },
   {
@@ -302,7 +302,7 @@ export default [
     latinName: "Salmo salar",
     catchPhrase: "It's like non-atlantic salmon but atlantic",
     tier: "1",
-    table: 2,
+    category: "Saltwater",
     imageName: "atlantic-salmon.png",
   },
   {
@@ -311,7 +311,7 @@ export default [
     latinName: "Pomatomus saltatrix",
     catchPhrase: "One fish, two fish, red fish...",
     tier: "1",
-    table: 2,
+    category: "Saltwater",
     imageName: "bluefish.png",
   },
   {
@@ -320,7 +320,7 @@ export default [
     latinName: "Amphiprion ocellaris",
     catchPhrase: "Well this isnt so scary...",
     tier: "1",
-    table: 2,
+    category: "Saltwater",
     imageName: "clownfish.png",
   },
   {
@@ -329,7 +329,7 @@ export default [
     latinName: "Latimeria chalumnae",
     catchPhrase: "Did you see it? I can't!",
     tier: "3",
-    table: 2,
+    category: "Saltwater",
     imageName: "coelecanth.png",
   },
   {
@@ -338,7 +338,7 @@ export default [
     latinName: "Squalus acanthias",
     catchPhrase: "He's just like you! But yknow... more... fishy?",
     tier: "1",
-    table: 2,
+    category: "Saltwater",
     imageName: "dogfish.png",
   },
   {
@@ -347,7 +347,7 @@ export default [
     latinName: "Anguilla anguilla",
     catchPhrase: "Eel? EEL!",
     tier: "1",
-    table: 2,
+    category: "Saltwater",
     imageName: "eel.png",
   },
   {
@@ -356,7 +356,7 @@ export default [
     latinName: "Paralichthys dentatus",
     catchPhrase: "Flouder? I hardly know 'er!'",
     tier: "1",
-    table: 2,
+    category: "Saltwater",
     imageName: "flouder.png",
   },
   {
@@ -365,7 +365,7 @@ export default [
     latinName: "Mobula aurum",
     catchPhrase: "Woah! What a catch!",
     tier: "3",
-    table: 2,
+    category: "Saltwater",
     imageName: "golden-manta-ray.png",
   },
   {
@@ -374,7 +374,7 @@ export default [
     latinName: "Carcharodon carcharias",
     catchPhrase: "Do I smell blood...?",
     tier: "3",
-    table: 2,
+    category: "Saltwater",
     imageName: "great-white-shark.png",
   },
   {
@@ -383,7 +383,7 @@ export default [
     latinName: "Mycteroperca bonaci",
     catchPhrase: "Grouper? I hardly know 'er!'",
     tier: "1",
-    table: 2,
+    category: "Saltwater",
     imageName: "grouper.png",
   },
   {
@@ -392,7 +392,7 @@ export default [
     latinName: "Sphyrna mokarran",
     catchPhrase: "Guess you hit the nail on the head!",
     tier: "2",
-    table: 2,
+    category: "Saltwater",
     imageName: "hammerhead-shark.png",
   },
   {
@@ -401,7 +401,7 @@ export default [
     latinName: "Clupea harengus",
     catchPhrase: "Huh... this isnt red...",
     tier: "1",
-    table: 2,
+    category: "Saltwater",
     imageName: "herring.png",
   },
   {
@@ -410,7 +410,7 @@ export default [
     latinName: "Euphausia superba",
     catchPhrase: "Shrimply impressive! (this isnt a shrimp btw)",
     tier: "1",
-    table: 2,
+    category: "Saltwater",
     imageName: "krill.png",
   },
   {
@@ -419,7 +419,7 @@ export default [
     latinName: "Pterois volitans",
     catchPhrase: "Well I ain't callin' you a truther!",
     tier: "2",
-    table: 2,
+    category: "Saltwater",
     imageName: "lionfish.png",
   },
   {
@@ -428,7 +428,7 @@ export default [
     latinName: "Homarus americanus",
     catchPhrase: "What a beaut!",
     tier: "1",
-    table: 2,
+    category: "Saltwater",
     imageName: "lobster.png",
   },
   {
@@ -437,7 +437,7 @@ export default [
     latinName: "Physalia physalis",
     catchPhrase: "ok you should probably not be holding this",
     tier: "3",
-    table: 2,
+    category: "Saltwater",
     imageName: "man-o-war.png",
   },
   {
@@ -446,7 +446,7 @@ export default [
     latinName: "Mobula birostris",
     catchPhrase: "The butterfly of the sea!",
     tier: "3",
-    table: 2,
+    category: "Saltwater",
     imageName: "manta-ray.png",
   },
   {
@@ -455,7 +455,7 @@ export default [
     latinName: "Makaira nigricans",
     catchPhrase: "Something something MARLIN",
     tier: "2",
-    table: 2,
+    category: "Saltwater",
     imageName: "marlin.png",
   },
   {
@@ -464,7 +464,7 @@ export default [
     latinName: "Octopus vulgaris",
     catchPhrase: "How vulgar!",
     tier: "2",
-    table: 2,
+    category: "Saltwater",
     imageName: "octopus.png",
   },
   {
@@ -473,7 +473,7 @@ export default [
     latinName: "Crassostrea gigas",
     catchPhrase: "Oyster? I hardly know 'er!'",
     tier: "1",
-    table: 2,
+    category: "Saltwater",
     imageName: "oyster.png",
   },
   {
@@ -482,7 +482,7 @@ export default [
     latinName: "Pristis perotteti",
     catchPhrase: "I saw it!",
     tier: "1",
-    table: 2,
+    category: "Saltwater",
     imageName: "sawfish.png",
   },
   {
@@ -491,7 +491,7 @@ export default [
     latinName: "Chelonia mydas",
     catchPhrase: "Surf's up!",
     tier: "3",
-    table: 2,
+    category: "Saltwater",
     imageName: "sea-turtle.png",
   },
   {
@@ -500,7 +500,7 @@ export default [
     latinName: "Hippocampus kuda",
     catchPhrase: "Giddy up!",
     tier: "2",
-    table: 2,
+    category: "Saltwater",
     imageName: "seahorse.png",
   },
   {
@@ -509,7 +509,7 @@ export default [
     latinName: "Pandalus borealis",
     catchPhrase: "One in a krillion! (this isnt a krill btw)",
     tier: "1",
-    table: 2,
+    category: "Saltwater",
     imageName: "shrimp.png",
   },
   {
@@ -518,7 +518,7 @@ export default [
     latinName: "Dosidicus gigas",
     catchPhrase: "A true alien!",
     tier: "3",
-    table: 2,
+    category: "Saltwater",
     imageName: "squid.png",
   },
   {
@@ -527,7 +527,7 @@ export default [
     latinName: "Dasyatis pastinaca",
     catchPhrase: "What a ripper!",
     tier: "2",
-    table: 2,
+    category: "Saltwater",
     imageName: "sting-ray.png",
   },
   {
@@ -536,7 +536,7 @@ export default [
     latinName: "Mola mola",
     catchPhrase: "Here it comes!",
     tier: "1",
-    table: 2,
+    category: "Saltwater",
     imageName: "sunfish.png",
   },
   {
@@ -545,7 +545,7 @@ export default [
     latinName: "Xiphias gladius",
     catchPhrase: "Master duelist!",
     tier: "2",
-    table: 2,
+    category: "Saltwater",
     imageName: "swordfish.png",
   },
   {
@@ -554,7 +554,7 @@ export default [
     latinName: "Thunnus alalunga",
     catchPhrase: "Well this was a tuna fun!",
     tier: "1",
-    table: 2,
+    category: "Saltwater",
     imageName: "tuna.png",
   },
   {
@@ -563,7 +563,7 @@ export default [
     latinName: "Balaenoptera musculus",
     catchPhrase: "A whale of a time!",
     tier: "3",
-    table: 2,
+    category: "Saltwater",
     imageName: "whale.png",
   },
   {
@@ -572,7 +572,7 @@ export default [
     latinName: "Anarhichas lupus",
     catchPhrase: "A true alpha",
     tier: "2",
-    table: 2,
+    category: "Saltwater",
     imageName: "wolffish.png",
   },
   {
@@ -581,8 +581,8 @@ export default [
     latinName: "NAMELATIN",
     catchPhrase: "CATCH",
     tier: "1",
-    table: 3,
-    imageName: "TABLE2.png",
+    category: "Misc",
+    imageName: "category2.png",
   },
   {
     id: 66,
@@ -590,8 +590,8 @@ export default [
     latinName: "NAMELATIN",
     catchPhrase: "CATCH",
     tier: "1",
-    table: 3,
-    imageName: "TABLE2.png",
+    category: "Misc",
+    imageName: "category2.png",
   },
   {
     id: 67,
@@ -599,7 +599,7 @@ export default [
     latinName: "Tachypleus tridentatus",
     catchPhrase: "Guess it's my lucky day!",
     tier: "1",
-    table: 3,
+    category: "Misc",
     imageName: "horseshoe-crab.png",
   },
   {
@@ -608,7 +608,7 @@ export default [
     latinName: "Leedsichthys problematicus",
     catchPhrase: "A giant!",
     tier: "3",
-    table: 3,
+    category: "Misc",
     imageName: "leedsichthys.png",
   },
   {
@@ -617,7 +617,7 @@ export default [
     latinName: "What a story!",
     catchPhrase: "Yuck! Who put this in here...",
     tier: "1",
-    table: 3,
+    category: "Misc",
     imageName: "bone.png",
   },
   {
@@ -626,7 +626,7 @@ export default [
     latinName: "Don't Litter!",
     catchPhrase: "Yuck! Who put this in here...",
     tier: "1",
-    table: 3,
+    category: "Misc",
     imageName: "old-boot.png",
   },
   {
@@ -635,7 +635,7 @@ export default [
     latinName: "Stick!",
     catchPhrase: "Agh! Caught a snag!",
     tier: "1",
-    table: 3,
+    category: "Misc",
     imageName: "branch.png",
   },
   {
@@ -644,8 +644,8 @@ export default [
     latinName: "NAMELATIN",
     catchPhrase: "CATCH",
     tier: "1",
-    table: 3,
-    imageName: "TABLE2.png",
+    category: "Misc",
+    imageName: "category2.png",
   },
   {
     id: 73,
@@ -653,7 +653,7 @@ export default [
     latinName: "Don't Litter!",
     catchPhrase: "Yuck! Who put this in here...",
     tier: "1",
-    table: 3,
+    category: "Misc",
     imageName: "drink-rings.png",
   },
   {
@@ -662,7 +662,7 @@ export default [
     latinName: "Don't Litter!",
     catchPhrase: "Yuck! Who put this in here...",
     tier: "1",
-    table: 3,
+    category: "Misc",
     imageName: "plastic-bag.png",
   },
   {
@@ -671,7 +671,7 @@ export default [
     latinName: "Don't Litter!",
     catchPhrase: "Yuck! Who put this in here...",
     tier: "1",
-    table: 3,
+    category: "Misc",
     imageName: "soda-can.png",
   },
   {
@@ -680,7 +680,7 @@ export default [
     latinName: "Weed!",
     catchPhrase: "Agh! Caught a snag!",
     tier: "1",
-    table: 3,
+    category: "Misc",
     imageName: "weed.png",
   },
   {
@@ -689,7 +689,7 @@ export default [
     latinName: "Alienus Caninus",
     catchPhrase: "...what? the fuck?",
     tier: "2",
-    table: 3,
+    category: "Misc",
     imageName: "unidentified-fish-object.png",
   },
 ];
