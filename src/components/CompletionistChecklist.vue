@@ -55,17 +55,17 @@
             >
               <button
                 v-for="(name, index) in circleNames"
-                :key="`misc-${fish.id}-${index}`"
+                :key="`freshwater-${fish.id}-${index}`"
                 :style="{
-                  backgroundColor: clicked[`misc-fish${fish.id}-circle${index}`]
+                  backgroundColor: isTypeSelected(fish.id, 'freshwater', name)
                     ? colors[index]
                     : '#ffeed5',
                   borderColor: colors[index],
                 }"
-                @click.stop="toggleCircle('misc', fish.id, index)"
+                @click.stop="toggleCircle('freshwater', fish.id, name)"
                 class="circle"
                 :title="name"
-                aria-pressed="clicked[`misc-fish${fish.id}-circle${index}`]"
+                :aria-pressed="isTypeSelected(fish.id, 'freshwater', name)"
               ></button>
             </div>
             <img
@@ -119,17 +119,17 @@
             >
               <button
                 v-for="(name, index) in circleNames"
-                :key="`misc-${fish.id}-${index}`"
+                :key="`saltwater-${fish.id}-${index}`"
                 :style="{
-                  backgroundColor: clicked[`misc-fish${fish.id}-circle${index}`]
+                  backgroundColor: isTypeSelected(fish.id, 'saltwater', name)
                     ? colors[index]
                     : '#ffeed5',
                   borderColor: colors[index],
                 }"
-                @click.stop="toggleCircle('misc', fish.id, index)"
+                @click.stop="toggleCircle('saltwater', fish.id, name)"
                 class="circle"
                 :title="name"
-                aria-pressed="clicked[`misc-fish${fish.id}-circle${index}`]"
+                :aria-pressed="isTypeSelected(fish.id, 'saltwater', name)"
               ></button>
             </div>
             <img
@@ -185,15 +185,15 @@
                 v-for="(name, index) in circleNames"
                 :key="`misc-${fish.id}-${index}`"
                 :style="{
-                  backgroundColor: clicked[`misc-fish${fish.id}-circle${index}`]
+                  backgroundColor: isTypeSelected(fish.id, 'misc', name)
                     ? colors[index]
                     : '#ffeed5',
                   borderColor: colors[index],
                 }"
-                @click.stop="toggleCircle('misc', fish.id, index)"
+                @click.stop="toggleCircle('misc', fish.id, name)"
                 class="circle"
                 :title="name"
-                aria-pressed="clicked[`misc-fish${fish.id}-circle${index}`]"
+                :aria-pressed="isTypeSelected(fish.id, 'misc', name)"
               ></button>
             </div>
             <img
@@ -255,28 +255,55 @@ export default {
         "Alpha",
       ],
 
-      clicked: {}, // Store the clicked status of each circle
+      clickedStates: [], // Store the clicked status of each circle
     };
   },
   methods: {
-    toggleCircle(tableCategory, fishId, index) {
-      const key = `${tableCategory}-fish${fishId}-circle${index}`;
-      // Toggle the clicked state
-      this.clicked[key] = !this.clicked[key];
-      // Save the updated state to local storage
+    toggleCircle(category, fishId, type) {
+      const now = new Date().toISOString().split("T")[0]; // Store date as 'YYYY-MM-DD'
+      const fishEntry = this.clickedStates.find(
+        (entry) => entry.id === fishId && entry.category === category
+      );
+
+      if (fishEntry) {
+        // If the type is already selected, remove it
+        const typeIndex = fishEntry.caughtTypes.indexOf(type);
+        if (typeIndex > -1) {
+          fishEntry.caughtTypes.splice(typeIndex, 1);
+        } else {
+          fishEntry.caughtTypes.push(type);
+        }
+        fishEntry.modifiedAt = now;
+      } else {
+        // Add a new entry if the fish ID and category combo is not found
+        this.clickedStates.push({
+          id: fishId,
+          category: category,
+          caughtTypes: [type],
+          modifiedAt: now,
+        });
+      }
       this.saveToLocalStorage();
     },
-
+    isTypeSelected(fishId, category, type) {
+      const fishEntry = this.clickedStates.find(
+        (entry) => entry.id === fishId && entry.category === category
+      );
+      return fishEntry ? fishEntry.caughtTypes.includes(type) : false;
+    },
     saveToLocalStorage() {
-      // Convert the clicked object to a JSON string and save it to local storage
-      localStorage.setItem("clickedStates", JSON.stringify(this.clicked));
+      // Convert the clicked states to JSON and save it
+      localStorage.setItem("clickedStates", JSON.stringify(this.clickedStates));
     },
 
     loadFromLocalStorage() {
-      // Load the clicked states from local storage if they exist
       const savedStates = localStorage.getItem("clickedStates");
-      if (savedStates) {
-        this.clicked = JSON.parse(savedStates);
+      try {
+        const parsedStates = JSON.parse(savedStates);
+        this.clickedStates = Array.isArray(parsedStates) ? parsedStates : [];
+      } catch (error) {
+        console.warn("Failed to load clickedStates from localStorage:", error);
+        this.clickedStates = [];
       }
     },
 
@@ -284,19 +311,29 @@ export default {
       // Construct the image path directly from the public folder
       const imagePath = `/images/${fish.imageName}`;
 
-      // Log the image path for debugging
-      console.log(`Image path for fish ${fish.name}:`, imagePath);
-
-      // Check if the image path is valid
-      if (imagePath) {
+      // Check if the image is already cached
+      if (!this.fishImages[fish.id]) {
         try {
-          this.fishImages[fish.id] = imagePath; // Store image URL
-          console.log(`Loaded image for fish ${fish.name}:`, imagePath); // Debug loaded image URL
+          // Create a new Image object to load the image
+          const img = new Image();
+
+          // Set up a promise to resolve when the image loads
+          img.src = imagePath;
+          img.onload = () => {
+            this.fishImages[fish.id] = imagePath; // Store the loaded image URL
+          };
+
+          // Set an error handler for the image loading
+          img.onerror = () => {
+            console.error(
+              `Failed to load image for fish ${fish.name} at path: ${imagePath}`
+            );
+          };
         } catch (error) {
-          console.error(`Failed to load image for fish ${fish.name}:`, error); // Debug if there's an error
+          console.error(`Error loading image for fish ${fish.name}:`, error);
         }
       } else {
-        console.warn(`Image not found for fish ${fish.name}`);
+        return;
       }
     },
 
@@ -313,10 +350,8 @@ export default {
     const tabCategories = ["Freshwater", "Saltwater", "Misc"];
     for (const tab of tabCategories) {
       const fishList = this.filteredFish(tab);
-      //console.log(`Tab ${tab}: Loaded fish list`, fishList); // Debug the fish list for each tab
 
       for (const fish of fishList) {
-        //console.log(`Loading image for fish:`, fish); // Debug which fish is being processed
         await this.loadFishImage(fish);
       }
     }
@@ -575,7 +610,6 @@ img {
   z-index: 2; /* Brings back to the front during the flip */
 }
 
-/* Adjust the style of the text inside the back of the card */
 .latin,
 .fishname-popup,
 .catchphrase {
@@ -586,16 +620,14 @@ img {
   margin: 1px 0;
 }
 
+.fishname-popup {
+  color: #d1b12d; /* Lighter shade for better contrast */
+}
 .latin {
   font-style: italic;
-  color: #b48141;
+  color: #d48256; /* Darker brown for better contrast */
 }
-
-.fishname-popup {
-  color: #6a4420;
-}
-
 .catchphrase {
-  color: #ffeed5;
+  color: #ffeed5; /* This color is already sufficient */
 }
 </style>
