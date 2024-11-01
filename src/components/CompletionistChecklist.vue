@@ -35,39 +35,37 @@
           class="cell"
           v-for="fish in filteredFish('Freshwater')"
           :key="fish.id"
-          @mouseover="showPopup(fish, $event)"
-          @mouseleave="hidePopup"
+          @click="toggleFlip(fish.id)"
+          :class="{ flipped: flippedFish === fish.id }"
         >
-          <!-- Circles -->
-          <div class="circles">
-            <button
-              v-for="(name, index) in circleNames"
-              :key="`freshwater-${fish.id}-${index}`"
-              :style="{
-                backgroundColor: clicked[
-                  `freshwater-fish${fish.id}-circle${index}`
-                ]
-                  ? colors[index]
-                  : '#ffeed5',
-                borderColor: colors[index],
-              }"
-              @click="toggleCircle('freshwater', fish.id, index)"
-              class="circle"
-              :title="name"
-            ></button>
+          <!-- Front of the card -->
+          <div class="card-face card-front">
+            <div class="circles">
+              <button
+                v-for="(name, index) in circleNames"
+                :key="`freshwater-${fish.id}-${index}`"
+                :style="{
+                  backgroundColor: clicked[
+                    `freshwater-fish${fish.id}-circle${index}`
+                  ]
+                    ? colors[index]
+                    : '#ffeed5',
+                  borderColor: colors[index],
+                }"
+                @click.stop="toggleCircle('freshwater', fish.id, index)"
+                class="circle"
+                :title="name"
+              ></button>
+            </div>
+            <img :src="fishImages[fish.id]" alt="fish" class="fish-img" />
           </div>
-          <img
-            :src="fishImages[fish.id] || placeholderImage"
-            alt="fish"
-            class="fish-img"
-          />
-          <!-- Popup that appears on hover -->
-          <FishPopup
-            v-if="popupFish && popupFish.id === fish.id"
-            :fish="popupFish"
-            :visible="true"
-            :position="popupPosition"
-          />
+
+          <!-- Back of the card -->
+          <div class="card-face card-back">
+            <p class="fishname-popup">{{ fish.name }} - Tier {{ fish.tier }}</p>
+            <p class="latin">{{ fish.latinName }}</p>
+            <p class="catchphrase">{{ fish.catchPhrase }}</p>
+          </div>
         </div>
       </div>
 
@@ -76,38 +74,37 @@
           class="cell"
           v-for="fish in filteredFish('Saltwater')"
           :key="fish.id"
-          @mouseover="showPopup(fish, $event)"
-          @mouseleave="hidePopup"
+          @click="toggleFlip(fish.id)"
+          :class="{ flipped: flippedFish === fish.id }"
         >
-          <div class="circles">
-            <button
-              v-for="(name, index) in circleNames"
-              :key="`saltwater-${fish.id}-${index}`"
-              :style="{
-                backgroundColor: clicked[
-                  `saltwater-fish${fish.id}-circle${index}`
-                ]
-                  ? colors[index]
-                  : '#ffeed5',
-                borderColor: colors[index],
-              }"
-              @click="toggleCircle('saltwater', fish.id, index)"
-              class="circle"
-              :title="name"
-            ></button>
+          <!-- Front of the card -->
+          <div class="card-face card-front">
+            <div class="circles">
+              <button
+                v-for="(name, index) in circleNames"
+                :key="`saltwater-${fish.id}-${index}`"
+                :style="{
+                  backgroundColor: clicked[
+                    `saltwater-fish${fish.id}-circle${index}`
+                  ]
+                    ? colors[index]
+                    : '#ffeed5',
+                  borderColor: colors[index],
+                }"
+                @click.stop="toggleCircle('saltwater', fish.id, index)"
+                class="circle"
+                :title="name"
+              ></button>
+            </div>
+            <img :src="fishImages[fish.id]" alt="fish" class="fish-img" />
           </div>
-          <img
-            :src="fishImages[fish.id] || placeholderImage"
-            alt="fish"
-            class="fish-img"
-          />
-          <!-- Popup that appears on hover -->
-          <FishPopup
-            v-if="popupFish && popupFish.id === fish.id"
-            :fish="popupFish"
-            :visible="true"
-            :position="popupPosition"
-          />
+
+          <!-- Back of the card -->
+          <div class="card-face card-back">
+            <p class="fishname-popup">{{ fish.name }} - Tier {{ fish.tier }}</p>
+            <p class="latin">{{ fish.latinName }}</p>
+            <p class="catchphrase">{{ fish.catchPhrase }}</p>
+          </div>
         </div>
       </div>
 
@@ -116,36 +113,35 @@
           class="cell"
           v-for="fish in filteredFish('Misc')"
           :key="fish.id"
-          @mouseover="showPopup(fish, $event)"
-          @mouseleave="hidePopup"
+          @click="toggleFlip(fish.id)"
+          :class="{ flipped: flippedFish === fish.id }"
         >
-          <div class="circles">
-            <button
-              v-for="(name, index) in circleNames"
-              :key="`misc-${fish.id}-${index}`"
-              :style="{
-                backgroundColor: clicked[`misc-fish${fish.id}-circle${index}`]
-                  ? colors[index]
-                  : '#ffeed5',
-                borderColor: colors[index],
-              }"
-              @click="toggleCircle('misc', fish.id, index)"
-              class="circle"
-              :title="name"
-            ></button>
+          <!-- Front of the card -->
+          <div class="card-face card-front">
+            <div class="circles">
+              <button
+                v-for="(name, index) in circleNames"
+                :key="`misc-${fish.id}-${index}`"
+                :style="{
+                  backgroundColor: clicked[`misc-fish${fish.id}-circle${index}`]
+                    ? colors[index]
+                    : '#ffeed5',
+                  borderColor: colors[index],
+                }"
+                @click.stop="toggleCircle('misc', fish.id, index)"
+                class="circle"
+                :title="name"
+              ></button>
+            </div>
+            <img :src="fishImages[fish.id]" alt="fish" class="fish-img" />
           </div>
-          <img
-            :src="fishImages[fish.id] || placeholderImage"
-            alt="fish"
-            class="fish-img"
-          />
-          <!-- Popup that appears on hover -->
-          <FishPopup
-            v-if="popupFish && popupFish.id === fish.id"
-            :fish="popupFish"
-            :visible="true"
-            :position="popupPosition"
-          />
+
+          <!-- Back of the card -->
+          <div class="card-face card-back">
+            <p class="fishname-popup">{{ fish.name }} - Tier {{ fish.tier }}</p>
+            <p class="latin">{{ fish.latinName }}</p>
+            <p class="catchphrase">{{ fish.catchPhrase }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -153,27 +149,19 @@
 </template>
 
 <script>
-import placeholderImage from "@/assets/images/placeholder.png";
 import fishData from "@/data/fishData.js";
-import FishPopup from "./FishPopup.vue";
-
-// Dynamically import all fish images
-const fishImages = import.meta.glob("@/assets/images/*.png");
 
 //console.log("Available fish images:", fishImages); // Log all available image paths
 
 export default {
-  components: { FishPopup },
   data() {
     return {
       selectedTab: "Freshwater", // Default tab is Freshwater
 
-      popupFish: null,
-      popupPosition: { top: "0", left: "0" },
+      flippedFish: null, // Keeps track of the flipped fish ID
 
       fishImages: {}, // To store resolved image URLs
 
-      placeholderImage,
       fishList: fishData,
       colors: [
         "#d8b077",
@@ -205,30 +193,23 @@ export default {
     },
 
     async loadFishImage(fish) {
-      //console.log(
-      //  `Attempting to load image for fish: ${fish.name} with imageName: ${fish.imageName}`
-      //); // Debug imageName
+      // Construct the image path directly from the public folder
+      const imagePath = `/images/${fish.imageName}`;
 
-      const imagePath = fishImages[`/src/assets/images/${fish.imageName}`];
-      //console.log(`Image path for fish ${fish.name}:`, imagePath); // Debug image path
+      // Log the image path for debugging
+      console.log(`Image path for fish ${fish.name}:`, imagePath);
 
+      // Check if the image path is valid
       if (imagePath) {
         try {
-          const imageModule = await imagePath();
-          //console.log(
-          //  `Resolved image for fish ${fish.name}:`,
-          //  imageModule.default
-          //); // Debug resolved image URL
-          this.fishImages[fish.id] = imageModule.default; // Store image URL
+          // No need to import; just use the image path directly
+          this.fishImages[fish.id] = imagePath; // Store image URL
+          console.log(`Loaded image for fish ${fish.name}:`, imagePath); // Debug loaded image URL
         } catch (error) {
           console.error(`Failed to load image for fish ${fish.name}:`, error); // Debug if there's an error
-          this.fishImages[fish.id] = this.placeholderImage; // Fallback to placeholder
         }
       } else {
-        console.warn(
-          `Image not found for fish ${fish.name}, using placeholder`
-        ); // Warn if the image is not found
-        this.fishImages[fish.id] = this.placeholderImage; // Fallback to placeholder
+        console.warn(`Image not found for fish ${fish.name}`);
       }
     },
     saveToLocalStorage() {
@@ -245,11 +226,8 @@ export default {
         this.clicked = JSON.parse(savedStates);
       }
     },
-    showPopup(fish, event) {
-      this.popupFish = fish;
-    },
-    hidePopup() {
-      this.popupFish = null;
+    toggleFlip(fishId) {
+      this.flippedFish = this.flippedFish === fishId ? null : fishId; // Toggle flip state
     },
   },
   async mounted() {
@@ -397,17 +375,6 @@ export default {
 }
 .cell {
   width: 140px;
-  border-radius: 15px;
-  padding: 16px;
-  background-color: #ffeed5;
-  display: flex;
-  flex-direction: column; /* Stack the circles and image vertically */
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  margin: 0 auto;
-  position: relative;
-  font-family: "IBMPlexMono", monospace;
 }
 
 .circles {
@@ -417,10 +384,11 @@ export default {
   flex-wrap: nowrap; /* Prevent wrapping in case of small widths */
 }
 img {
-  height: 40px !important;
-  margin-top: 10px;
+  height: 90px !important;
+  margin-top: -20px;
   max-width: 100%; /* Ensure images don't overflow their container */
   height: auto; /* Maintain aspect ratio */
+  z-index: 2;
 }
 .circle {
   width: 15px !important; /* Safari width bug */
@@ -428,13 +396,14 @@ img {
   border-radius: 50%;
   border: 1px solid #101c31;
   cursor: pointer;
+  z-index: 3;
 }
 /* Responsive styles */
 @media (max-width: 900px) {
   /* Adjust the max-width as needed */
-  .cell {
-    width: 100%; /* Full width on small screens */
-    padding: 20px; /* Increased padding */
+  .cell,
+  .card-face {
+    width: 190px; /* Full width on small screens */
   }
 
   .tabs button {
@@ -444,16 +413,22 @@ img {
   }
 
   img {
-    height: 70px !important; /* Increased image height */
+    height: 150px !important; /* Increased image height */
+    margin-top: -10px;
   }
 
   .circle {
-    width: 30px !important; /* Increased circle width */
-    height: 30px; /* Increased circle height */
+    width: 22px !important; /* Increased circle width */
+    height: 22px; /* Increased circle height */
   }
-}
-.fish-info {
-  display: none; /* Hide additional info by default */
+  .cell {
+    height: 120px !important; /* Adjust height as needed */
+  }
+  .latin,
+  .fishname-popup,
+  .catchphrase {
+    font-size: medium !important;
+  }
 }
 .app-container {
   display: flex;
@@ -461,5 +436,78 @@ img {
   height: 100%;
   width: 100%;
   align-items: center;
+}
+
+.cell {
+  height: 85px; /* Adjust height as needed */
+  perspective: 1000px; /* Necessary for 3D effect */
+  position: relative;
+}
+
+.card-face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  border-radius: 15px;
+  border-width: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  transition: transform 0.6s;
+  border-color: #ffeed5;
+}
+
+.card-front {
+  background-color: #ffeed5;
+  transform: rotateY(0deg);
+  z-index: 3; /* Ensures front is on top initially */
+}
+
+.card-back {
+  background-color: #5a755a !important;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; /* Initially behind the front */
+}
+
+.cell.flipped .card-front {
+  transform: rotateY(-180deg);
+  z-index: 1; /* Moves behind during the flip */
+}
+
+.cell.flipped .card-back {
+  transform: rotateY(0deg);
+  z-index: 2; /* Brings back to the front during the flip */
+}
+
+/* Adjust the style of the text inside the back of the card */
+.latin,
+.fishname-popup,
+.catchphrase {
+  line-height: normal;
+  text-align: center;
+  font-size: xx-small;
+  font-weight: bold;
+  margin: 1px 0;
+}
+
+.latin {
+  font-style: italic;
+  color: #b48141;
+}
+
+.fishname-popup {
+  color: #6a4420;
+}
+
+.catchphrase {
+  color: #ffeed5;
 }
 </style>
