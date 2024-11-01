@@ -377,7 +377,7 @@ export default {
   display: flex;
   justify-content: space-between; /* Ensure buttons are spaced evenly */
 }
-.tabs button {
+.tabs .tab-button {
   padding: 10px;
   margin: 0 5px;
   background-color: #3f523f;
@@ -396,12 +396,12 @@ export default {
 .tab-button {
   flex: 1 1 33.33%; /* Make all buttons one-third of the width */
 }
-.tabs button.active {
+.tabs .tab-button.active {
   background-color: #5a755a;
   color: #faebd1;
   font-weight: bold;
 }
-.tabs button:not(.active):hover {
+.tabs .tab-button:not(.active):hover {
   transform: scale(1.08);
 }
 /* Responsive adjustments */
@@ -523,29 +523,28 @@ img {
 }
 /* Responsive styles */
 @media (max-width: 900px) {
-  /* Adjust the max-width as needed */
   .cell,
   .card-face {
     width: 190px; /* Full width on small screens */
   }
 
   .tabs button {
-    padding: 15px; /* Increased padding */
-    font-size: 30px; /* Increased font size */
-    height: 40px; /* Increased button height */
+    padding: 15px;
+    font-size: 30px;
+    height: 40px;
   }
 
   img {
-    height: 150px !important; /* Increased image height */
+    height: 150px !important;
     margin-top: -10px;
   }
 
   .circle {
-    width: 22px !important; /* Increased circle width */
-    height: 22px; /* Increased circle height */
+    width: 22px !important;
+    height: 22px;
   }
   .cell {
-    height: 120px !important; /* Adjust height as needed */
+    height: 120px !important;
   }
   .latin,
   .fishname-popup,
@@ -556,13 +555,13 @@ img {
 .app-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: auto;
   width: 100%;
   align-items: center;
 }
 
 .cell {
-  height: 85px; /* Adjust height as needed */
+  height: 85px;
   perspective: 1000px; /* Necessary for 3D effect */
   position: relative;
 }
