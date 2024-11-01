@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <!-- Tabs -->
-    <div class="tabs">
+    <nav class="tabs" role="navigation" aria-label="Fish Tabs">
       <button
         @click="selectedTab = 'Freshwater'"
         :class="{ active: selectedTab === 'Freshwater' }"
@@ -26,99 +26,33 @@
       >
         MISC
       </button>
-    </div>
+    </nav>
 
     <!-- Tables: Render based on selected tab -->
-    <div class="tables-container">
-      <div v-if="selectedTab === 'Freshwater'" class="table">
+    <main class="tables-container">
+      <section
+        v-if="selectedTab === 'Freshwater'"
+        class="table"
+        aria-labelledby="freshwater-table"
+      >
+        <h2 id="freshwater-table" class="visually-hidden">Freshwater Fish</h2>
         <div
           class="cell"
           v-for="fish in filteredFish('Freshwater')"
           :key="fish.id"
           @click="toggleFlip(fish.id)"
           :class="{ flipped: flippedFish === fish.id }"
+          role="button"
+          tabindex="0"
+          aria-label="View details for {{ fish.name }}"
         >
           <!-- Front of the card -->
           <div class="card-face card-front">
-            <div class="circles">
-              <button
-                v-for="(name, index) in circleNames"
-                :key="`freshwater-${fish.id}-${index}`"
-                :style="{
-                  backgroundColor: clicked[
-                    `freshwater-fish${fish.id}-circle${index}`
-                  ]
-                    ? colors[index]
-                    : '#ffeed5',
-                  borderColor: colors[index],
-                }"
-                @click.stop="toggleCircle('freshwater', fish.id, index)"
-                class="circle"
-                :title="name"
-              ></button>
-            </div>
-            <img :src="fishImages[fish.id]" alt="fish" class="fish-img" />
-          </div>
-
-          <!-- Back of the card -->
-          <div class="card-face card-back">
-            <p class="fishname-popup">{{ fish.name }} - Tier {{ fish.tier }}</p>
-            <p class="latin">{{ fish.latinName }}</p>
-            <p class="catchphrase">{{ fish.catchPhrase }}</p>
-          </div>
-        </div>
-      </div>
-
-      <div v-if="selectedTab === 'Saltwater'" class="table">
-        <div
-          class="cell"
-          v-for="fish in filteredFish('Saltwater')"
-          :key="fish.id"
-          @click="toggleFlip(fish.id)"
-          :class="{ flipped: flippedFish === fish.id }"
-        >
-          <!-- Front of the card -->
-          <div class="card-face card-front">
-            <div class="circles">
-              <button
-                v-for="(name, index) in circleNames"
-                :key="`saltwater-${fish.id}-${index}`"
-                :style="{
-                  backgroundColor: clicked[
-                    `saltwater-fish${fish.id}-circle${index}`
-                  ]
-                    ? colors[index]
-                    : '#ffeed5',
-                  borderColor: colors[index],
-                }"
-                @click.stop="toggleCircle('saltwater', fish.id, index)"
-                class="circle"
-                :title="name"
-              ></button>
-            </div>
-            <img :src="fishImages[fish.id]" alt="fish" class="fish-img" />
-          </div>
-
-          <!-- Back of the card -->
-          <div class="card-face card-back">
-            <p class="fishname-popup">{{ fish.name }} - Tier {{ fish.tier }}</p>
-            <p class="latin">{{ fish.latinName }}</p>
-            <p class="catchphrase">{{ fish.catchPhrase }}</p>
-          </div>
-        </div>
-      </div>
-
-      <div v-if="selectedTab === 'Misc'" class="table">
-        <div
-          class="cell"
-          v-for="fish in filteredFish('Misc')"
-          :key="fish.id"
-          @click="toggleFlip(fish.id)"
-          :class="{ flipped: flippedFish === fish.id }"
-        >
-          <!-- Front of the card -->
-          <div class="card-face card-front">
-            <div class="circles">
+            <div
+              class="circles"
+              role="group"
+              aria-label="Color selection for {{ fish.name }}"
+            >
               <button
                 v-for="(name, index) in circleNames"
                 :key="`misc-${fish.id}-${index}`"
@@ -131,27 +65,168 @@
                 @click.stop="toggleCircle('misc', fish.id, index)"
                 class="circle"
                 :title="name"
+                aria-pressed="clicked[`misc-fish${fish.id}-circle${index}`]"
               ></button>
             </div>
-            <img :src="fishImages[fish.id]" alt="fish" class="fish-img" />
+            <img
+              :src="fishImages[fish.id]"
+              alt="{{ fish.name }} image"
+              class="fish-img"
+            />
           </div>
 
           <!-- Back of the card -->
-          <div class="card-face card-back">
-            <p class="fishname-popup">{{ fish.name }} - Tier {{ fish.tier }}</p>
-            <p class="latin">{{ fish.latinName }}</p>
+          <div
+            class="card-face card-back"
+            role="dialog"
+            aria-labelledby="fish-name"
+            aria-describedby="fish-description"
+            tabindex="0"
+          >
+            <h2 id="fish-name" class="fishname-popup" aria-live="polite">
+              {{ fish.name }} - Tier {{ fish.tier }}
+            </h2>
+            <p id="fish-description" class="latin" aria-hidden="false">
+              {{ fish.latinName }}
+            </p>
             <p class="catchphrase">{{ fish.catchPhrase }}</p>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+
+      <section
+        v-if="selectedTab === 'Saltwater'"
+        class="table"
+        aria-labelledby="saltwater-table"
+      >
+        <h2 id="Saltwater-table" class="visually-hidden">Freshwater Fish</h2>
+        <div
+          class="cell"
+          v-for="fish in filteredFish('Saltwater')"
+          :key="fish.id"
+          @click="toggleFlip(fish.id)"
+          :class="{ flipped: flippedFish === fish.id }"
+          role="button"
+          tabindex="0"
+          aria-label="View details for {{ fish.name }}"
+        >
+          <!-- Front of the card -->
+          <div class="card-face card-front">
+            <div
+              class="circles"
+              role="group"
+              aria-label="Color selection for {{ fish.name }}"
+            >
+              <button
+                v-for="(name, index) in circleNames"
+                :key="`misc-${fish.id}-${index}`"
+                :style="{
+                  backgroundColor: clicked[`misc-fish${fish.id}-circle${index}`]
+                    ? colors[index]
+                    : '#ffeed5',
+                  borderColor: colors[index],
+                }"
+                @click.stop="toggleCircle('misc', fish.id, index)"
+                class="circle"
+                :title="name"
+                aria-pressed="clicked[`misc-fish${fish.id}-circle${index}`]"
+              ></button>
+            </div>
+            <img
+              :src="fishImages[fish.id]"
+              alt="{{ fish.name }} image"
+              class="fish-img"
+            />
+          </div>
+
+          <!-- Back of the card -->
+          <div
+            class="card-face card-back"
+            role="dialog"
+            aria-labelledby="fish-name"
+            aria-describedby="fish-description"
+            tabindex="0"
+          >
+            <h2 id="fish-name" class="fishname-popup" aria-live="polite">
+              {{ fish.name }} - Tier {{ fish.tier }}
+            </h2>
+            <p id="fish-description" class="latin" aria-hidden="false">
+              {{ fish.latinName }}
+            </p>
+            <p class="catchphrase">{{ fish.catchPhrase }}</p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        v-if="selectedTab === 'Misc'"
+        class="table"
+        aria-labelledby="misc-table"
+      >
+        <h2 id="Misc-table" class="visually-hidden">Freshwater Fish</h2>
+        <div
+          class="cell"
+          v-for="fish in filteredFish('Misc')"
+          :key="fish.id"
+          @click="toggleFlip(fish.id)"
+          :class="{ flipped: flippedFish === fish.id }"
+          role="button"
+          tabindex="0"
+          aria-label="View details for {{ fish.name }}"
+        >
+          <!-- Front of the card -->
+          <div class="card-face card-front">
+            <div
+              class="circles"
+              role="group"
+              aria-label="Color selection for {{ fish.name }}"
+            >
+              <button
+                v-for="(name, index) in circleNames"
+                :key="`misc-${fish.id}-${index}`"
+                :style="{
+                  backgroundColor: clicked[`misc-fish${fish.id}-circle${index}`]
+                    ? colors[index]
+                    : '#ffeed5',
+                  borderColor: colors[index],
+                }"
+                @click.stop="toggleCircle('misc', fish.id, index)"
+                class="circle"
+                :title="name"
+                aria-pressed="clicked[`misc-fish${fish.id}-circle${index}`]"
+              ></button>
+            </div>
+            <img
+              :src="fishImages[fish.id]"
+              alt="{{ fish.name }} image"
+              class="fish-img"
+            />
+          </div>
+
+          <!-- Back of the card -->
+          <div
+            class="card-face card-back"
+            role="dialog"
+            aria-labelledby="fish-name"
+            aria-describedby="fish-description"
+            tabindex="0"
+          >
+            <h2 id="fish-name" class="fishname-popup" aria-live="polite">
+              {{ fish.name }} - Tier {{ fish.tier }}
+            </h2>
+            <p id="fish-description" class="latin" aria-hidden="false">
+              {{ fish.latinName }}
+            </p>
+            <p class="catchphrase">{{ fish.catchPhrase }}</p>
+          </div>
+        </div>
+      </section>
+    </main>
   </div>
 </template>
 
 <script>
 import fishData from "@/data/fishData.js";
-
-//console.log("Available fish images:", fishImages); // Log all available image paths
 
 export default {
   data() {
@@ -192,6 +267,19 @@ export default {
       this.saveToLocalStorage();
     },
 
+    saveToLocalStorage() {
+      // Convert the clicked object to a JSON string and save it to local storage
+      localStorage.setItem("clickedStates", JSON.stringify(this.clicked));
+    },
+
+    loadFromLocalStorage() {
+      // Load the clicked states from local storage if they exist
+      const savedStates = localStorage.getItem("clickedStates");
+      if (savedStates) {
+        this.clicked = JSON.parse(savedStates);
+      }
+    },
+
     async loadFishImage(fish) {
       // Construct the image path directly from the public folder
       const imagePath = `/images/${fish.imageName}`;
@@ -202,7 +290,6 @@ export default {
       // Check if the image path is valid
       if (imagePath) {
         try {
-          // No need to import; just use the image path directly
           this.fishImages[fish.id] = imagePath; // Store image URL
           console.log(`Loaded image for fish ${fish.name}:`, imagePath); // Debug loaded image URL
         } catch (error) {
@@ -212,19 +299,9 @@ export default {
         console.warn(`Image not found for fish ${fish.name}`);
       }
     },
-    saveToLocalStorage() {
-      // Convert the clicked object to a JSON string and save it to local storage
-      localStorage.setItem("clickedStates", JSON.stringify(this.clicked));
-    },
+
     filteredFish(tabCategory) {
       return this.fishList.filter((fish) => fish.category === tabCategory);
-    },
-    loadFromLocalStorage() {
-      // Load the clicked states from local storage if they exist
-      const savedStates = localStorage.getItem("clickedStates");
-      if (savedStates) {
-        this.clicked = JSON.parse(savedStates);
-      }
     },
     toggleFlip(fishId) {
       this.flippedFish = this.flippedFish === fishId ? null : fishId; // Toggle flip state
@@ -248,6 +325,17 @@ export default {
 </script>
 
 <style scoped>
+.visually-hidden {
+  position: absolute; /* Position the element off-screen */
+  width: 1px; /* Set width to 1px */
+  height: 1px; /* Set height to 1px */
+  margin: -1px; /* Remove any default margin */
+  padding: 0; /* Remove any default padding */
+  overflow: hidden; /* Hide the overflow */
+  clip: rect(0, 0, 0, 0); /* Clip the element to make it invisible */
+  border: 0; /* Remove borders */
+}
+
 .tabs {
   margin-bottom: 10px;
   width: 100%;
