@@ -6,7 +6,7 @@ export default [
     catchPhrase: "See you later- !",
     tier: "3",
     category: "Freshwater",
-    imageName: "alligator.png",
+    imageName: "Alligator.png",
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ export default [
     catchPhrase: "Can I ax-olotl you a question? (...I tried, ok?)",
     tier: "3",
     category: "Freshwater",
-    imageName: "axolotl.png",
+    imageName: "Axolotl.png",
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ export default [
     catchPhrase: "Seems out of tune to me.",
     tier: "1",
     category: "Freshwater",
-    imageName: "largemouth-bass.png",
+    imageName: "Largemouth_Bass.png",
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ export default [
     catchPhrase: "Bluegill? What a thrill!",
     tier: "1",
     category: "Freshwater",
-    imageName: "bluegill.png",
+    imageName: "Bluegill.png",
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ export default [
     catchPhrase: "Bowfin deez n-",
     tier: "2",
     category: "Freshwater",
-    imageName: "bowfin.png",
+    imageName: "Bowfin.png",
   },
   {
     id: 6,
@@ -51,7 +51,7 @@ export default [
     catchPhrase: "Bullshark? Bull S-",
     tier: "3",
     category: "Freshwater",
-    imageName: "bull-shark.png",
+    imageName: "Bull_Shark.png",
   },
   {
     id: 7,
@@ -60,7 +60,7 @@ export default [
     catchPhrase: "Carp? What a lark!",
     tier: "1",
     category: "Freshwater",
-    imageName: "carp.png",
+    imageName: "Carp.png",
   },
   {
     id: 8,
@@ -69,7 +69,7 @@ export default [
     catchPhrase: "He's just like you! But yknow... more... fishy?",
     tier: "1",
     category: "Freshwater",
-    imageName: "catfish.png",
+    imageName: "Catfish.png",
   },
   {
     id: 9,
@@ -78,7 +78,7 @@ export default [
     catchPhrase: "Arg!",
     tier: "2",
     category: "Freshwater",
-    imageName: "crab.png",
+    imageName: "Crab.png",
   },
   {
     id: 10,
@@ -87,7 +87,7 @@ export default [
     catchPhrase: "Holy Carppie!",
     tier: "2",
     category: "Freshwater",
-    imageName: "crappie.png",
+    imageName: "Crappie.png",
   },
   {
     id: 11,
@@ -96,7 +96,7 @@ export default [
     catchPhrase: "Blah blah blah.",
     tier: "1",
     category: "Freshwater",
-    imageName: "crayfish.png",
+    imageName: "Crayfish.png",
   },
   {
     id: 12,
@@ -105,7 +105,7 @@ export default [
     catchPhrase: "Also known as the Gobble Gobble.",
     tier: "1",
     category: "Freshwater",
-    imageName: "drum.png",
+    imageName: "Drum.png",
   },
   {
     id: 13,
@@ -114,7 +114,7 @@ export default [
     catchPhrase: "Cozy Staple.",
     tier: "1",
     category: "Freshwater",
-    imageName: "frog.png",
+    imageName: "Frog.png",
   },
   {
     id: 14,
@@ -123,7 +123,7 @@ export default [
     catchPhrase: "Step-Brother of the Alligator!",
     tier: "3",
     category: "Freshwater",
-    imageName: "gar.png",
+    imageName: "Gar.png",
   },
   {
     id: 15,
@@ -132,7 +132,7 @@ export default [
     catchPhrase: "Woah! What a catch!",
     tier: "3",
     category: "Freshwater",
-    imageName: "golden-bass.png",
+    imageName: "Golden_Bass.png",
   },
   {
     id: 16,
@@ -141,7 +141,7 @@ export default [
     catchPhrase: "We're rich!",
     tier: "1",
     category: "Freshwater",
-    imageName: "goldfish.png",
+    imageName: "Goldfish.png",
   },
   {
     id: 17,
@@ -150,7 +150,7 @@ export default [
     catchPhrase: "Guess you're a guppy puppy!",
     tier: "1",
     category: "Freshwater",
-    imageName: "guppy.png",
+    imageName: "Guppy.png",
   },
   {
     id: 18,
@@ -159,7 +159,7 @@ export default [
     catchPhrase: "Royalty!",
     tier: "3",
     category: "Freshwater",
-    imageName: "king-salmon.png",
+    imageName: "King_Salmon.png",
   },
   {
     id: 19,
@@ -168,7 +168,7 @@ export default [
     catchPhrase: "This koi is the boy for me!",
     tier: "1",
     category: "Freshwater",
-    imageName: "koi.png",
+    imageName: "Koi.png",
   },
   {
     id: 20,
@@ -177,7 +177,7 @@ export default [
     catchPhrase: "Bringing back oldschool medicine!",
     tier: "2",
     category: "Freshwater",
-    imageName: "leech.png",
+    imageName: "Leech.png",
   },
   {
     id: 21,
@@ -186,7 +186,7 @@ export default [
     catchPhrase: "Mooneye? At this time?",
     tier: "3",
     category: "Freshwater",
-    imageName: "mooneye.png",
+    imageName: "Mooneye.png",
   },
   {
     id: 22,
@@ -195,7 +195,7 @@ export default [
     catchPhrase: "A muskie!",
     tier: "2",
     category: "Freshwater",
-    imageName: "muskellunge.png",
+    imageName: "Muskellunge.png",
   },
   {
     id: 23,
@@ -204,7 +204,7 @@ export default [
     catchPhrase: "Man am I parched...",
     tier: "1",
     category: "Freshwater",
-    imageName: "perch.png",
+    imageName: "Perch.png",
   },
   {
     id: 24,
@@ -213,7 +213,7 @@ export default [
     catchPhrase: "This Piked my interest!",
     tier: "2",
     category: "Freshwater",
-    imageName: "pike.png",
+    imageName: "Pike.png",
   },
   {
     id: 25,
@@ -222,7 +222,7 @@ export default [
     catchPhrase: "A little puppy!",
     tier: "3",
     category: "Freshwater",
-    imageName: "pupfish.png",
+    imageName: "Pupfish.png",
   },
   {
     id: 26,
@@ -231,7 +231,7 @@ export default [
     catchPhrase: "These fishes gay. Good for them. Good for them.",
     tier: "1",
     category: "Freshwater",
-    imageName: "rainbow-trout.png",
+    imageName: "Rainbow_Trout.png",
   },
   {
     id: 27,
@@ -240,7 +240,7 @@ export default [
     catchPhrase: "It's Sal' good, 'mon!",
     tier: "1",
     category: "Freshwater",
-    imageName: "salmon.png",
+    imageName: "Salmon.png",
   },
   {
     id: 28,
@@ -249,7 +249,7 @@ export default [
     catchPhrase: "Meow?",
     tier: "1",
     category: "Freshwater",
-    imageName: "snail.png",
+    imageName: "Snail.png",
   },
   {
     id: 29,
@@ -258,7 +258,7 @@ export default [
     catchPhrase: "I want a econd opinion.",
     tier: "1",
     category: "Freshwater",
-    imageName: "sturgeon.png",
+    imageName: "Sturgeon.png",
   },
   {
     id: 30,
@@ -267,7 +267,7 @@ export default [
     catchPhrase: "What a boy!",
     tier: "2",
     category: "Freshwater",
-    imageName: "toad.png",
+    imageName: "Toad.png",
   },
   {
     id: 31,
@@ -276,7 +276,7 @@ export default [
     catchPhrase: "This catch was quite the hurdle!",
     tier: "2",
     category: "Freshwater",
-    imageName: "turtle.png",
+    imageName: "Turtle.png",
   },
   {
     id: 32,
@@ -285,7 +285,7 @@ export default [
     catchPhrase: "Walleye? What a guy!",
     tier: "1",
     category: "Freshwater",
-    imageName: "walleye.png",
+    imageName: "Walleye.png",
   },
   {
     id: 33,
@@ -294,7 +294,7 @@ export default [
     catchPhrase: "Obtuse or acute? (... did i read that right?)",
     tier: "1",
     category: "Saltwater",
-    imageName: "angelfish.png",
+    imageName: "Angelfish.png",
   },
   {
     id: 34,
@@ -303,7 +303,7 @@ export default [
     catchPhrase: "It's like non-atlantic salmon but atlantic",
     tier: "1",
     category: "Saltwater",
-    imageName: "atlantic-salmon.png",
+    imageName: "Atlantic_Salmon.png",
   },
   {
     id: 35,
@@ -312,7 +312,7 @@ export default [
     catchPhrase: "One fish, two fish, red fish...",
     tier: "1",
     category: "Saltwater",
-    imageName: "bluefish.png",
+    imageName: "Bluefish.png",
   },
   {
     id: 36,
@@ -321,16 +321,16 @@ export default [
     catchPhrase: "Well this isnt so scary...",
     tier: "1",
     category: "Saltwater",
-    imageName: "clownfish.png",
+    imageName: "Clownfish.png",
   },
   {
     id: 37,
-    name: "Coelecanth",
+    name: "Coelacanth",
     latinName: "Latimeria chalumnae",
     catchPhrase: "Did you see it? I can't!",
     tier: "3",
     category: "Saltwater",
-    imageName: "coelecanth.png",
+    imageName: "Coelacanth.png",
   },
   {
     id: 38,
@@ -339,7 +339,7 @@ export default [
     catchPhrase: "He's just like you! But yknow... more... fishy?",
     tier: "1",
     category: "Saltwater",
-    imageName: "dogfish.png",
+    imageName: "Dogfish.png",
   },
   {
     id: 39,
@@ -348,16 +348,16 @@ export default [
     catchPhrase: "Eel? EEL!",
     tier: "1",
     category: "Saltwater",
-    imageName: "eel.png",
+    imageName: "Eel.png",
   },
   {
     id: 40,
-    name: "Flouder",
+    name: "Flounder",
     latinName: "Paralichthys dentatus",
-    catchPhrase: "Flouder? I hardly know 'er!'",
+    catchPhrase: "Flounder? I hardly know 'er!'",
     tier: "1",
     category: "Saltwater",
-    imageName: "flouder.png",
+    imageName: "Flounder.png",
   },
   {
     id: 41,
@@ -366,7 +366,7 @@ export default [
     catchPhrase: "Woah! What a catch!",
     tier: "3",
     category: "Saltwater",
-    imageName: "golden-manta-ray.png",
+    imageName: "Golden_Manta_Ray.png",
   },
   {
     id: 42,
@@ -375,7 +375,7 @@ export default [
     catchPhrase: "Do I smell blood...?",
     tier: "3",
     category: "Saltwater",
-    imageName: "great-white-shark.png",
+    imageName: "Great_White_Shark.png",
   },
   {
     id: 43,
@@ -384,7 +384,7 @@ export default [
     catchPhrase: "Grouper? I hardly know 'er!'",
     tier: "1",
     category: "Saltwater",
-    imageName: "grouper.png",
+    imageName: "Grouper.png",
   },
   {
     id: 44,
@@ -393,7 +393,7 @@ export default [
     catchPhrase: "Guess you hit the nail on the head!",
     tier: "2",
     category: "Saltwater",
-    imageName: "hammerhead-shark.png",
+    imageName: "Hammerhead_Shark.png",
   },
   {
     id: 45,
@@ -402,7 +402,7 @@ export default [
     catchPhrase: "Huh... this isnt red...",
     tier: "1",
     category: "Saltwater",
-    imageName: "herring.png",
+    imageName: "Herring.png",
   },
   {
     id: 46,
@@ -411,7 +411,7 @@ export default [
     catchPhrase: "Shrimply impressive! (this isnt a shrimp btw)",
     tier: "1",
     category: "Saltwater",
-    imageName: "krill.png",
+    imageName: "Krill.png",
   },
   {
     id: 47,
@@ -420,7 +420,7 @@ export default [
     catchPhrase: "Well I ain't callin' you a truther!",
     tier: "2",
     category: "Saltwater",
-    imageName: "lionfish.png",
+    imageName: "Lionfish.png",
   },
   {
     id: 48,
@@ -429,7 +429,7 @@ export default [
     catchPhrase: "What a beaut!",
     tier: "1",
     category: "Saltwater",
-    imageName: "lobster.png",
+    imageName: "Lobster.png",
   },
   {
     id: 49,
@@ -438,7 +438,7 @@ export default [
     catchPhrase: "ok you should probably not be holding this",
     tier: "3",
     category: "Saltwater",
-    imageName: "man-o-war.png",
+    imageName: "Man_O'_War.png",
   },
   {
     id: 50,
@@ -447,7 +447,7 @@ export default [
     catchPhrase: "The butterfly of the sea!",
     tier: "3",
     category: "Saltwater",
-    imageName: "manta-ray.png",
+    imageName: "Manta_Ray.png",
   },
   {
     id: 51,
@@ -456,7 +456,7 @@ export default [
     catchPhrase: "Something something MARLIN",
     tier: "2",
     category: "Saltwater",
-    imageName: "marlin.png",
+    imageName: "Marlin.png",
   },
   {
     id: 52,
@@ -465,7 +465,7 @@ export default [
     catchPhrase: "How vulgar!",
     tier: "2",
     category: "Saltwater",
-    imageName: "octopus.png",
+    imageName: "Octopus.png",
   },
   {
     id: 53,
@@ -474,7 +474,7 @@ export default [
     catchPhrase: "Oyster? I hardly know 'er!'",
     tier: "1",
     category: "Saltwater",
-    imageName: "oyster.png",
+    imageName: "Oyster.png",
   },
   {
     id: 54,
@@ -483,7 +483,7 @@ export default [
     catchPhrase: "I saw it!",
     tier: "1",
     category: "Saltwater",
-    imageName: "sawfish.png",
+    imageName: "Sawfish.png",
   },
   {
     id: 55,
@@ -492,7 +492,7 @@ export default [
     catchPhrase: "Surf's up!",
     tier: "3",
     category: "Saltwater",
-    imageName: "sea-turtle.png",
+    imageName: "Sea_Turtle.png",
   },
   {
     id: 56,
@@ -501,7 +501,7 @@ export default [
     catchPhrase: "Giddy up!",
     tier: "2",
     category: "Saltwater",
-    imageName: "seahorse.png",
+    imageName: "Seahorse.png",
   },
   {
     id: 57,
@@ -510,7 +510,7 @@ export default [
     catchPhrase: "One in a krillion! (this isnt a krill btw)",
     tier: "1",
     category: "Saltwater",
-    imageName: "shrimp.png",
+    imageName: "Shrimp.png",
   },
   {
     id: 58,
@@ -519,7 +519,7 @@ export default [
     catchPhrase: "A true alien!",
     tier: "3",
     category: "Saltwater",
-    imageName: "squid.png",
+    imageName: "Squid.png",
   },
   {
     id: 59,
@@ -528,7 +528,7 @@ export default [
     catchPhrase: "What a ripper!",
     tier: "2",
     category: "Saltwater",
-    imageName: "sting-ray.png",
+    imageName: "Sting_Ray.png",
   },
   {
     id: 60,
@@ -537,7 +537,7 @@ export default [
     catchPhrase: "Here it comes!",
     tier: "1",
     category: "Saltwater",
-    imageName: "sunfish.png",
+    imageName: "Sunfish.png",
   },
   {
     id: 61,
@@ -546,7 +546,7 @@ export default [
     catchPhrase: "Master duelist!",
     tier: "2",
     category: "Saltwater",
-    imageName: "swordfish.png",
+    imageName: "Swordfish.png",
   },
   {
     id: 62,
@@ -555,7 +555,7 @@ export default [
     catchPhrase: "Well this was a tuna fun!",
     tier: "1",
     category: "Saltwater",
-    imageName: "tuna.png",
+    imageName: "Tuna.png",
   },
   {
     id: 63,
@@ -564,7 +564,7 @@ export default [
     catchPhrase: "A whale of a time!",
     tier: "3",
     category: "Saltwater",
-    imageName: "whale.png",
+    imageName: "Whale.png",
   },
   {
     id: 64,
@@ -573,25 +573,25 @@ export default [
     catchPhrase: "A true alpha",
     tier: "2",
     category: "Saltwater",
-    imageName: "wolffish.png",
+    imageName: "Wolffish.png",
   },
   {
     id: 65,
     name: "Anomalocaris",
-    latinName: "NAMELATIN",
-    catchPhrase: "CATCH",
+    latinName: "Anomalocaris",
+    catchPhrase: "Doing it's best :)",
     tier: "1",
     category: "Misc",
-    imageName: "category2.png",
+    imageName: "Anomalocaris.png",
   },
   {
     id: 66,
     name: "Helicoprion",
-    latinName: "NAMELATIN",
-    catchPhrase: "CATCH",
+    latinName: "Helicoprion bessonowi",
+    catchPhrase: "Nature's pizza cutter!",
     tier: "1",
     category: "Misc",
-    imageName: "category2.png",
+    imageName: "Helicoprion.png",
   },
   {
     id: 67,
@@ -600,7 +600,7 @@ export default [
     catchPhrase: "Guess it's my lucky day!",
     tier: "1",
     category: "Misc",
-    imageName: "horseshoe-crab.png",
+    imageName: "Horseshoe_Crab.png",
   },
   {
     id: 68,
@@ -609,7 +609,7 @@ export default [
     catchPhrase: "A giant!",
     tier: "3",
     category: "Misc",
-    imageName: "leedsichthys.png",
+    imageName: "Leedsichthys.png",
   },
   {
     id: 69,
@@ -618,7 +618,7 @@ export default [
     catchPhrase: "Yuck! Who put this in here...",
     tier: "1",
     category: "Misc",
-    imageName: "bone.png",
+    imageName: "Bone.png",
   },
   {
     id: 70,
@@ -627,7 +627,7 @@ export default [
     catchPhrase: "Yuck! Who put this in here...",
     tier: "1",
     category: "Misc",
-    imageName: "old-boot.png",
+    imageName: "Old_Boot.png",
   },
   {
     id: 71,
@@ -636,16 +636,16 @@ export default [
     catchPhrase: "Agh! Caught a snag!",
     tier: "1",
     category: "Misc",
-    imageName: "branch.png",
+    imageName: "Branch.png",
   },
   {
     id: 72,
     name: "Diamond",
-    latinName: "NAMELATIN",
-    catchPhrase: "CATCH",
+    latinName: "Shiny!",
+    catchPhrase: "Dug right out of the rough!",
     tier: "1",
     category: "Misc",
-    imageName: "category2.png",
+    imageName: "Diamond.png",
   },
   {
     id: 73,
@@ -654,7 +654,7 @@ export default [
     catchPhrase: "Yuck! Who put this in here...",
     tier: "1",
     category: "Misc",
-    imageName: "drink-rings.png",
+    imageName: "Drink_Rings.png",
   },
   {
     id: 74,
@@ -663,7 +663,7 @@ export default [
     catchPhrase: "Yuck! Who put this in here...",
     tier: "1",
     category: "Misc",
-    imageName: "plastic-bag.png",
+    imageName: "Plastic_Bag.png",
   },
   {
     id: 75,
@@ -672,7 +672,7 @@ export default [
     catchPhrase: "Yuck! Who put this in here...",
     tier: "1",
     category: "Misc",
-    imageName: "soda-can.png",
+    imageName: "Soda_Can.png",
   },
   {
     id: 76,
@@ -681,7 +681,7 @@ export default [
     catchPhrase: "Agh! Caught a snag!",
     tier: "1",
     category: "Misc",
-    imageName: "weed.png",
+    imageName: "Weed.png",
   },
   {
     id: 77,
@@ -690,6 +690,6 @@ export default [
     catchPhrase: "...what? the fuck?",
     tier: "2",
     category: "Misc",
-    imageName: "unidentified-fish-object.png",
+    imageName: "Unidentified_Fish_Object.png",
   },
 ];
