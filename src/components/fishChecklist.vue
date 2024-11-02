@@ -487,19 +487,19 @@ export default {
 }
 
 /* Responsive adjustments */
-@media (max-width: 900px) {
+@media (max-width: 800px) {
   .table {
     grid-template-columns: repeat(3, 1fr); /* 3 columns for medium screens */
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 600px) and (min-width: 400px) {
   .table {
     grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 400px) {
   .table {
     grid-template-columns: 1fr; /* 1 column for very small screens */
   }
