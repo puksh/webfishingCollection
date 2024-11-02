@@ -1,6 +1,9 @@
 <template>
   <aside class="sidebar">
-    <button @click="navigateTo('collection')" class="sidebar-button">
+    <button
+      @click="navigateTo('CompletionistChecklist')"
+      class="sidebar-button"
+    >
       Collection
     </button>
     <button @click="navigateTo('about')" class="sidebar-button">About</button>
@@ -23,7 +26,7 @@ export default {
 
 <style scoped>
 .sidebar {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   bottom: 0;
@@ -56,18 +59,18 @@ export default {
     bottom: 0;
     top: auto; /* Remove top alignment */
     width: 100%;
-    height: 49px;
-    padding: 0px;
+    height: 33px;
     flex-direction: row;
-    gap: 5px;
     justify-content: space-around;
     z-index: 10;
+    padding-bottom: 13px;
   }
 
   .sidebar-button {
+    height: 39px;
     flex: 1;
     font-size: 14px;
-    padding: 2px;
+    padding: 0px;
   }
 }
 </style>

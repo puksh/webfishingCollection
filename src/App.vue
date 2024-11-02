@@ -2,25 +2,35 @@
   <div class="app-container">
     <Sidebar @navigate="handleNavigation" />
     <main class="main-content">
-      <CompletionistChecklist />
+      <CompletionistChecklist v-if="currentPage === 'CompletionistChecklist'" />
+      <About v-if="currentPage === 'about'" />
+      <Settings v-if="currentPage === 'settings'" />
     </main>
   </div>
 </template>
 
 <script>
 import CompletionistChecklist from "./components/CompletionistChecklist.vue";
-import Sidebar from "@/components/Sidebar.vue";
+import About from "./components/About.vue";
+import Settings from "./components/Settings.vue";
+import Sidebar from "./components/Sidebar.vue";
 
 export default {
   name: "App",
   components: {
     CompletionistChecklist,
     Sidebar,
+    About,
+    Settings,
+  },
+  data() {
+    return {
+      currentPage: "CompletionistChecklist",
+    };
   },
   methods: {
     handleNavigation(section) {
-      console.log(`Navigating to: ${section}`);
-      // Handle the navigation logic
+      this.currentPage = section;
     },
   },
 };
@@ -35,10 +45,10 @@ export default {
 }
 .app-container {
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   align-items: center;
-  height: 95%;
-  padding-left: -88px;
+  padding-left: 88px;
 }
 
 .main-content {
