@@ -44,14 +44,14 @@
           :class="{ flipped: flippedFish === fish.id }"
           role="button"
           tabindex="0"
-          aria-label="View details for {{ fish.name }}"
+          :aria-label="'View details for ' + fish.name"
         >
           <!-- Front of the card -->
           <div class="card-face card-front">
             <div
               class="circles"
               role="group"
-              aria-label="Color selection for {{ fish.name }}"
+              :aria-label="'Color selection for ' + fish.name"
             >
               <button
                 v-for="(name, index) in circleNames"
@@ -70,7 +70,7 @@
             </div>
             <img
               :src="fishImages[fish.id]"
-              alt="{{ fish.name }} image"
+              :alt="fish.name + ' image'"
               class="fish-img, loaded"
             />
           </div>
@@ -108,14 +108,14 @@
           :class="{ flipped: flippedFish === fish.id }"
           role="button"
           tabindex="0"
-          aria-label="View details for {{ fish.name }}"
+          :aria-label="'View details for ' + fish.name"
         >
           <!-- Front of the card -->
           <div class="card-face card-front">
             <div
               class="circles"
               role="group"
-              aria-label="Color selection for {{ fish.name }}"
+              :aria-label="'Color selection for ' + fish.name"
             >
               <button
                 v-for="(name, index) in circleNames"
@@ -134,7 +134,7 @@
             </div>
             <img
               :src="fishImages[fish.id]"
-              alt="{{ fish.name }} image"
+              :alt="fish.name + ' image'"
               class="fish-img"
             />
           </div>
@@ -172,14 +172,14 @@
           :class="{ flipped: flippedFish === fish.id }"
           role="button"
           tabindex="0"
-          aria-label="View details for {{ fish.name }}"
+          :aria-label="'View details for ' + fish.name"
         >
           <!-- Front of the card -->
           <div class="card-face card-front">
             <div
               class="circles"
               role="group"
-              aria-label="Color selection for {{ fish.name }}"
+              :aria-label="'Color selection for ' + fish.name"
             >
               <button
                 v-for="(name, index) in circleNames"
@@ -198,7 +198,7 @@
             </div>
             <img
               :src="fishImages[fish.id]"
-              alt="{{ fish.name }} image"
+              :alt="fish.name + ' image'"
               class="fish-img"
             />
           </div>
