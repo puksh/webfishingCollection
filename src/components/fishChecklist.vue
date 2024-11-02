@@ -389,7 +389,7 @@ export default {
   box-sizing: border-box;
   border-radius: 2vb;
   height: 35px;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 10px;
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease,
     font-weight 0.3s ease;
@@ -507,6 +507,7 @@ export default {
   gap: 4px; /* Space between circles */
   /* Fallback for Safari */
   flex-wrap: nowrap; /* Prevent wrapping in case of small widths */
+  overflow: visible;
 }
 img {
   height: 90px !important;
