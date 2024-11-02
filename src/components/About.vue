@@ -2,11 +2,16 @@
   <div class="about-container">
     <h1>About</h1>
     <p>
-      WEBFISHING is a multiplayer, chatroom-based fishing game created by
-      lamedeveloper. The game offers a cozy environment where players can catch
-      nearly 100 different species of fish, meet new people, customize their
-      character to their liking, play instruments, and generally be a silly
-      little critter.
+      <a
+        href="https://store.steampowered.com/app/3146520/WEBFISHING/"
+        target="_blank"
+        >WEBFISHING</a
+      >
+      is a multiplayer, chatroom-based fishing game created by
+      <a href="https://x.com/lamedev_" target="_blank">lamedeveloper</a>. The
+      game offers a cozy environment where players can catch nearly 100
+      different species of fish, meet new people, customize their character to
+      their liking, play instruments, and generally be a silly little critter.
     </p>
     <p>
       When you first join the game, you'll start with a fishing rod, a handful
