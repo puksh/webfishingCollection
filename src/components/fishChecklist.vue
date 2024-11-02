@@ -229,6 +229,8 @@
 import fishData from "@/data/fishData.js";
 
 export default {
+  name: "Fish Checklist",
+
   data() {
     return {
       selectedTab: "Freshwater", // Default tab is Freshwater
@@ -255,10 +257,17 @@ export default {
         "Alpha",
       ],
 
-      clickedStates: [], // Store the clicked status of each circle
+      clickedStates: JSON.parse(localStorage.getItem("clickedStates") || "[]"),
     };
   },
   methods: {
+    /**
+     * Toggles the selection of a specific type for a given fish ID in the specified category.
+     * If the type is already selected, it is removed. If it is not selected, it is added.
+     * @param {String} category The category of the fish (Freshwater, Saltwater, Misc).
+     * @param {Number} fishId The ID of the fish.
+     * @param {String} type The type of the fish (Normal, Shining, Glistening, etc.).
+     */
     toggleCircle(category, fishId, type) {
       const now = new Date().toISOString().split("T")[0]; // Store date as 'YYYY-MM-DD'
       const fishEntry = this.clickedStates.find(

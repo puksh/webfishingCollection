@@ -16,7 +16,7 @@ import Settings from "./components/Settings.vue";
 import Sidebar from "./components/Sidebar.vue";
 
 export default {
-  name: "App",
+  name: "Webfishing Tracker",
   components: {
     fishChecklist,
     Sidebar,
