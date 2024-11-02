@@ -2,7 +2,7 @@
   <div class="app-container">
     <Sidebar @navigate="handleNavigation" />
     <main class="main-content">
-      <CompletionistChecklist v-if="currentPage === 'CompletionistChecklist'" />
+      <fishChecklist v-if="currentPage === 'fishChecklist'" />
       <About v-if="currentPage === 'about'" />
       <Settings v-if="currentPage === 'settings'" />
     </main>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import CompletionistChecklist from "./components/CompletionistChecklist.vue";
+import fishChecklist from "./components/fishChecklist.vue";
 import About from "./components/About.vue";
 import Settings from "./components/Settings.vue";
 import Sidebar from "./components/Sidebar.vue";
@@ -18,14 +18,14 @@ import Sidebar from "./components/Sidebar.vue";
 export default {
   name: "App",
   components: {
-    CompletionistChecklist,
+    fishChecklist,
     Sidebar,
     About,
     Settings,
   },
   data() {
     return {
-      currentPage: "CompletionistChecklist",
+      currentPage: "fishChecklist",
     };
   },
   methods: {

@@ -1,9 +1,6 @@
 <template>
   <aside class="sidebar">
-    <button
-      @click="navigateTo('CompletionistChecklist')"
-      class="sidebar-button"
-    >
+    <button @click="navigateTo('fishChecklist')" class="sidebar-button">
       Collection
     </button>
     <button @click="navigateTo('about')" class="sidebar-button">About</button>

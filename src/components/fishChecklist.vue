@@ -71,7 +71,7 @@
             <img
               :src="fishImages[fish.id]"
               alt="{{ fish.name }} image"
-              class="fish-img"
+              class="fish-img, loaded"
             />
           </div>
 
@@ -343,6 +343,7 @@ export default {
       this.flippedFish = this.flippedFish === fishId ? null : fishId; // Toggle flip state
     },
   },
+  /*************  ✨ Codeium Command 🌟  *************/
   async mounted() {
     // Load the clicked states when the component mounts
     this.loadFromLocalStorage();
@@ -355,6 +356,8 @@ export default {
       }
     }
   },
+
+  /******  0800173b-7723-4443-9e7e-48932462ef62  *******/
 };
 </script>
 
@@ -627,5 +630,8 @@ img {
 }
 .catchphrase {
   color: #ffeed5; /* This color is already sufficient */
+}
+.fish-img {
+  opacity: 1;
 }
 </style>
