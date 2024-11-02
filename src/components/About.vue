@@ -1,7 +1,22 @@
 <template>
   <div class="about-container">
     <h1>About</h1>
-    <p>This is just a page</p>
+    <p>
+      WEBFISHING is a multiplayer, chatroom-based fishing game created by
+      lamedeveloper. The game offers a cozy environment where players can catch
+      nearly 100 different species of fish, meet new people, customize their
+      character to their liking, play instruments, and generally be a silly
+      little critter.
+    </p>
+    <p>
+      When you first join the game, you'll start with a fishing rod, a handful
+      of worms and a dream. But through various upgrades, you'll soon know your
+      way around the campsite like the back of your paw. Maybe you'll even find
+      some secrets along the way...
+      <a href="https://webfishing.wiki.gg/wiki/WEBFISHING_Wiki" target="_blank"
+        >[src wiki]</a
+      >
+    </p>
   </div>
 </template>
 
@@ -20,5 +35,9 @@ export default {
   border-left: 4px solid transparent;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
+}
+a {
+  color: #007bff;
+  text-decoration: none;
 }
 </style>
