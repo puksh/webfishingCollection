@@ -43,7 +43,7 @@ export default {
   color: #333;
   height: 66px;
   padding: 10px;
-  font-size: 16px;
+  font-size: 12px;
   border-radius: 8px;
   cursor: pointer;
 }

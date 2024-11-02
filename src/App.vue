@@ -36,9 +36,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 * {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "IBMPlexMono", monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   image-rendering: pixelated;
