@@ -3,12 +3,14 @@
     <h1>Settings</h1>
     <section>
       <h2>Export / Import</h2>
-      <button @click="exportSettings" class="export-button">
-        Export Collection
-      </button>
-      <button @click="importSettings" class="import-button">
-        Import Collection
-      </button>
+      <section class="export-import-section">
+        <button @click="exportSettings" class="export-button">
+          Export Collection
+        </button>
+        <button @click="importSettings" class="import-button">
+          Import Collection
+        </button>
+      </section>
     </section>
 
     <section>
@@ -16,16 +18,6 @@
       <button @click="resetSettings" class="reset-button">
         Reset Collection
       </button>
-    </section>
-
-    <section>
-      <h2>Help</h2>
-      <p>
-        If you have any issues, please open an issue on
-        <a href="https://github.com/puksh/webfishingCollection" target="_blank"
-          >GitHub</a
-        >.
-      </p>
     </section>
 
     <section class="fast-mark">
@@ -67,6 +59,16 @@
         Fill All Alpha
       </button>
     </section>
+
+    <section>
+      <h2>Help</h2>
+      <p>
+        If you have any issues, please open an issue on
+        <a href="https://github.com/puksh/webfishingCollection" target="_blank"
+          >GitHub</a
+        >.
+      </p>
+    </section>
   </div>
 </template>
 
@@ -94,7 +96,7 @@ export default {
       // Reset clickedStates
       if (
         confirm(
-          "Are you sure you want to reset your cllection? This will delete all your filled circles."
+          "Are you sure you want to reset your collection? This will delete all your filled in circles."
         )
       ) {
         if (
@@ -200,9 +202,8 @@ export default {
   cursor: pointer;
   box-sizing: border-box;
   border-radius: 2vb;
-  height: 35px;
+  height: 45px;
   font-size: 20px;
-  line-height: 10px;
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease,
     font-weight 0.3s ease;
   font-family: "IBMPlexMono", monospace;
@@ -225,7 +226,8 @@ export default {
 }
 .reset-button:hover,
 .export-button:hover,
-.import-button:hover {
+.import-button:hover,
+.mark-all-button:hover {
   transform: scale(1.08);
 }
 h2 {
@@ -259,11 +261,26 @@ a {
 .alpha {
   background-color: #cd0462;
 }
-.fast-mark {
+.fast-mark,
+.export-import-section {
   display: flex;
-  flex-direction: column;
   gap: 10px;
   align-items: center;
+  justify-content: center;
   margin-top: 10px;
+}
+.fast-mark {
+  flex-direction: column;
+}
+.export-import-section {
+  flex-direction: row;
+}
+@media (max-width: 582px) {
+  .export-button,
+  .import-button,
+  .reset-button,
+  .mark-all-button {
+    font-size: 12px;
+  }
 }
 </style>
