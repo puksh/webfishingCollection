@@ -94,16 +94,16 @@ export default {
       // Reset clickedStates
       if (
         confirm(
-          "Are you sure you want to reset your settings? This will delete all your saved data."
+          "Are you sure you want to reset your cllection? This will delete all your filled circles."
         )
       ) {
         if (
           confirm(
-            "Double-checking... Are you REALLY sure you want to reset your settings? This will delete all your saved data."
+            "Double-checking... Are you REALLY sure you want to reset them? This will delete all of it."
           )
         ) {
           localStorage.removeItem("clickedStates");
-          alert("Settings have been reset.");
+          alert("Circles have been reset.");
         }
       }
     },
@@ -114,7 +114,7 @@ export default {
       navigator.clipboard
         .writeText(encryptedSettings)
         .then(() => {
-          alert("Settings have been copied as an encrypted string.");
+          alert("Circles have been copied as an encrypted string.");
         })
         .catch((err) => {
           console.error("Failed to copy settings: ", err);
@@ -123,7 +123,7 @@ export default {
     importSettings() {
       // Import settings from user input
       const encryptedSettings = prompt(
-        "Enter your base64-encoded settings string:"
+        "Enter your base64-encoded circles string:"
       );
       if (encryptedSettings) {
         const settings = atob(encryptedSettings); // Simple base64 decryption
