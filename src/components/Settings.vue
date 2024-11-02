@@ -27,12 +27,68 @@
         >.
       </p>
     </section>
+
+    <section class="fast-mark">
+      <h3>Mark all fish with selected rarity</h3>
+      <button
+        @click="markAllFishWithType('Normal')"
+        class="mark-all-button normal"
+      >
+        Fill All Normal
+      </button>
+      <button
+        @click="markAllFishWithType('Shining')"
+        class="mark-all-button shining"
+      >
+        Fill All Shining
+      </button>
+      <button
+        @click="markAllFishWithType('Glistening')"
+        class="mark-all-button glistening"
+      >
+        Fill All Glistening
+      </button>
+      <button
+        @click="markAllFishWithType('Opulent')"
+        class="mark-all-button opulent"
+      >
+        Fill All Opulent
+      </button>
+      <button
+        @click="markAllFishWithType('Radiant')"
+        class="mark-all-button radiant"
+      >
+        Fill All Radiant
+      </button>
+      <button
+        @click="markAllFishWithType('Alpha')"
+        class="mark-all-button alpha"
+      >
+        Fill All Alpha
+      </button>
+    </section>
   </div>
 </template>
 
 <script>
+import fishData from "@/data/fishData.js";
+
 export default {
   name: "Settings",
+  data() {
+    return {
+      circleNames: [
+        "Normal",
+        "Shining",
+        "Glistening",
+        "Opulent",
+        "Radiant",
+        "Alpha",
+      ],
+      clickedStates: JSON.parse(localStorage.getItem("clickedStates") || "[]"),
+      fishList: fishData,
+    };
+  },
   methods: {
     resetSettings() {
       // Reset clickedStates
@@ -74,6 +130,48 @@ export default {
         localStorage.setItem("clickedStates", settings);
       }
     },
+    /**
+     * Marks all fish in the given category with the given type.
+     * If an entry for the fish already exists, the type is added if it's not already present.
+     * If an entry for the fish does not exist, a new one is created.
+     * @param {string} type The type to mark.
+     */
+    markAllFishWithType(type) {
+      const now = new Date().toISOString().split("T")[0];
+
+      // Step 1: Iterate over each fish in the fishList
+      this.fishList.forEach((fish) => {
+        // Find if the fish already exists in clickedStates
+        const existingEntry = this.clickedStates.find(
+          (entry) => entry.id === fish.id
+        );
+
+        if (existingEntry) {
+          // If the fish exists, check if the caught type is already included
+          if (!existingEntry.caughtTypes.includes(type)) {
+            // Add the type if not already present
+            existingEntry.caughtTypes.push(type);
+            existingEntry.modifiedAt = now; // Update modified date
+            //console.log(`Added type "${type}" to existing fish ID ${fish.id}`);
+          }
+        } else {
+          // If the fish does not exist, create a new entry with the caught type
+          this.clickedStates.push({
+            id: fish.id,
+            category: fish.category.toLowerCase(),
+            caughtTypes: [type], // Start with the caught type
+            modifiedAt: now,
+          });
+          //console.log(`Added new fish ID ${fish.id} with type "${type}"`);
+        }
+      });
+
+      // Step 2: Save updated clickedStates to localStorage
+      this.saveToLocalStorage();
+    },
+    saveToLocalStorage() {
+      localStorage.setItem("clickedStates", JSON.stringify(this.clickedStates));
+    },
   },
 };
 </script>
@@ -92,7 +190,8 @@ export default {
 }
 .reset-button,
 .export-button,
-.import-button {
+.import-button,
+.mark-all-button {
   padding: 10px;
   margin: 0 5px;
   color: #faebd1;
@@ -107,6 +206,7 @@ export default {
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease,
     font-weight 0.3s ease;
   font-family: "IBMPlexMono", monospace;
+  gap: 20px;
 }
 
 .export-button {
@@ -135,5 +235,35 @@ h2 {
 a {
   text-decoration: none;
   color: #007bff;
+}
+.normal {
+  background-color: #d8b077;
+}
+
+.shining {
+  background-color: #d8b077;
+}
+
+.glistening {
+  background-color: #a49d9c;
+}
+
+.opulent {
+  background-color: #008583;
+}
+
+.radiant {
+  background-color: #e69d00;
+}
+
+.alpha {
+  background-color: #cd0462;
+}
+.fast-mark {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
 }
 </style>
