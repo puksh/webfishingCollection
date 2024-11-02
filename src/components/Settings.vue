@@ -11,7 +11,6 @@
 export default {
   name: "Settings",
   methods: {
-    /*************  ✨ Codeium Command 🌟  *************/
     resetSettings() {
       // Reset clickedStates
       if (
@@ -29,35 +28,28 @@ export default {
         }
       }
     },
-    /******  4608c2a2-290f-4f15-bcdd-5df9e85308c9  *******/
     exportSettings() {
-      // Export settings to a JSON file
-      const settings = localStorage.getItem("userSettings");
-      const blob = new Blob([settings], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "settings.json";
-      a.click();
-      URL.revokeObjectURL(url);
+      // Export settings as an encrypted string and copy to clipboard
+      const settings = localStorage.getItem("clickedStates");
+      const encryptedSettings = btoa(settings); // Simple base64 encryption
+      navigator.clipboard
+        .writeText(encryptedSettings)
+        .then(() => {
+          alert("Settings have been copied as an encrypted string.");
+        })
+        .catch((err) => {
+          console.error("Failed to copy settings: ", err);
+        });
     },
-    copySettingsToClipboard() {
-      // Copy settings to clipboard
-      const settings = localStorage.getItem("userSettings");
-      navigator.clipboard.writeText(settings);
-      alert("Settings have been copied to clipboard.");
-    },
-    pasteSettingsFromClipboard() {
-      // Paste settings from clipboard
-      navigator.clipboard.readText().then((settings) => {
-        try {
-          JSON.parse(settings); // Validate JSON
-          localStorage.setItem("userSettings", settings);
-          alert("Settings have been imported.");
-        } catch (error) {
-          alert("Invalid settings in clipboard.");
-        }
-      });
+    importSettings() {
+      // Import settings from user input
+      const encryptedSettings = prompt(
+        "Enter your base64-encoded settings string:"
+      );
+      if (encryptedSettings) {
+        const settings = atob(encryptedSettings); // Simple base64 decryption
+        localStorage.setItem("clickedStates", settings);
+      }
     },
   },
 };

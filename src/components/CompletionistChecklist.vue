@@ -314,7 +314,6 @@ export default {
       // Check if the image is already cached
       if (!this.fishImages[fish.id]) {
         try {
-          // Create a new Image object to load the image
           const img = new Image();
 
           // Set up a promise to resolve when the image loads
