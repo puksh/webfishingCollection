@@ -687,7 +687,7 @@ export default [
     id: 77,
     name: "Unidentified Fish Object",
     latinName: "Alienus Caninus",
-    catchPhrase: "...what? the fuck?",
+    catchPhrase: "...what? the ғυᴄҡ?",
     tier: "2",
     category: "Misc",
     imageName: "Unidentified_Fish_Object.png",
