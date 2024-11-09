@@ -692,4 +692,14 @@ export default [
     category: "Misc",
     imageName: "Unidentified_Fish_Object.png",
   },
+  {
+    id: 78,
+    name: "CREATURE",
+    latinName: "rraim eor",
+    catchPhrase:
+      "NiceCatch!NiceCatch!NiceCatch!NiceCatch!NiceCatch!NiceCatch!NiceCatch!NiceCatch!NiceCatch!NiceCatch!",
+    tier: "2",
+    category: "Misc",
+    imageName: "CREATURE.gif",
+  },
 ];
