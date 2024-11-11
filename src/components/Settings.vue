@@ -59,16 +59,6 @@
         Fill All Alpha
       </button>
     </section>
-
-    <section>
-      <h2>Help</h2>
-      <p>
-        If you have any issues, please open an issue on
-        <a href="https://github.com/puksh/webfishingCollection" target="_blank"
-          >GitHub</a
-        >.
-      </p>
-    </section>
   </div>
 </template>
 

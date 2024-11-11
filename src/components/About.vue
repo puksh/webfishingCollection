@@ -25,11 +25,11 @@
     <section>
       <p>
         Here's the link to the site's source code
-        <a href="https://github.com/puksh/webfishing-tracker" target="_blank"
+        <a href="https://github.com/puksh/webfishingCollection" target="_blank"
           >[github]</a
         >. If you have any suggestions or feedback, please
         <a
-          href="https://github.com/puksh/webfishing-tracker/issues"
+          href="https://github.com/puksh/webfishingCollection/issues"
           target="_blank"
           >open an issue</a
         >.
