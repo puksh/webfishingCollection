@@ -164,10 +164,10 @@ export default {
             modifiedAt: now,
           });
           //console.log(`Added new fish ID ${fish.id} with type "${type}"`);
-          addNotification("Marked all fish with " + type + "!", "blue");
         }
       });
 
+      addNotification("Marked all fish with " + type + "!", "blue");
       // Step 2: Save updated clickedStates to localStorage
       this.saveToLocalStorage();
     },
