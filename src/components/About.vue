@@ -35,7 +35,7 @@
         >.
       </p>
       <p>
-        This app is not affiliated with or endorsed by
+        This website is not affiliated with or endorsed by
         <a
           href="https://store.steampowered.com/app/3146520/WEBFISHING/"
           target="_blank"
