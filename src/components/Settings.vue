@@ -74,7 +74,7 @@
 
 <script>
 import fishData from "@/data/fishData.js";
-
+import { addNotification } from "@/components/NotificationMessage.vue";
 export default {
   name: "Settings",
   data() {
@@ -96,7 +96,7 @@ export default {
       // Reset clickedStates
       if (
         confirm(
-          "Are you sure you want to reset your collection? This will delete all your filled in circles."
+          "Are you sure you want to reset your collection? This will delete all your saved collection."
         )
       ) {
         if (
@@ -105,7 +105,7 @@ export default {
           )
         ) {
           localStorage.removeItem("clickedStates");
-          alert("Circles have been reset.");
+          addNotification("Collection reset!", "red");
         }
       }
     },
@@ -116,20 +116,19 @@ export default {
       navigator.clipboard
         .writeText(encryptedSettings)
         .then(() => {
-          alert("Circles have been copied as an encrypted string.");
+          addNotification("Collection has been exported to clipboard!", "blue");
         })
         .catch((err) => {
-          console.error("Failed to copy settings: ", err);
+          addNotification("Failed to copy your collection!", "red");
         });
     },
     importSettings() {
       // Import settings from user input
-      const encryptedSettings = prompt(
-        "Enter your base64-encoded circles string:"
-      );
+      const encryptedSettings = prompt("Paste your exported Collection here:");
       if (encryptedSettings) {
         const settings = atob(encryptedSettings); // Simple base64 decryption
         localStorage.setItem("clickedStates", settings);
+        addNotification("Collection has been imported!", "blue");
       }
     },
     /**
@@ -165,6 +164,7 @@ export default {
             modifiedAt: now,
           });
           //console.log(`Added new fish ID ${fish.id} with type "${type}"`);
+          addNotification("Marked all fish with " + type + "!", "blue");
         }
       });
 
