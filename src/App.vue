@@ -5,6 +5,8 @@
       <fishChecklist v-if="currentPage === 'fishChecklist'" />
       <About v-if="currentPage === 'about'" />
       <Settings v-if="currentPage === 'settings'" />
+      <NotificationMessage />
+      <router-view />
     </main>
   </div>
 </template>
@@ -14,6 +16,7 @@ import fishChecklist from "./components/fishChecklist.vue";
 import About from "./components/About.vue";
 import Settings from "./components/Settings.vue";
 import Sidebar from "./components/Sidebar.vue";
+import NotificationMessage from "./components/NotificationMessage.vue";
 
 export default {
   name: "Webfishing Tracker",
@@ -22,6 +25,7 @@ export default {
     Sidebar,
     About,
     Settings,
+    NotificationMessage,
   },
   data() {
     return {

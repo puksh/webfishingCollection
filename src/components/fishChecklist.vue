@@ -227,7 +227,6 @@
 
 <script>
 import fishData from "@/data/fishData.js";
-
 export default {
   name: "Fish Checklist",
 
@@ -279,8 +278,10 @@ export default {
         const typeIndex = fishEntry.caughtTypes.indexOf(type);
         if (typeIndex > -1) {
           fishEntry.caughtTypes.splice(typeIndex, 1);
+          this.addNotification(`Removed ${type} from fish ID ${fishId}`, "red");
         } else {
           fishEntry.caughtTypes.push(type);
+          this.addNotification(`Added ${type} to fish ID ${fishId}`, "green");
         }
         fishEntry.modifiedAt = now;
       } else {
@@ -291,9 +292,11 @@ export default {
           caughtTypes: [type],
           modifiedAt: now,
         });
+        this.addNotification(`Added new entry for fish ID ${fishId}`, "blue");
       }
       this.saveToLocalStorage();
     },
+
     isTypeSelected(fishId, category, type) {
       const fishEntry = this.clickedStates.find(
         (entry) => entry.id === fishId && entry.category === category
@@ -365,7 +368,6 @@ export default {
       }
     }
   },
-
   /******  0800173b-7723-4443-9e7e-48932462ef62  *******/
 };
 </script>

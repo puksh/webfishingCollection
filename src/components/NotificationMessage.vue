@@ -14,19 +14,18 @@
 <script>
 import { reactive } from "vue";
 
+const notifications = reactive([]);
+
+export const addNotification = (message, type = "blue") => {
+  notifications.push({ message, type });
+  setTimeout(() => notifications.shift(), 3000);
+};
+
 export default {
   name: "NotificationMessage",
   setup() {
-    const notifications = reactive([]);
-
-    const addNotification = (message, type = "blue") => {
-      notifications.push({ message, type });
-      setTimeout(() => notifications.shift(), 3000); // Remove notification after 3 seconds
-    };
-
     const removeNotification = (index) => notifications.splice(index, 1);
-
-    return { notifications, addNotification, removeNotification };
+    return { notifications, removeNotification };
   },
 };
 </script>
@@ -41,24 +40,54 @@ export default {
   flex-direction: column;
   align-items: center;
 }
-
 .notification {
-  padding: 10px 20px;
+  padding: 7px 7px;
   border-radius: 5px;
-  margin: 5px 0;
+  margin: 2px 0;
   color: white;
   min-width: 200px;
   text-align: center;
+  animation: fadeInOut 3s forwards;
 }
-
+.notification button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bolder;
+  margin-left: 7px;
+  padding: 0;
+  outline: none;
+}
+.notification button:hover {
+  color: lightgray;
+}
+@media (max-width: 900px) {
+  .notification-container {
+    bottom: 66px;
+  }
+}
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 .green {
   background-color: #4caf50;
 }
-
 .red {
   background-color: #f44336;
 }
-
 .blue {
   background-color: #2196f3;
 }
