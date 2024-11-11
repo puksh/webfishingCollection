@@ -6,7 +6,6 @@
       <About v-if="currentPage === 'about'" />
       <Settings v-if="currentPage === 'settings'" />
       <NotificationMessage />
-      <router-view />
     </main>
   </div>
 </template>
