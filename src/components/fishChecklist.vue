@@ -227,6 +227,7 @@
 
 <script>
 import fishData from "@/data/fishData.js";
+import { addNotification } from "@/components/NotificationMessage.vue";
 export default {
   name: "Fish Checklist",
 
@@ -268,32 +269,40 @@ export default {
      * @param {String} type The type of the fish (Normal, Shining, Glistening, etc.).
      */
     toggleCircle(category, fishId, type) {
-      const now = new Date().toISOString().split("T")[0]; // Store date as 'YYYY-MM-DD'
+      const now = new Date().toISOString().split("T")[0];
+
+      // Find the fish by fishId to access the name
+      const fish = this.fishList.find((f) => f.id === fishId);
+
+      if (!fish) {
+        console.warn(`Fish with ID ${fishId} not found.`);
+        return;
+      }
+
       const fishEntry = this.clickedStates.find(
         (entry) => entry.id === fishId && entry.category === category
       );
 
       if (fishEntry) {
-        // If the type is already selected, remove it
         const typeIndex = fishEntry.caughtTypes.indexOf(type);
         if (typeIndex > -1) {
           fishEntry.caughtTypes.splice(typeIndex, 1);
-          this.addNotification(`Removed ${type} from fish ID ${fishId}`, "red");
+          addNotification("Unmarked " + fish.name + " " + type + "!", "red");
         } else {
           fishEntry.caughtTypes.push(type);
-          this.addNotification(`Added ${type} to fish ID ${fishId}`, "green");
+          addNotification("Marked " + fish.name + " " + type + "!", "blue");
         }
         fishEntry.modifiedAt = now;
       } else {
-        // Add a new entry if the fish ID and category combo is not found
         this.clickedStates.push({
           id: fishId,
           category: category,
           caughtTypes: [type],
           modifiedAt: now,
         });
-        this.addNotification(`Added new entry for fish ID ${fishId}`, "blue");
+        addNotification("Marked " + fish.name + " " + type + "!", "blue");
       }
+
       this.saveToLocalStorage();
     },
 
@@ -314,6 +323,7 @@ export default {
         const parsedStates = JSON.parse(savedStates);
         this.clickedStates = Array.isArray(parsedStates) ? parsedStates : [];
       } catch (error) {
+        addNotification("Failed to load Collection from your browser", "red");
         console.warn("Failed to load clickedStates from localStorage:", error);
         this.clickedStates = [];
       }
