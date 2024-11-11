@@ -2,11 +2,11 @@
   <div class="notification-container">
     <div
       v-for="(notification, index) in notifications"
-      :key="index"
+      :key="notification.id"
       :class="['notification', notification.type]"
     >
       {{ notification.message }}
-      <button @click="removeNotification(index)">X</button>
+      <button @click="removeNotification(notification.id)">X</button>
     </div>
   </div>
 </template>
@@ -15,16 +15,24 @@
 import { reactive } from "vue";
 
 const notifications = reactive([]);
-
-export const addNotification = (message, type = "blue") => {
-  notifications.push({ message, type });
-  setTimeout(() => notifications.shift(), 3000);
+let notificationId = 0;
+export const addNotification = (message, type = "blue", duration = 3000) => {
+  const id = notificationId++;
+  notifications.push({ id, message, type });
+  setTimeout(() => {
+    removeNotification(id);
+  }, duration);
+};
+export const removeNotification = (id) => {
+  const index = notifications.findIndex(
+    (notification) => notification.id === id
+  );
+  if (index !== -1) notifications.splice(index, 1);
 };
 
 export default {
   name: "NotificationMessage",
   setup() {
-    const removeNotification = (index) => notifications.splice(index, 1);
     return { notifications, removeNotification };
   },
 };
