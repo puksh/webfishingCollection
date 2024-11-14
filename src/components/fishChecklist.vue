@@ -536,8 +536,7 @@ export default {
 img {
   height: 90px !important;
   margin-top: -20px;
-  max-width: 100%; /* Ensure images don't overflow their container */
-  height: auto; /* Maintain aspect ratio */
+  width: 100px;
   z-index: 2;
 }
 .circle {
@@ -562,8 +561,9 @@ img {
   }
 
   img {
-    height: 150px !important;
+    height: 120px !important;
     margin-top: -10px;
+    width: 130px;
   }
 
   .circle {
