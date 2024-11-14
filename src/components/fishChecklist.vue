@@ -228,9 +228,10 @@
 <script>
 import fishData from "@/data/fishData.js";
 import { addNotification } from "@/components/NotificationMessage.vue";
+import { saveImage, getImage } from "@/utils/indexedDB";
+
 export default {
   name: "Fish Checklist",
-
   data() {
     return {
       selectedTab: "Freshwater", // Default tab is Freshwater
@@ -261,13 +262,6 @@ export default {
     };
   },
   methods: {
-    /**
-     * Toggles the selection of a specific type for a given fish ID in the specified category.
-     * If the type is already selected, it is removed. If it is not selected, it is added.
-     * @param {String} category The category of the fish (Freshwater, Saltwater, Misc).
-     * @param {Number} fishId The ID of the fish.
-     * @param {String} type The type of the fish (Normal, Shining, Glistening, etc.).
-     */
     toggleCircle(category, fishId, type) {
       const now = new Date().toISOString().split("T")[0];
 
@@ -330,31 +324,42 @@ export default {
     },
 
     async loadFishImage(fish) {
-      // Construct the image path directly from the public folder
-      const imagePath = `/images/${fish.imageName}`;
-
-      // Check if the image is already cached
-      if (!this.fishImages[fish.id]) {
-        try {
-          const img = new Image();
-
-          // Set up a promise to resolve when the image loads
-          img.src = imagePath;
-          img.onload = () => {
-            this.fishImages[fish.id] = imagePath; // Store the loaded image URL
-          };
-
-          // Set an error handler for the image loading
-          img.onerror = () => {
-            console.error(
-              `Failed to load image for fish ${fish.name} at path: ${imagePath}`
-            );
-          };
-        } catch (error) {
-          console.error(`Error loading image for fish ${fish.name}:`, error);
+      // check if the image is already stored in IndexedDB
+      try {
+        const cachedImage = await getImage(fish.id);
+        if (cachedImage) {
+          this.fishImages[fish.id] = URL.createObjectURL(cachedImage.imageBlob);
+          return; // image found in IndexedDB, dont load
         }
-      } else {
-        return;
+      } catch (error) {
+        console.error(
+          `Error accessing IndexedDB for fish ${fish.name}:`,
+          error
+        );
+      }
+
+      // if the image not in IndexedDB, load it from the network
+      const imagePath = `/images/${fish.imageName}`;
+      try {
+        const img = new Image();
+        img.src = imagePath;
+
+        // wait 4 it
+        await new Promise((resolve, reject) => {
+          img.onload = resolve;
+          img.onerror = reject;
+        });
+
+        // create a BLOB URL for the fish
+        const blob = await fetch(imagePath).then((res) => res.blob());
+
+        // save the fish in IndexedDB
+        await saveImage(fish.id, blob);
+
+        // store the image URL in the component state
+        this.fishImages[fish.id] = URL.createObjectURL(blob);
+      } catch (error) {
+        console.error(`Error loading image for fish ${fish.name}:`, error);
       }
     },
 
@@ -365,7 +370,6 @@ export default {
       this.flippedFish = this.flippedFish === fishId ? null : fishId; // Toggle flip state
     },
   },
-  /*************  ✨ Codeium Command 🌟  *************/
   async mounted() {
     // Load the clicked states when the component mounts
     this.loadFromLocalStorage();
@@ -378,7 +382,6 @@ export default {
       }
     }
   },
-  /******  0800173b-7723-4443-9e7e-48932462ef62  *******/
 };
 </script>
 
