@@ -1,23 +1,14 @@
 <template>
   <aside class="sidebar">
-    <button @click="navigateTo('fishChecklist')" class="sidebar-button">
-      Collection
-    </button>
-    <button @click="navigateTo('about')" class="sidebar-button">About</button>
-    <button @click="navigateTo('settings')" class="sidebar-button">
-      Settings
-    </button>
+    <router-link to="/" class="sidebar-button"> Collection </router-link>
+    <router-link to="/about" class="sidebar-button">About</router-link>
+    <router-link to="/settings" class="sidebar-button"> Settings </router-link>
   </aside>
 </template>
 
 <script>
 export default {
   name: "Sidebar",
-  methods: {
-    navigateTo(section) {
-      this.$emit("navigate", section); // Emit navigation events to parent
-    },
-  },
 };
 </script>
 
@@ -47,6 +38,10 @@ export default {
   border-color: #5a755a;
   border-width: 1px;
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 .sidebar-button:hover {
   background-color: #ffd7ae;
