@@ -5,7 +5,6 @@
       <div v-for="cosmetic in cosmeticsSpecies">
         <template
           class="cosmetic-card"
-          key="cosmetic.id"
           @click="toggleCollected(cosmetic.id)"
           :class="{ collected: isCollected(cosmetic.id) }"
           role="button"
@@ -25,7 +24,6 @@
       <div v-for="cosmetic in cosmeticColours">
         <template
           class="cosmetic-card"
-          key="cosmetic.id"
           @click="toggleCollected(cosmetic.id)"
           :class="{ collected: isCollected(cosmetic.id) }"
           role="button"
@@ -45,6 +43,7 @@
 
 <script>
 import cosmeticsData from "@/data/cosmeticsData.js";
+import { addNotification } from "@/components/NotificationMessage.vue";
 
 export default {
   name: "CosmeticsChecklist",
@@ -151,9 +150,17 @@ export default {
 
 <style scoped>
 .cosmetics-container {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 10px;
+  display: flex;
+  direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 14px;
+  height: auto;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .cosmetic-card {
@@ -163,10 +170,10 @@ export default {
   line-break: strict;
   line-height: 0%;
   flex-direction: column;
-  border: 2px solid #ddd;
   border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 3px;
+  transition: opacity 0.3s ease;
   height: 78px;
   width: 78px;
 }
@@ -175,8 +182,7 @@ export default {
 }
 
 .cosmetic-card.collected {
-  border-color: #6c3;
-  background-color: #f3f8f3;
+  filter: opacity(0.5);
 }
 
 .cosmetic-card:hover {
@@ -187,5 +193,7 @@ export default {
   width: 38px;
   height: auto;
   object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.5));
 }
 </style>
