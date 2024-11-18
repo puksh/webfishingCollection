@@ -86,35 +86,6 @@ export default {
         );
       }
     },
-    async validateImageBlob(blob) {
-      if (!blob || blob.type.indexOf("image") === -1) return false;
-
-      try {
-        const img = new Image();
-        const url = URL.createObjectURL(blob);
-        img.src = url;
-
-        await new Promise((resolve, reject) => {
-          img.onload = resolve; // Image is valid
-          img.onerror = reject; // Image is invalid
-        });
-
-        URL.revokeObjectURL(url);
-        return true;
-      } catch {
-        return false;
-      }
-    },
-    async deleteImage(id) {
-      try {
-        const db = await openDB();
-        const tx = db.transaction("images", "readwrite");
-        await tx.objectStore("images").delete(id);
-        await tx.complete;
-      } catch (error) {
-        console.error(`Error deleting image with ID ${id}:`, error);
-      }
-    },
 
     toggleCollected(cosmeticId) {
       const index = this.collectedStates.indexOf(cosmeticId);
