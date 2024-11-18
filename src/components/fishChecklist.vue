@@ -487,6 +487,7 @@ export default {
 }
 .tables-container {
   display: block;
+  overflow: hidden;
 }
 
 .table {
@@ -538,6 +539,8 @@ img {
   margin-top: -20px;
   width: 100px;
   z-index: 2;
+
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.5));
 }
 .circle {
   width: 15px !important; /* Safari width bug */
@@ -551,7 +554,7 @@ img {
 @media (max-width: 900px) {
   .cell,
   .card-face {
-    width: 190px; /* Full width on small screens */
+    width: 190px !important; /* Full width on small screens */
   }
 
   .tabs button {
@@ -563,7 +566,7 @@ img {
   img {
     height: 120px !important;
     margin-top: -10px;
-    width: 130px;
+    width: 130px !important;
   }
 
   .circle {
@@ -576,7 +579,7 @@ img {
   .latin,
   .fishname-popup,
   .catchphrase {
-    font-size: medium !important;
+    font-size: 14px !important;
   }
 }
 .app-container {
