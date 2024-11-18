@@ -79,4 +79,20 @@ export default [
     imageName: "BlueFur.webp",
     unlock: "No unlock requirement",
   },
+  {
+    id: "cosmetic-11",
+    name: "Purple Fur",
+    description: "Furry!",
+    category: "colours",
+    imageName: "PurpleFur.webp",
+    unlock: "No unlock requirement",
+  },
+  {
+    id: "cosmetic-12",
+    name: "Salmon Fur",
+    description: "Furry!",
+    category: "colours",
+    imageName: "SalmonFur.webp",
+    unlock: "No unlock requirement",
+  },
 ];

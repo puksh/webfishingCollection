@@ -51,9 +51,7 @@ export default {
     return {
       cosmeticsData,
       cosmeticImages: {},
-      collectedStates: JSON.parse(
-        localStorage.getItem("collectedStates") || "[]"
-      ),
+      clickedStates: JSON.parse(localStorage.getItem("clickedStates") || "[]"),
     };
   },
   computed: {
@@ -88,26 +86,58 @@ export default {
     },
 
     toggleCollected(cosmeticId) {
-      const index = this.collectedStates.indexOf(cosmeticId);
-      if (index > -1) {
-        this.collectedStates.splice(index, 1);
+      const now = new Date().toISOString().split("T")[0];
+
+      const cosmetic = this.cosmeticsData.find((f) => f.id === cosmeticId);
+
+      if (!cosmetic) {
+        console.warn(`Cosmetic with ID ${cosmetic.cosmeticId} not found.`);
+        return;
+      }
+      const cosmeticEntry = this.clickedStates.find(
+        (entry) => entry.id === cosmeticId
+      );
+      if (cosmeticEntry) {
+        const typeIndex = cosmeticEntry.aquired;
+        if (typeIndex == true) {
+          cosmeticEntry.aquired = false;
+          addNotification(
+            "Unmarked " + cosmetic.name + " " + cosmetic.category + "!",
+            "red"
+          );
+        } else {
+          cosmeticEntry.aquired = true;
+          addNotification(
+            "Marked " + cosmetic.name + " " + cosmetic.category + "!",
+            "blue"
+          );
+        }
+        cosmeticEntry.modifiedAt = now;
       } else {
-        this.collectedStates.push(cosmeticId);
+        this.clickedStates.push({
+          id: cosmeticId,
+          category: cosmetic.category,
+          aquired: true,
+          modifiedAt: now,
+        });
+        addNotification(
+          "Marked " + cosmetic.name + " " + cosmetic.category + "!",
+          "blue"
+        );
       }
       this.saveToLocalStorage();
     },
     isCollected(cosmeticId) {
-      return this.collectedStates.includes(cosmeticId);
-    },
-    saveToLocalStorage() {
-      localStorage.setItem(
-        "collectedStates",
-        JSON.stringify(this.collectedStates)
+      return this.clickedStates.some(
+        (entry) => entry.id === cosmeticId && entry.aquired === true
       );
     },
+    saveToLocalStorage() {
+      localStorage.setItem("clickedStates", JSON.stringify(this.clickedStates));
+    },
     loadFromLocalStorage() {
-      const savedStates = localStorage.getItem("collectedStates");
-      this.collectedStates = savedStates ? JSON.parse(savedStates) : [];
+      const savedStates = localStorage.getItem("clickedStates");
+      this.clickedStates = savedStates ? JSON.parse(savedStates) : [];
     },
   },
   async mounted() {
@@ -144,7 +174,7 @@ export default {
   border-radius: 10px;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 3px;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s ease;
   height: 78px;
   width: 78px;
 }
@@ -154,8 +184,11 @@ export default {
 
 .cosmetic-card.collected {
   filter: opacity(0.5);
+  background-color: #5a755a;
 }
-
+.cosmetic-card.collected img {
+  filter: contrast(0) brightness(0);
+}
 .cosmetic-card:hover {
   transform: scale(1.05);
 }
