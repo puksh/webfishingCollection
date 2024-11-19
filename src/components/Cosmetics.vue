@@ -220,10 +220,9 @@ export default {
       this.clickedStates = savedStates ? JSON.parse(savedStates) : [];
     },
     markAllDefault() {
-      let count = 0;
       for (const cosmetic of cosmeticsData) {
-        if (this.isCollected(cosmetic.id)) {
-        } else {
+        if (!this.isCollected(cosmetic.id)) {
+          console.log(cosmetic.unlock);
           if (cosmetic.unlock === "No unlock requirement") {
             this.toggleCollected(cosmetic.id);
           }
