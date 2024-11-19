@@ -27,6 +27,25 @@
         </section>
       </div>
     </section>
+    <p>Tails</p>
+    <section class="cosmetics-container">
+      <div v-for="cosmetic in cosmeticsTails">
+        <section
+          class="cosmetic-card"
+          @click="toggleCollected(cosmetic.id)"
+          :class="{ collected: isCollected(cosmetic.id) }"
+          role="button"
+          :aria-label="'Toggle collected state for ' + cosmetic.name"
+        >
+          <img
+            :src="'/images/' + cosmetic.imageName"
+            :alt="cosmetic.name + ' image'"
+            class="cosmetic-img"
+          />
+          <h3>{{ cosmetic.name }}</h3>
+        </section>
+      </div>
+    </section>
     <p>Patterns</p>
     <section class="cosmetics-container">
       <div v-for="cosmetic in cosmeticPatterns">
@@ -303,6 +322,11 @@ export default {
     cosmeticShirts() {
       return this.cosmeticsData.filter(
         (cosmetic) => cosmetic.category == "shirts"
+      );
+    },
+    cosmeticsTails() {
+      return this.cosmeticsData.filter(
+        (cosmetic) => cosmetic.category == "tails"
       );
     },
   },
