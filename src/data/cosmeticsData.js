@@ -408,7 +408,7 @@ export default [
     description: "Classic!",
     category: "bobbers",
     imageName: "RedBobber.webp",
-    unlock: "No unlock requirement.",
+    unlock: "No unlock requirement",
   },
   {
     id: "cosmetic-50",
