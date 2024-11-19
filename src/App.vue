@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <Sidebar @navigate="handleNavigation" />
+    <Sidebar />
     <main class="main-content">
       <router-view></router-view>
       <NotificationMessage />
