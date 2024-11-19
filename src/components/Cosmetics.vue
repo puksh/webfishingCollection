@@ -103,6 +103,44 @@
         </section>
       </div>
     </section>
+    <p>Eyes</p>
+    <section class="cosmetics-container">
+      <div v-for="cosmetic in cosmeticEyes">
+        <section
+          class="cosmetic-card"
+          @click="toggleCollected(cosmetic.id)"
+          :class="{ collected: isCollected(cosmetic.id) }"
+          role="button"
+          :aria-label="'Toggle collected state for ' + cosmetic.name"
+        >
+          <img
+            :src="'/images/' + cosmetic.imageName"
+            :alt="cosmetic.name + ' image'"
+            class="cosmetic-img"
+          />
+          <h3>{{ cosmetic.name }}</h3>
+        </section>
+      </div>
+    </section>
+    <p>Noses</p>
+    <section class="cosmetics-container">
+      <div v-for="cosmetic in cosmeticNoses">
+        <section
+          class="cosmetic-card"
+          @click="toggleCollected(cosmetic.id)"
+          :class="{ collected: isCollected(cosmetic.id) }"
+          role="button"
+          :aria-label="'Toggle collected state for ' + cosmetic.name"
+        >
+          <img
+            :src="'/images/' + cosmetic.imageName"
+            :alt="cosmetic.name + ' image'"
+            class="cosmetic-img"
+          />
+          <h3>{{ cosmetic.name }}</h3>
+        </section>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -143,6 +181,16 @@ export default {
     cosmeticBobbers() {
       return this.cosmeticsData.filter(
         (cosmetic) => cosmetic.category === "bobbers"
+      );
+    },
+    cosmeticEyes() {
+      return this.cosmeticsData.filter(
+        (cosmetic) => cosmetic.category === "eyes"
+      );
+    },
+    cosmeticNoses() {
+      return this.cosmeticsData.filter(
+        (cosmetic) => cosmetic.category == "noses"
       );
     },
   },
