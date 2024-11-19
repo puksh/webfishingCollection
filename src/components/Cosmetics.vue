@@ -217,12 +217,26 @@
         </section>
       </div>
     </section>
+    <p>Titles</p>
+    <section class="cosmetics-container-titles">
+      <div v-for="title in titlesData">
+        <section
+          class="cosmetic-card-title"
+          @click="toggleCollectedTitle(title.id)"
+          :class="{ collected: isCollected(title.id) }"
+          role="button"
+          :aria-label="'Toggle collected state for ' + title.title"
+        >
+          <h3>{{ title.title }}</h3>
+        </section>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
 import cosmeticsData from "@/data/cosmeticsData.js";
-//import titlesData from "@/data/titlesData.js";
+import titlesData from "@/data/titlesData.js";
 import { addNotification } from "@/components/NotificationMessage.vue";
 
 export default {
@@ -353,6 +367,39 @@ export default {
       }
       this.saveToLocalStorage();
     },
+    toggleCollectedTitle(titleId) {
+      const now = new Date().toISOString().split("T")[0];
+
+      const title = this.titlesData.find((f) => f.id === titleId);
+
+      if (!title) {
+        console.warn(`Cosmetic with ID ${title.titleId} not found.`);
+        return;
+      }
+      const titleEntry = this.clickedStates.find(
+        (entry) => entry.id === titleId
+      );
+      if (titleEntry) {
+        const typeIndex = titleEntry.aquired;
+        if (typeIndex == true) {
+          titleEntry.aquired = false;
+          addNotification("Unmarked " + title.title + "!", "red");
+        } else {
+          titleEntry.aquired = true;
+          addNotification("Marked " + title.title + "!", "blue");
+        }
+        titleEntry.modifiedAt = now;
+      } else {
+        this.clickedStates.push({
+          id: titleId,
+          category: "title",
+          aquired: true,
+          modifiedAt: now,
+        });
+        addNotification("Marked " + title.name + "!", "blue");
+      }
+      this.saveToLocalStorage();
+    },
     isCollected(cosmeticId) {
       return this.clickedStates.some(
         (entry) => entry.id === cosmeticId && entry.aquired === true
@@ -368,7 +415,6 @@ export default {
     markAllDefault() {
       for (const cosmetic of cosmeticsData) {
         if (!this.isCollected(cosmetic.id)) {
-          console.log(cosmetic.unlock);
           if (cosmetic.unlock === "No unlock requirement") {
             this.toggleCollected(cosmetic.id);
           }
@@ -386,9 +432,10 @@ export default {
 </script>
 
 <style scoped>
-.cosmetics-container {
+.cosmetics-container,
+.cosmetics-container-titles {
   display: flex;
-  direction: row;
+  flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
@@ -400,7 +447,12 @@ export default {
   box-sizing: border-box;
 }
 
-.cosmetic-card {
+.cosmetics-container-titles {
+  flex-direction: column !important;
+}
+
+.cosmetic-card,
+.cosmetic-card-title {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -415,10 +467,18 @@ export default {
   width: 96px;
   margin: 0px 5px 0px 5px;
 }
-.cosmetic-card h3 {
+.cosmetic-card h3,
+.cosmetic-card-title h3 {
   font-size: 10px;
   line-break: normal;
   line-height: 1;
+}
+.cosmetic-card-title {
+  width: auto !important;
+  padding: 2px 10px 2px 10px;
+  height: 8px;
+  margin: 0px;
+  line-height: 0px;
 }
 @media (max-width: 900px) {
   .cosmetic-card h3 {
@@ -429,18 +489,25 @@ export default {
     font-size: 14px !important;
     width: 140px !important;
   }
+  .cosmetic-card-title {
+    padding: 4px 14px 4px 14px;
+    height: 10px;
+    font-size: 18px;
+  }
 }
 p {
   margin-bottom: 0px;
 }
-.cosmetic-card.collected {
+.cosmetic-card.collected,
+.cosmetic-card-title.collected {
   filter: opacity(0.5);
   background-color: #5a755a;
 }
 .cosmetic-card.collected img {
   filter: contrast(0) brightness(0);
 }
-.cosmetic-card:hover {
+.cosmetic-card:hover,
+.cosmetic-card-title:hover {
   transform: scale(1.05);
 }
 
