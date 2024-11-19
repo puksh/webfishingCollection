@@ -1,41 +1,63 @@
 <template>
   <div>
+    <div class="mark-all-button" role="button" :onclick="markAllDefault()">
+      Mark all default
+    </div>
     <p1>Species</p1>
     <section class="cosmetics-container">
       <div v-for="cosmetic in cosmeticsSpecies">
-        <template
+        <section
           class="cosmetic-card"
           @click="toggleCollected(cosmetic.id)"
           :class="{ collected: isCollected(cosmetic.id) }"
           role="button"
-          :aria-label="'Toggle collected state for' + cosmetic.name"
+          :aria-label="'Toggle collected state for ' + cosmetic.name"
         >
           <img
-            :src="cosmeticImages[cosmetic.id]"
+            :src="'/images/' + cosmetic.imageName"
             :alt="cosmetic.name + ' image'"
             class="cosmetic-img"
           />
           <h3>{{ cosmetic.name }}</h3>
-        </template>
+        </section>
+      </div>
+    </section>
+    <p1>Patterns</p1>
+    <section class="cosmetics-container">
+      <div v-for="cosmetic in cosmeticPatterns">
+        <section
+          class="cosmetic-card"
+          @click="toggleCollected(cosmetic.id)"
+          :class="{ collected: isCollected(cosmetic.id) }"
+          role="button"
+          :aria-label="'Toggle collected state for ' + cosmetic.name"
+        >
+          <img
+            :src="'/images/' + cosmetic.imageName"
+            :alt="cosmetic.name + ' image'"
+            class="cosmetic-img"
+          />
+          <h3>{{ cosmetic.name }}</h3>
+        </section>
       </div>
     </section>
     <p1>Colours</p1>
     <section class="cosmetics-container">
       <div v-for="cosmetic in cosmeticColours">
-        <template
+        <section
           class="cosmetic-card"
           @click="toggleCollected(cosmetic.id)"
           :class="{ collected: isCollected(cosmetic.id) }"
           role="button"
-          :aria-label="'Toggle collected state for' + cosmetic.name"
+          :aria-label="'Toggle collected state for ' + cosmetic.name"
         >
           <img
-            :src="cosmeticImages[cosmetic.id]"
+            :src="'/images/' + cosmetic.imageName"
             :alt="cosmetic.name + ' image'"
             class="cosmetic-img"
           />
           <h3>{{ cosmetic.name }}</h3>
-        </template>
+        </section>
       </div>
     </section>
   </div>
@@ -65,9 +87,14 @@ export default {
         (cosmetic) => cosmetic.category === "colours"
       );
     },
+    cosmeticPatterns() {
+      return this.cosmeticsData.filter(
+        (cosmetic) => cosmetic.category === "patterns"
+      );
+    },
   },
   methods: {
-    async loadCosmeticImage(cosmetic) {
+    /*async loadCosmeticImage(cosmetic) {
       const id = cosmetic.id;
 
       try {
@@ -83,7 +110,7 @@ export default {
           error
         );
       }
-    },
+    },*/
 
     toggleCollected(cosmeticId) {
       const now = new Date().toISOString().split("T")[0];
@@ -139,12 +166,18 @@ export default {
       const savedStates = localStorage.getItem("clickedStates");
       this.clickedStates = savedStates ? JSON.parse(savedStates) : [];
     },
+    markAllDefault() {
+      for (const cosmetic of cosmeticsData) {
+        if (cosmetic.descrtiption == "No unlock requirement")
+          this.toggleCollected(cosmetic.id);
+      }
+    },
   },
   async mounted() {
     this.loadFromLocalStorage();
-    for (const cosmetic of cosmeticsData) {
-      await this.loadCosmeticImage(cosmetic);
-    }
+    //for (const cosmetic of cosmeticsData) {
+    //  await this.loadCosmeticImage(cosmetic);
+    //}
   },
 };
 </script>
@@ -176,10 +209,13 @@ export default {
   box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 3px;
   transition: all 0.3s ease;
   height: 78px;
-  width: 78px;
+  width: 96px;
+  margin: 0px 5px 0px 5px;
 }
 .cosmetic-card h3 {
-  font-size: smaller;
+  font-size: small;
+  line-break: normal;
+  line-height: 1;
 }
 
 .cosmetic-card.collected {
@@ -199,5 +235,11 @@ export default {
   object-fit: contain;
   object-position: center;
   filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.5));
+}
+.mark-all-button {
+  border: 1px solid #5a755a;
+  cursor: pointer;
+  background-color: #5a755a;
+  color: #faebd1;
 }
 </style>
