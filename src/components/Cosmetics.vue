@@ -1,9 +1,14 @@
 <template>
   <div>
-    <div class="mark-all-button" role="button" :onclick="markAllDefault()">
+    <section
+      class="mark-all-button"
+      role="button"
+      @click="markAllDefault()"
+      :aria-label="'Mark all default'"
+    >
       Mark all default
-    </div>
-    <p1>Species</p1>
+    </section>
+    <p>Species</p>
     <section class="cosmetics-container">
       <div v-for="cosmetic in cosmeticsSpecies">
         <section
@@ -22,7 +27,7 @@
         </section>
       </div>
     </section>
-    <p1>Patterns</p1>
+    <p>Patterns</p>
     <section class="cosmetics-container">
       <div v-for="cosmetic in cosmeticPatterns">
         <section
@@ -41,9 +46,47 @@
         </section>
       </div>
     </section>
-    <p1>Colours</p1>
+    <p>Colours</p>
     <section class="cosmetics-container">
       <div v-for="cosmetic in cosmeticColours">
+        <section
+          class="cosmetic-card"
+          @click="toggleCollected(cosmetic.id)"
+          :class="{ collected: isCollected(cosmetic.id) }"
+          role="button"
+          :aria-label="'Toggle collected state for ' + cosmetic.name"
+        >
+          <img
+            :src="'/images/' + cosmetic.imageName"
+            :alt="cosmetic.name + ' image'"
+            class="cosmetic-img"
+          />
+          <h3>{{ cosmetic.name }}</h3>
+        </section>
+      </div>
+    </section>
+    <p>Accessories</p>
+    <section class="cosmetics-container">
+      <div v-for="cosmetic in cosmeticAccessories">
+        <section
+          class="cosmetic-card"
+          @click="toggleCollected(cosmetic.id)"
+          :class="{ collected: isCollected(cosmetic.id) }"
+          role="button"
+          :aria-label="'Toggle collected state for ' + cosmetic.name"
+        >
+          <img
+            :src="'/images/' + cosmetic.imageName"
+            :alt="cosmetic.name + ' image'"
+            class="cosmetic-img"
+          />
+          <h3>{{ cosmetic.name }}</h3>
+        </section>
+      </div>
+    </section>
+    <p>Bobbers</p>
+    <section class="cosmetics-container">
+      <div v-for="cosmetic in cosmeticBobbers">
         <section
           class="cosmetic-card"
           @click="toggleCollected(cosmetic.id)"
@@ -90,6 +133,16 @@ export default {
     cosmeticPatterns() {
       return this.cosmeticsData.filter(
         (cosmetic) => cosmetic.category === "patterns"
+      );
+    },
+    cosmeticAccessories() {
+      return this.cosmeticsData.filter(
+        (cosmetic) => cosmetic.category === "accessories"
+      );
+    },
+    cosmeticBobbers() {
+      return this.cosmeticsData.filter(
+        (cosmetic) => cosmetic.category === "bobbers"
       );
     },
   },
@@ -167,9 +220,14 @@ export default {
       this.clickedStates = savedStates ? JSON.parse(savedStates) : [];
     },
     markAllDefault() {
+      let count = 0;
       for (const cosmetic of cosmeticsData) {
-        if (cosmetic.descrtiption == "No unlock requirement")
-          this.toggleCollected(cosmetic.id);
+        if (this.isCollected(cosmetic.id)) {
+        } else {
+          if (cosmetic.unlock === "No unlock requirement") {
+            this.toggleCollected(cosmetic.id);
+          }
+        }
       }
     },
   },
@@ -213,11 +271,23 @@ export default {
   margin: 0px 5px 0px 5px;
 }
 .cosmetic-card h3 {
-  font-size: small;
+  font-size: 10px;
   line-break: normal;
   line-height: 1;
 }
-
+@media (max-width: 900px) {
+  .cosmetic-card h3 {
+    font-size: 12px;
+  }
+  .mark-all-button {
+    left: 10px !important;
+    font-size: 14px !important;
+    width: 140px !important;
+  }
+}
+p {
+  margin-bottom: 0px;
+}
 .cosmetic-card.collected {
   filter: opacity(0.5);
   background-color: #5a755a;
@@ -241,5 +311,19 @@ export default {
   cursor: pointer;
   background-color: #5a755a;
   color: #faebd1;
+  position: absolute;
+  top: 10px;
+  left: 120px;
+  width: 120px;
+  margin: 0 auto;
+  padding: 3px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.mark-all-button:hover {
+  background-color: #faebd1;
+  color: #5a755a;
 }
 </style>
