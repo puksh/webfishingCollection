@@ -38,7 +38,7 @@
         <h2 id="freshwater-table" class="visually-hidden">Freshwater Fish</h2>
         <div
           class="cell"
-          v-for="fish in filteredFish('Freshwater')"
+          v-for="fish in fishListFreshwater"
           :key="fish.id"
           @click="toggleFlip(fish.id)"
           :class="{ flipped: flippedFish === fish.id }"
@@ -102,7 +102,7 @@
         <h2 id="Saltwater-table" class="visually-hidden">Freshwater Fish</h2>
         <div
           class="cell"
-          v-for="fish in filteredFish('Saltwater')"
+          v-for="fish in fishListSaltwater"
           :key="fish.id"
           @click="toggleFlip(fish.id)"
           :class="{ flipped: flippedFish === fish.id }"
@@ -166,7 +166,7 @@
         <h2 id="Misc-table" class="visually-hidden">Freshwater Fish</h2>
         <div
           class="cell"
-          v-for="fish in filteredFish('Misc')"
+          v-for="fish in fishListMisc"
           :key="fish.id"
           @click="toggleFlip(fish.id)"
           :class="{ flipped: flippedFish === fish.id }"
@@ -261,12 +261,33 @@ export default {
       clickedStates: JSON.parse(localStorage.getItem("clickedStates") || "[]"),
     };
   },
+  computed: {
+    fishListFreshwater() {
+      return this.fishList.filter((fish) => fish.category === "freshwater");
+    },
+    fishListSaltwater() {
+      return this.fishList.filter((fish) => fish.category === "saltwater");
+    },
+    fishListMisc() {
+      return this.fishList.filter((fish) => fish.category === "misc");
+    },
+  },
   methods: {
     toggleCircle(category, fishId, type) {
       const now = new Date().toISOString().split("T")[0];
 
       // Find the fish by fishId to access the name
-      const fish = this.fishList.find((f) => f.id === fishId);
+      /*************  ✨ Codeium Command ⭐  *************/
+      /**
+       * Toggles the selected type for the given fish ID in the given category.
+       * If the fish already has an entry in clickedStates, the type is added or removed.
+       * If the fish does not have an entry, a new one is created.
+       * @param {string} category The category of the fish (Freshwater, Saltwater, or Misc)
+       * @param {number} fishId The ID of the fish to toggle
+       * @param {string} type The type to toggle (Normal, Shining, Glistening, etc.)
+       */
+      /******  9a608f23-f862-4450-a367-43b95f97918f  *******/ const fish =
+        this.fishList.find((f) => f.id === fishId);
 
       if (!fish) {
         console.warn(`Fish with ID ${fishId} not found.`);
@@ -374,13 +395,6 @@ export default {
     // Load the clicked states when the component mounts
     this.loadFromLocalStorage();
     const tabCategories = ["Freshwater", "Saltwater", "Misc"];
-    for (const tab of tabCategories) {
-      const fishList = this.filteredFish(tab);
-
-      for (const fish of fishList) {
-        await this.loadFishImage(fish);
-      }
-    }
   },
 };
 </script>
