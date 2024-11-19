@@ -179,6 +179,25 @@
         </section>
       </div>
     </section>
+    <p>Shirts</p>
+    <section class="cosmetics-container">
+      <div v-for="cosmetic in cosmeticShirts">
+        <section
+          class="cosmetic-card"
+          @click="toggleCollected(cosmetic.id)"
+          :class="{ collected: isCollected(cosmetic.id) }"
+          role="button"
+          :aria-label="'Toggle collected state for ' + cosmetic.name"
+        >
+          <img
+            :src="'/images/' + cosmetic.imageName"
+            :alt="cosmetic.name + ' image'"
+            class="cosmetic-img"
+          />
+          <h3>{{ cosmetic.name }}</h3>
+        </section>
+      </div>
+    </section>
     <p>Pants</p>
     <section class="cosmetics-container">
       <div v-for="cosmetic in cosmeticPants">
@@ -203,6 +222,7 @@
 
 <script>
 import cosmeticsData from "@/data/cosmeticsData.js";
+//import titlesData from "@/data/titlesData.js";
 import { addNotification } from "@/components/NotificationMessage.vue";
 
 export default {
@@ -210,6 +230,7 @@ export default {
   data() {
     return {
       cosmeticsData,
+      titlesData,
       cosmeticImages: {},
       clickedStates: JSON.parse(localStorage.getItem("clickedStates") || "[]"),
     };
@@ -263,6 +284,11 @@ export default {
     cosmeticPants() {
       return this.cosmeticsData.filter(
         (cosmetic) => cosmetic.category == "pants"
+      );
+    },
+    cosmeticShirts() {
+      return this.cosmeticsData.filter(
+        (cosmetic) => cosmetic.category == "shirts"
       );
     },
   },
