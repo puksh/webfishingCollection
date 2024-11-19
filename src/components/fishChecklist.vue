@@ -69,7 +69,7 @@
               ></button>
             </div>
             <img
-              :src="fishImages[fish.id]"
+              :src="'/images/' + fish.imageName"
               :alt="fish.name + ' image'"
               class="fish-img, loaded"
             />
@@ -133,7 +133,7 @@
               ></button>
             </div>
             <img
-              :src="fishImages[fish.id]"
+              :src="'/images/' + fish.imageName"
               :alt="fish.name + ' image'"
               class="fish-img"
             />
@@ -197,7 +197,7 @@
               ></button>
             </div>
             <img
-              :src="fishImages[fish.id]"
+              :src="'/images/' + fish.imageName"
               :alt="fish.name + ' image'"
               class="fish-img"
             />
@@ -228,7 +228,6 @@
 <script>
 import fishData from "@/data/fishData.js";
 import { addNotification } from "@/components/NotificationMessage.vue";
-import { saveImage, getImage } from "@/utils/indexedDB";
 
 export default {
   name: "Fish Checklist",
@@ -263,31 +262,19 @@ export default {
   },
   computed: {
     fishListFreshwater() {
-      return this.fishList.filter((fish) => fish.category === "freshwater");
+      return this.fishList.filter((fish) => fish.category === "Freshwater");
     },
     fishListSaltwater() {
-      return this.fishList.filter((fish) => fish.category === "saltwater");
+      return this.fishList.filter((fish) => fish.category === "Saltwater");
     },
     fishListMisc() {
-      return this.fishList.filter((fish) => fish.category === "misc");
+      return this.fishList.filter((fish) => fish.category === "Misc");
     },
   },
   methods: {
     toggleCircle(category, fishId, type) {
       const now = new Date().toISOString().split("T")[0];
-
-      // Find the fish by fishId to access the name
-      /*************  ✨ Codeium Command ⭐  *************/
-      /**
-       * Toggles the selected type for the given fish ID in the given category.
-       * If the fish already has an entry in clickedStates, the type is added or removed.
-       * If the fish does not have an entry, a new one is created.
-       * @param {string} category The category of the fish (Freshwater, Saltwater, or Misc)
-       * @param {number} fishId The ID of the fish to toggle
-       * @param {string} type The type to toggle (Normal, Shining, Glistening, etc.)
-       */
-      /******  9a608f23-f862-4450-a367-43b95f97918f  *******/ const fish =
-        this.fishList.find((f) => f.id === fishId);
+      const fish = this.fishList.find((f) => f.id === fishId);
 
       if (!fish) {
         console.warn(`Fish with ID ${fishId} not found.`);
@@ -344,7 +331,7 @@ export default {
       }
     },
 
-    async loadFishImage(fish) {
+    /*async loadFishImage(fish) {
       // check if the image is already stored in IndexedDB
       try {
         const cachedImage = await getImage(fish.id);
@@ -382,11 +369,7 @@ export default {
       } catch (error) {
         console.error(`Error loading image for fish ${fish.name}:`, error);
       }
-    },
-
-    filteredFish(tabCategory) {
-      return this.fishList.filter((fish) => fish.category === tabCategory);
-    },
+    },*/
     toggleFlip(fishId) {
       this.flippedFish = this.flippedFish === fishId ? null : fishId; // Toggle flip state
     },
@@ -394,7 +377,6 @@ export default {
   async mounted() {
     // Load the clicked states when the component mounts
     this.loadFromLocalStorage();
-    const tabCategories = ["Freshwater", "Saltwater", "Misc"];
   },
 };
 </script>
