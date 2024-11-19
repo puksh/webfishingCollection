@@ -43,7 +43,7 @@ body::-webkit-scrollbar {
 .main-content {
   flex: 1;
   padding: 20px;
-  max-width: 800px;
+  max-width: 1600px;
   text-align: center;
   border-left: 4px solid transparent;
   border-top-left-radius: 8px;
