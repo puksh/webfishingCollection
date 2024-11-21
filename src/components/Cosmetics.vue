@@ -365,16 +365,10 @@ export default {
         const typeIndex = cosmeticEntry.aquired;
         if (typeIndex == true) {
           cosmeticEntry.aquired = false;
-          addNotification(
-            "Unmarked " + cosmetic.name + " " + cosmetic.category + "!",
-            "red"
-          );
+          addNotification("Unmarked " + cosmetic.name + "!", "red");
         } else {
           cosmeticEntry.aquired = true;
-          addNotification(
-            "Marked " + cosmetic.name + " " + cosmetic.category + "!",
-            "blue"
-          );
+          addNotification("Marked " + cosmetic.name + "!", "blue");
         }
         cosmeticEntry.modifiedAt = now;
       } else {
@@ -384,10 +378,7 @@ export default {
           aquired: true,
           modifiedAt: now,
         });
-        addNotification(
-          "Marked " + cosmetic.name + " " + cosmetic.category + "!",
-          "blue"
-        );
+        addNotification("Marked " + cosmetic.name + "!", "blue");
       }
       this.saveToLocalStorage();
     },
