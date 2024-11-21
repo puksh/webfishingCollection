@@ -59,6 +59,16 @@
         Fill All Alpha
       </button>
     </section>
+    <section>
+      <h3>Website visit counter</h3>
+      <div>
+        <a
+          ><img
+            src="https://www.free-website-hit-counter.com/zc.php?d=9&id=1687&s=16"
+            alt="Free Website Hit Counter"
+        /></a>
+      </div>
+    </section>
   </div>
 </template>
 
