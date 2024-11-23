@@ -47,15 +47,17 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 100;
 }
 .notification {
-  padding: 7px 7px;
-  border-radius: 5px;
-  margin: 2px 0;
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin: 5px 0;
   color: white;
-  min-width: 200px;
+  min-width: 250px;
   text-align: center;
   animation: fadeInOut 3s forwards;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.2);
 }
 .notification button {
   background: transparent;
@@ -64,8 +66,7 @@ export default {
   font-size: 16px;
   cursor: pointer;
   font-weight: bolder;
-  margin-left: 7px;
-  padding: 0;
+  padding: 0 5px;
   outline: none;
 }
 .notification button:hover {
