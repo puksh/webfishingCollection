@@ -2,7 +2,7 @@
   <div class="app-container">
     <Sidebar />
     <main class="main-content">
-      <router-view></router-view>
+      <router-view />
       <NotificationMessage />
     </main>
   </div>
@@ -37,7 +37,7 @@ body::-webkit-scrollbar {
   flex-grow: 1;
   flex-direction: column;
   align-items: center;
-  padding-left: 88px;
+  padding: 0 0 0 88px;
 }
 
 .main-content {
@@ -48,12 +48,11 @@ body::-webkit-scrollbar {
   border-left: 4px solid transparent;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
-  overflow: visible;
 }
 /* Remove left padding on smaller screens */
 @media (max-width: 900px) {
   .app-container {
-    padding-left: 0;
+    padding: 0;
     height: auto;
   }
 
