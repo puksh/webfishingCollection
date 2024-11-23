@@ -525,10 +525,8 @@ p {
 .cosmetic-card-title:hover {
   transform: scale(1.05);
 }
-
 .cosmetic-img {
   width: 38px;
-  height: auto;
   object-fit: contain;
   object-position: center;
   filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.5));
