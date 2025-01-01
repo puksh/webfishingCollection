@@ -1,6 +1,6 @@
 # webfishing tracking site
 
-# features
+## features
 
 - **dynamic fish tables** displays fish based on selected habitat tab - with vue.js!
 - **see funny trivia** look through every caught text in the game!
