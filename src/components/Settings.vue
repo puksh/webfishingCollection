@@ -241,6 +241,12 @@
 	.mark-all-button:hover {
 		transform: scale(1.08);
 	}
+	.reset-button:active,
+	.export-button:active,
+	.import-button:active,
+	.mark-all-button:active {
+		transform: scale(0.9);
+	}
 	h2 {
 		font-size: 20px;
 		font-weight: bold;
