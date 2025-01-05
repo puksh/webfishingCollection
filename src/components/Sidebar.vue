@@ -58,7 +58,7 @@
 		color: #111;
 		border-color: #2f6f2f;
 		box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-		transform: scale(0.95) ease;
+		transform: scale(0.9);
 	}
 	/* Mobile styling: Move sidebar to the bottom */
 	@media (max-width: 900px) {

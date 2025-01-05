@@ -430,6 +430,7 @@
 		background-color: #5a755a;
 		color: #faebd1;
 		font-weight: bold;
+		transform: scale(0.9);
 	}
 	.tabs .tab-button:not(.active):hover {
 		transform: scale(1.08);
