@@ -42,7 +42,7 @@
           >WEBFISHING</a
         >.
       </p>
-      <p>Website is up-to-date with version <b>1.11</b> of the game.</p>
+      <p>Website is up-to-date with version <b>1.12</b> of the game.</p>
     </section>
   </div>
 </template>
