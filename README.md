@@ -1,5 +1,8 @@
 # webfishing tracking site
 
+![image](https://github.com/user-attachments/assets/b0ad3444-dd83-4ec2-aa23-2070e5c96bcb)
+
+
 ## features
 
 - **dynamic fish tables** displays fish based on selected habitat tab - with vue.js!
@@ -20,16 +23,6 @@ compile and run a live server for development:
 ```sh
 npm run dev
 ```
-
-## screenshots
-
-### pc/huge screen
-
-![image](https://github.com/user-attachments/assets/d0dcb624-fe03-4470-87b2-a0aaab3eb4d4)
-
-### mobile
-
-![image](https://github.com/user-attachments/assets/997e4183-0785-446e-b839-194d0c057344)
 
 ## license
 
