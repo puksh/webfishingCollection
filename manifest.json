@@ -1,0 +1,16 @@
+{
+	"name": "webfishing tracker",
+	"short_name": "tracker",
+	"description": "catch the fishes and track your progress :)",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#ffffff",
+	"theme_color": "#42b983",
+	"icons": [
+		{
+			"src": "/favicon.ico",
+			"sizes": "32x32",
+			"type": "image/ico"
+		}
+	]
+}
