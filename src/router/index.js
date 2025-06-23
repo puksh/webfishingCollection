@@ -13,7 +13,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(), // use HTML5 History API to manage URL
+  history: createWebHashHistory(), // Hash history for static GH page deployment
   routes,
 });
 
