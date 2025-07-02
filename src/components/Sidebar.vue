@@ -1,15 +1,24 @@
 <template>
 	<aside class="sidebar">
-		<router-link to="/" class="sidebar-button"> Fish </router-link>
-		<router-link to="/cosmetics" class="sidebar-button"> Cosmetics </router-link>
-		<router-link to="/about" class="sidebar-button">About</router-link>
-		<router-link to="/settings" class="sidebar-button"> Settings </router-link>
+		<router-link v-for="link in links" :key="link.name" :to="link.path" class="sidebar-button">
+			{{ link.name }}
+		</router-link>
 	</aside>
 </template>
 
 <script>
 	export default {
 		name: "Sidebar",
+		data() {
+			return {
+				links: [
+					{ name: "Fish", path: "/" },
+					{ name: "Cosmetics", path: "/cosmetics" },
+					{ name: "About", path: "/about" },
+					{ name: "Settings", path: "/settings" },
+				],
+			};
+		},
 	};
 </script>
 
