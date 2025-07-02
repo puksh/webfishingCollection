@@ -2,7 +2,6 @@
 
 ![image](https://github.com/user-attachments/assets/b0ad3444-dd83-4ec2-aa23-2070e5c96bcb)
 
-
 ## features
 
 - **dynamic fish tables** displays fish based on selected habitat tab - with vue.js!
@@ -15,15 +14,24 @@
 ## project setup
 
 ```sh
-npm install
+bun install
 ```
 
 compile and run a live server for development:
 
 ```sh
-npm run dev
+bun run dev
 ```
 
 ## license
 
 this project is licensed under the MIT license - see the LICENSE file for details!
+
+## contributing
+
+1. fork the repository
+2. create a new branch for your feature or bug fix
+3. commit your changes
+4. submit a pull request
+
+please ensure your code has prettier'd code already!
