@@ -128,8 +128,8 @@
 		align-self: center;
 		gap: 10px;
 		border-left: 4px solid transparent;
-		border-top-left-radius: 8px;
-		border-bottom-left-radius: 8px;
+		border-top-left-radius: var(--border-radius);
+		border-bottom-left-radius: var(--border-radius);
 	}
 	.reset-button,
 	.export-button,
@@ -137,30 +137,31 @@
 	.mark-all-button {
 		padding: 10px;
 		margin: 0 5px;
-		color: #faebd1;
+		color: var(--color-light);
 		font-weight: bold;
 		border: none;
 		cursor: pointer;
 		box-sizing: border-box;
-		border-radius: 2vb;
+		border-radius: var(--border-radius);
 		height: 45px;
 		font-size: 20px;
-		transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, font-weight 0.3s ease;
-		font-family: "IBMPlexMono", monospace;
+		transition: background-color var(--transition-main), color var(--transition-main), transform 0.2s ease,
+			font-weight var(--transition-main);
+		font-family: var(--font-main);
 		gap: 20px;
 	}
 
 	.export-button {
-		background-color: #007bff; /* Blue */
+		background-color: var(--color-info);
 		color: white;
 	}
 
 	.import-button {
-		background-color: #28a745; /* Green */
+		background-color: var(--color-success);
 		color: white;
 	}
 	.reset-button {
-		background-color: #dc3545; /* Red */
+		background-color: var(--color-danger);
 		color: white;
 		gap: 20px;
 	}
@@ -182,7 +183,7 @@
 	}
 	a {
 		text-decoration: none;
-		color: #007bff;
+		color: var(--color-info);
 	}
 	.normal {
 		background-color: #d8b077;
@@ -201,7 +202,7 @@
 	}
 
 	.radiant {
-		background-color: #e69d00;
+		background-color: var(--color-warning);
 	}
 
 	.alpha {

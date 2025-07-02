@@ -302,21 +302,21 @@
 
 <style scoped>
 	.visually-hidden {
-		position: absolute; /* Position the element off-screen */
-		width: 1px; /* Set width to 1px */
-		height: 1px; /* Set height to 1px */
-		margin: -1px; /* Remove any default margin */
-		padding: 0; /* Remove any default padding */
-		overflow: hidden; /* Hide the overflow */
-		clip: rect(0, 0, 0, 0); /* Clip the element to make it invisible */
-		border: 0; /* Remove borders */
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		margin: -1px;
+		padding: 0;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		border: 0;
 	}
 
 	.tabs {
 		margin-bottom: 10px;
 		width: 100%;
 		display: flex;
-		justify-content: space-between; /* Ensure buttons are spaced evenly */
+		justify-content: space-between;
 	}
 	.tabs .tab-button {
 		padding: 10px;
@@ -326,78 +326,65 @@
 		border: none;
 		cursor: pointer;
 		box-sizing: border-box;
-		border-radius: 2vb;
+		border-radius: var(--border-radius);
 		height: 35px;
 		font-size: 18px;
 		line-height: 10px;
-		transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, font-weight 0.3s ease;
-		font-family: "IBMPlexMono", monospace;
+		transition: background-color var(--transition-main), color var(--transition-main), transform 0.2s ease, font-weight var(--transition-main);
+		font-family: var(--font-main);
 	}
 	.tab-button {
-		flex: 1 1 33.33%; /* Make all buttons one-third of the width */
+		flex: 1 1 33.33%;
 	}
 	.tabs .tab-button.active {
-		background-color: #5a755a;
-		color: #faebd1;
+		background-color: var(--color-primary);
+		color: var(--color-light);
 		font-weight: bold;
 		transform: scale(0.9);
 	}
 	.tabs .tab-button:not(.active):hover {
 		transform: scale(1.08);
 	}
-	/* Responsive adjustments */
 	@media (max-width: 550px) {
 		.tab-button {
 			line-height: 0px !important;
-			font-size: 0 !important; /* Hide text by reducing font size to 0 */
+			font-size: 0 !important;
 		}
-
-		/* Change text to emojis */
 		.tab-button {
-			font-size: 0; /* Hide text by reducing font size to 0 */
-			position: relative; /* Keep position for pseudo-element */
+			font-size: 0;
+			position: relative;
 		}
-
-		/* Change text to emojis */
 		.tab-button::after {
-			display: block; /* Ensure emojis are shown */
-			content: ""; /* Clear content initially */
-			font-size: 24px; /* Adjust emoji size */
-			text-align: center; /* Center emojis */
+			display: block;
+			content: "";
+			font-size: 24px;
+			text-align: center;
 		}
-
 		.tab-button:nth-child(1)::after {
-			content: "🐟"; /* FRESHWATER */
+			content: "🐟";
 		}
-
 		.tab-button:nth-child(2)::after {
-			content: "🌊"; /* SALTWATER */
+			content: "🌊";
 		}
-
 		.tab-button:nth-child(3)::after {
-			content: "🌿"; /* MISC */
+			content: "🌿";
 		}
-
-		/* Keep active button text */
 		.tab-button.active:nth-child(1)::after {
-			content: "🐟"; /* FRESHWATER */
+			content: "🐟";
 		}
-
 		.tab-button.active:nth-child(2)::after {
-			content: "🌊"; /* SALTWATER */
+			content: "🌊";
 		}
 		.tab-button.active:nth-child(3)::after {
-			content: "🌿"; /* SALTWATER */
+			content: "🌿";
 		}
 	}
-	/* Restore text on larger screens */
 	@media (min-width: 551px) {
 		.tab-button {
-			font-size: 16px; /* Restore font size for larger screens */
+			font-size: 16px;
 		}
-
 		.tab-button::after {
-			content: ""; /* Clear emojis */
+			content: "";
 		}
 	}
 	.tables-container {
@@ -407,32 +394,31 @@
 
 	.table {
 		display: grid;
-		grid-template-columns: repeat(4, 1fr); /* Default to 4 equal columns */
+		grid-template-columns: repeat(4, 1fr);
 		gap: 10px;
 		height: auto;
 		margin-top: 10px;
-		background-color: #d5aa73;
-		border: 3px solid #8d7858;
+		background-color: var(--color-accent);
+		border: 3px solid var(--color-border);
 		border-radius: 25px;
 		padding: 10px;
 	}
 
-	/* Responsive adjustments */
 	@media (max-width: 800px) {
 		.table {
-			grid-template-columns: repeat(3, 1fr); /* 3 columns for medium screens */
+			grid-template-columns: repeat(3, 1fr);
 		}
 	}
 
 	@media (max-width: 600px) and (min-width: 400px) {
 		.table {
-			grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+			grid-template-columns: repeat(2, 1fr);
 		}
 	}
 
 	@media (max-width: 400px) {
 		.table {
-			grid-template-columns: 1fr; /* 1 column for very small screens */
+			grid-template-columns: 1fr;
 		}
 	}
 	.cell .table {
@@ -443,10 +429,9 @@
 	}
 
 	.circles {
-		display: flex; /* Align circles in a row */
-		gap: 4px; /* Space between circles */
-		/* Fallback for Safari */
-		flex-wrap: nowrap; /* Prevent wrapping in case of small widths */
+		display: flex;
+		gap: 4px;
+		flex-wrap: nowrap;
 		overflow: visible;
 	}
 	img {
@@ -454,7 +439,7 @@
 		margin-top: -20px;
 		width: 100px;
 		z-index: 2;
-		filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.5));
+		filter: drop-shadow(0 0 1px var(--color-shadow));
 	}
 	img:hover {
 		animation: hoverRotate 0.6s ease-in-out infinite alternate;
@@ -471,36 +456,32 @@
 		}
 	}
 	.circle {
-		width: 15px !important; /* Safari width bug */
+		width: 15px !important;
 		height: 15px;
 		border-radius: 50%;
-		border: 1px solid #101c31;
+		border: 1px solid var(--color-dark);
 		cursor: pointer;
 		z-index: 3;
-		transition: all 0.3s ease;
+		transition: all var(--transition-main);
 	}
 	.circle:active {
 		transform: scale(0.9);
 	}
-	/* Responsive styles */
 	@media (max-width: 900px) {
 		.cell,
 		.card-face {
-			width: 190px !important; /* Full width on small screens */
+			width: 190px !important;
 		}
-
 		.tabs button {
 			padding: 15px;
 			font-size: 30px;
 			height: 40px;
 		}
-
 		img {
 			height: 120px !important;
 			margin-top: -10px;
 			width: 130px !important;
 		}
-
 		.circle {
 			width: 22px !important;
 			height: 22px;
@@ -524,7 +505,7 @@
 
 	.cell {
 		height: 85px;
-		perspective: 1000px; /* Necessary for 3D effect */
+		perspective: 1000px;
 		position: relative;
 	}
 
@@ -542,33 +523,33 @@
 		padding: 10px;
 		box-sizing: border-box;
 		transition: transform 0.6s;
-		border-color: #ffeed5;
+		border-color: var(--color-secondary);
 	}
 
 	.card-front {
-		background-color: #ffeed5;
+		background-color: var(--color-secondary);
 		transform: rotateY(0deg);
-		z-index: 3; /* Ensures front is on top initially */
+		z-index: 3;
 	}
 
 	.card-back {
-		background-color: #5a755a !important;
+		background-color: var(--color-primary) !important;
 		transform: rotateY(180deg);
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		z-index: 1; /* Initially behind the front */
+		z-index: 1;
 	}
 
 	.cell.flipped .card-front {
 		transform: rotateY(-180deg);
-		z-index: 1; /* Moves behind during the flip */
+		z-index: 1;
 	}
 
 	.cell.flipped .card-back {
 		transform: rotateY(0deg);
-		z-index: 2; /* Brings back to the front during the flip */
+		z-index: 2;
 	}
 
 	.latin,
@@ -589,7 +570,7 @@
 		color: #d48256;
 	}
 	.catchphrase {
-		color: #ffeed5;
+		color: var(--color-secondary);
 	}
 	.fish-img {
 		opacity: 1;
@@ -607,12 +588,12 @@
 
 	.progress-bar-segment {
 		height: 100%;
-		transition: width 0.3s ease;
+		transition: width var(--transition-main);
 		border-top-right-radius: 8px;
 		border-bottom-right-radius: 8px;
-		box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+		box-shadow: 1px 1px 1px var(--color-shadow);
 		padding-right: 8px;
 		margin-left: -8px;
-		position: relative; /* Ensure z-index takes effect */
+		position: relative;
 	}
 </style>

@@ -42,15 +42,13 @@
 		padding: 20px;
 		max-width: 800px;
 		text-align: center;
-		border-left: 4px solid transparent;
-		border-top-left-radius: 8px;
-		border-bottom-left-radius: 8px;
+		font-family: var(--font-main);
 	}
 	section {
 		margin-top: 200px;
 	}
 	a {
-		color: #007bff;
+		color: var(--color-info);
 		text-decoration: none;
 	}
 </style>

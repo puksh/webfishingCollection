@@ -22,16 +22,6 @@
 </script>
 
 <style>
-	* {
-		font-family: "IBMPlexMono", monospace;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		image-rendering: pixelated;
-		scrollbar-width: none;
-	}
-	body::-webkit-scrollbar {
-		display: none; /* Hide scrollbar on Chrome, Safari */
-	}
 	.app-container {
 		display: flex;
 		flex-direction: column;
@@ -44,11 +34,7 @@
 		padding: 20px;
 		max-width: 1600px;
 		text-align: center;
-		border-left: 4px solid transparent;
-		border-top-left-radius: 8px;
-		border-bottom-left-radius: 8px;
 	}
-	/* Remove left padding on smaller screens */
 	@media (max-width: 900px) {
 		.app-container {
 			padding: 0;
@@ -56,7 +42,7 @@
 		}
 
 		.main-content {
-			padding-bottom: 60px; /* Offset for bottom-positioned sidebar */
+			padding-bottom: 60px;
 		}
 	}
 </style>

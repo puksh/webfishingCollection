@@ -49,13 +49,14 @@
 	}
 	.notification {
 		padding: 10px 15px;
-		border-radius: 10px;
+		border-radius: var(--border-radius);
 		margin: 5px 0;
 		color: white;
 		min-width: 250px;
 		text-align: center;
 		animation: fadeInOut 3s forwards;
-		box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.2);
+		box-shadow: 0 19px 38px var(--color-shadow), 0 15px 12px rgba(0, 0, 0, 0.2);
+		font-family: var(--font-main);
 	}
 	.notification button {
 		background: transparent;
@@ -90,12 +91,12 @@
 		}
 	}
 	.green {
-		background-color: #4caf50;
+		background-color: var(--color-green);
 	}
 	.red {
-		background-color: #f44336;
+		background-color: var(--color-red);
 	}
 	.blue {
-		background-color: #2196f3;
+		background-color: var(--color-blue);
 	}
 </style>

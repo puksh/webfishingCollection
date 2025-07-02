@@ -341,6 +341,16 @@
 </script>
 
 <style scoped>
+	:root {
+		--color-primary: #5a755a;
+		--color-secondary: #faebd1;
+		--color-light: #ffffff;
+		--color-shadow: rgba(0, 0, 0, 0.5);
+		--transition-main: 0.3s ease;
+		--font-main: "Arial", sans-serif;
+		--border-radius: 10px;
+	}
+
 	.cosmetics-container,
 	.cosmetics-container-titles {
 		display: flex;
@@ -368,13 +378,15 @@
 		line-break: strict;
 		line-height: 0%;
 		flex-direction: column;
-		border-radius: 10px;
+		border-radius: var(--border-radius);
 		cursor: pointer;
-		box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 3px;
-		transition: all 0.3s ease;
+		box-shadow: 0px 1px 3px var(--color-shadow);
+		transition: all var(--transition-main);
 		height: 78px;
 		width: 96px;
 		margin: 0px 5px 0px 5px;
+		background: var(--color-secondary);
+		font-family: var(--font-main);
 	}
 	.cosmetic-card h3,
 	.cosmetic-card-title h3 {
@@ -410,7 +422,7 @@
 	.cosmetic-card.collected,
 	.cosmetic-card-title.collected {
 		filter: opacity(0.5);
-		background-color: #5a755a;
+		background-color: var(--color-primary);
 	}
 	.cosmetic-card.collected img {
 		filter: contrast(0) brightness(0);
@@ -427,13 +439,13 @@
 		width: 38px;
 		object-fit: contain;
 		object-position: center;
-		filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.5));
+		filter: drop-shadow(0 0 1px var(--color-shadow));
 	}
 	.mark-all-button {
-		border: 1px solid #5a755a;
+		border: 1px solid var(--color-primary);
 		cursor: pointer;
-		background-color: #5a755a;
-		color: #faebd1;
+		background-color: var(--color-primary);
+		color: var(--color-light);
 		position: absolute;
 		top: 10px;
 		left: 120px;
@@ -443,15 +455,15 @@
 		border-radius: 5px;
 		font-size: 12px;
 		font-weight: bold;
-		transition: all 0.3s ease;
+		transition: all var(--transition-main);
 	}
 	.mark-all-button:hover {
-		background-color: #faebd1;
-		color: #5a755a;
+		background-color: var(--color-light);
+		color: var(--color-primary);
 	}
 	.mark-all-button:active {
-		background-color: #5a755a;
-		color: #faebd1;
+		background-color: var(--color-primary);
+		color: var(--color-light);
 		transform: scale(0.9);
 	}
 </style>
