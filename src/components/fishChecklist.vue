@@ -211,37 +211,32 @@
 		},
 		methods: {
 			toggleCircle(category, fishId, type) {
-				const now = new Date().toISOString().split("T")[0];
-				const fish = this.fishList.find((f) => f.id === fishId);
+				try {
+					const now = new Date().toISOString().split("T")[0];
+					const fish = this.fishList.find((f) => f.id === fishId);
+					if (!fish) throw new Error(`Fish with ID ${fishId} not found.`);
 
-				if (!fish) {
-					console.warn(`Fish with ID ${fishId} not found.`);
-					return;
-				}
+					let fishEntry = this.clickedStates.find((entry) => entry.id === fishId && entry.category === category);
 
-				const fishEntry = this.clickedStates.find((entry) => entry.id === fishId && entry.category === category);
+					if (!fishEntry) {
+						fishEntry = { id: fishId, category, caughtTypes: [], modifiedAt: now };
+						this.clickedStates.push(fishEntry);
+					}
 
-				if (fishEntry) {
 					const typeIndex = fishEntry.caughtTypes.indexOf(type);
 					if (typeIndex > -1) {
 						fishEntry.caughtTypes.splice(typeIndex, 1);
-						addNotification("Unmarked " + fish.name + " " + type + "!", "red");
+						addNotification(`Unmarked ${fish.name} (${type})!`, "red");
 					} else {
 						fishEntry.caughtTypes.push(type);
-						addNotification("Marked " + fish.name + " " + type + "!", "blue");
+						addNotification(`Marked ${fish.name} (${type})!`, "blue");
 					}
-					fishEntry.modifiedAt = now;
-				} else {
-					this.clickedStates.push({
-						id: fishId,
-						category: category,
-						caughtTypes: [type],
-						modifiedAt: now,
-					});
-					addNotification("Marked " + fish.name + " " + type + "!", "blue");
-				}
 
-				this.saveToLocalStorage();
+					fishEntry.modifiedAt = now;
+					this.saveToLocalStorage();
+				} catch (error) {
+					addNotification(error.message, "red");
+				}
 			},
 
 			isTypeSelected(fishId, category, type) {
@@ -557,14 +552,14 @@
 	}
 
 	.fishname-popup {
-		color: #d1b12d; /* Lighter shade for better contrast */
+		color: #d1b12d;
 	}
 	.latin {
 		font-style: italic;
-		color: #d48256; /* Darker brown for better contrast */
+		color: #d48256;
 	}
 	.catchphrase {
-		color: #ffeed5; /* This color is already sufficient */
+		color: #ffeed5;
 	}
 	.fish-img {
 		opacity: 1;
