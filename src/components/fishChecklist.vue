@@ -44,13 +44,19 @@
 			></div>
 		</div>
 
-		<!-- Tables: Render based on selected tab -->
+		<!-- Tabs -->
 		<main class="tables-container">
-			<section v-if="selectedTab === 'Freshwater'" class="table" aria-labelledby="freshwater-table">
-				<h2 id="freshwater-table" class="visually-hidden">Freshwater Fish</h2>
+			<section
+				v-for="tab in tabs"
+				:key="tab.value"
+				v-show="selectedTab === tab.value"
+				class="table"
+				:aria-labelledby="`${tab.value.toLowerCase()}-table`"
+			>
+				<h2 :id="`${tab.value.toLowerCase()}-table`" class="visually-hidden">{{ tab.label }} Fish</h2>
 				<div
 					class="cell"
-					v-for="fish in fishListFreshwater"
+					v-for="fish in fishListByTab(tab.value)"
 					:key="fish.id"
 					@click="toggleFlip(fish.id)"
 					:class="{ flipped: flippedFish === fish.id }"
@@ -63,111 +69,17 @@
 						<div class="circles" role="group" :aria-label="'Color selection for ' + fish.name">
 							<button
 								v-for="(name, index) in circleNames"
-								:key="`freshwater-${fish.id}-${index}`"
+								:key="`${tab.value.toLowerCase()}-${fish.id}-${index}`"
 								:style="{
-									backgroundColor: isTypeSelected(fish.id, 'freshwater', name) ? colors[index] : '#ffeed5',
+									backgroundColor: isTypeSelected(fish.id, tab.value.toLowerCase(), name)
+										? colors[index]
+										: 'var(--color-secondary',
 									borderColor: colors[index],
 								}"
-								@click.stop="toggleCircle('freshwater', fish.id, name)"
+								@click.stop="toggleCircle(tab.value.toLowerCase(), fish.id, name)"
 								class="circle"
 								:title="name"
-								:aria-pressed="isTypeSelected(fish.id, 'freshwater', name)"
-							></button>
-						</div>
-						<img :src="'/images/' + fish.imageName" :alt="fish.name + ' image'" class="fish-img, loaded" />
-					</div>
-
-					<!-- Back of the card -->
-					<div
-						class="card-face card-back"
-						role="dialog"
-						aria-labelledby="fish-name"
-						aria-describedby="fish-description"
-						tabindex="0"
-					>
-						<h2 id="fish-name" class="fishname-popup" aria-live="polite"> {{ fish.name }} - Tier {{ fish.tier }} </h2>
-						<p id="fish-description" class="latin" aria-hidden="false">
-							{{ fish.latinName }}
-						</p>
-						<p class="catchphrase">{{ fish.catchPhrase }}</p>
-					</div>
-				</div>
-			</section>
-
-			<section v-if="selectedTab === 'Saltwater'" class="table" aria-labelledby="saltwater-table">
-				<h2 id="Saltwater-table" class="visually-hidden">Freshwater Fish</h2>
-				<div
-					class="cell"
-					v-for="fish in fishListSaltwater"
-					:key="fish.id"
-					@click="toggleFlip(fish.id)"
-					:class="{ flipped: flippedFish === fish.id }"
-					role="button"
-					tabindex="0"
-					:aria-label="'View details for ' + fish.name"
-				>
-					<!-- Front of the card -->
-					<div class="card-face card-front">
-						<div class="circles" role="group" :aria-label="'Color selection for ' + fish.name">
-							<button
-								v-for="(name, index) in circleNames"
-								:key="`saltwater-${fish.id}-${index}`"
-								:style="{
-									backgroundColor: isTypeSelected(fish.id, 'saltwater', name) ? colors[index] : '#ffeed5',
-									borderColor: colors[index],
-								}"
-								@click.stop="toggleCircle('saltwater', fish.id, name)"
-								class="circle"
-								:title="name"
-								:aria-pressed="isTypeSelected(fish.id, 'saltwater', name)"
-							></button>
-						</div>
-						<img :src="'/images/' + fish.imageName" :alt="fish.name + ' image'" class="fish-img" />
-					</div>
-
-					<!-- Back of the card -->
-					<div
-						class="card-face card-back"
-						role="dialog"
-						aria-labelledby="fish-name"
-						aria-describedby="fish-description"
-						tabindex="0"
-					>
-						<h2 id="fish-name" class="fishname-popup" aria-live="polite"> {{ fish.name }} - Tier {{ fish.tier }} </h2>
-						<p id="fish-description" class="latin" aria-hidden="false">
-							{{ fish.latinName }}
-						</p>
-						<p class="catchphrase">{{ fish.catchPhrase }}</p>
-					</div>
-				</div>
-			</section>
-
-			<section v-if="selectedTab === 'Misc'" class="table" aria-labelledby="misc-table">
-				<h2 id="Misc-table" class="visually-hidden">Freshwater Fish</h2>
-				<div
-					class="cell"
-					v-for="fish in fishListMisc"
-					:key="fish.id"
-					@click="toggleFlip(fish.id)"
-					:class="{ flipped: flippedFish === fish.id }"
-					role="button"
-					tabindex="0"
-					:aria-label="'View details for ' + fish.name"
-				>
-					<!-- Front of the card -->
-					<div class="card-face card-front">
-						<div class="circles" role="group" :aria-label="'Color selection for ' + fish.name">
-							<button
-								v-for="(name, index) in circleNames"
-								:key="`misc-${fish.id}-${index}`"
-								:style="{
-									backgroundColor: isTypeSelected(fish.id, 'misc', name) ? colors[index] : '#ffeed5',
-									borderColor: colors[index],
-								}"
-								@click.stop="toggleCircle('misc', fish.id, name)"
-								class="circle"
-								:title="name"
-								:aria-pressed="isTypeSelected(fish.id, 'misc', name)"
+								:aria-pressed="isTypeSelected(fish.id, tab.value.toLowerCase(), name)"
 							></button>
 						</div>
 						<img :src="'/images/' + fish.imageName" :alt="fish.name + ' image'" class="fish-img" />
@@ -205,13 +117,16 @@
 
 				flippedFish: null, // Keeps track of the flipped fish ID
 
-				fishImages: {}, // To store resolved image URLs
-
 				fishList: fishData,
 				colors: ["#d8b077", "#d8b077", "#a49d9c", "#008583", "#e69d00", "#cd0462"],
 				circleNames: ["Normal", "Shining", "Glistening", "Opulent", "Radiant", "Alpha"],
 
 				clickedStates: JSON.parse(localStorage.getItem("clickedStates") || "[]"),
+				tabs: [
+					{ value: "Freshwater", label: "Freshwater" },
+					{ value: "Saltwater", label: "Saltwater" },
+					{ value: "Misc", label: "Misc" },
+				],
 			};
 		},
 		computed: {
@@ -226,6 +141,10 @@
 			},
 		},
 		methods: {
+			fishListByTab(tab) {
+				const category = tab;
+				return this.fishList.filter((fish) => fish.category.toLowerCase() === category.toLowerCase());
+			},
 			toggleCircle(category, fishId, type) {
 				try {
 					const now = new Date().toISOString().split("T")[0];
@@ -427,6 +346,7 @@
 	}
 	.cell {
 		width: 140px;
+		cursor: pointer;
 	}
 
 	.circles {
