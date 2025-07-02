@@ -1,9 +1,14 @@
-name: Deploy to GitHub Pages
+name: GitHub Pages
 
 on:
   push:
     branches:
       - main
+
+permissions:
+  contents: write # Needed for gh-pages deployment
+  pages: write # Needed for GitHub Pages
+  id-token: write # Needed for GitHub Pages authentication
 
 jobs:
   build:
@@ -11,18 +16,26 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: '18'
+          bun-version: "latest"
+
+      - name: Cache Bun dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
 
       - name: Install dependencies
-        run: npm install
+        run: bun install --frozen-lockfile
 
       - name: Build project
-        run: npm run build
+        run: bun run build
 
       - name: Create CNAME file
         run: echo 'webfishing.kot.li' > ./dist/CNAME
