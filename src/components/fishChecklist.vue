@@ -28,6 +28,22 @@
 			</button>
 		</nav>
 
+		<!-- Progress Bar -->
+		<div class="progress-bar-container">
+			<div
+				v-for="(name, index) in circleNames"
+				:key="`progress-${index}`"
+				class="progress-bar-segment"
+				:style="{
+					backgroundColor: colors[index],
+					width: Math.min(calculateProgressWidth(name), 16.67) + '%', // Max width is 16.67% (1/6 of the bar)
+					zIndex: 10 - index, // Dynamically set z-index
+				}"
+				:title="`Collected ${countCollectedFish(name)} ${name}`"
+				:aria-label="`Progress for ${name}: ` + calculateProgressWidth(name) + '%'"
+			></div>
+		</div>
+
 		<!-- Tables: Render based on selected tab -->
 		<main class="tables-container">
 			<section v-if="selectedTab === 'Freshwater'" class="table" aria-labelledby="freshwater-table">
@@ -261,6 +277,20 @@
 			},
 			toggleFlip(fishId) {
 				this.flippedFish = this.flippedFish === fishId ? null : fishId; // Toggle flip state
+			},
+			calculateProgressWidth(type) {
+				const totalFish = this.fishList.length;
+				const collectedFish = this.clickedStates.filter((entry) => {
+					// Ensure caughtTypes is defined and is an array
+					return Array.isArray(entry.caughtTypes) && entry.caughtTypes.includes(type);
+				}).length;
+				return totalFish > 0 ? (collectedFish / totalFish) * 100 : 0;
+			},
+			countCollectedFish(type) {
+				// Count the number of fish collected for a specific type
+				return this.clickedStates.filter((entry) => {
+					return Array.isArray(entry.caughtTypes) && entry.caughtTypes.includes(type);
+				}).length;
 			},
 		},
 		async mounted() {
@@ -563,5 +593,26 @@
 	}
 	.fish-img {
 		opacity: 1;
+	}
+
+	.progress-bar-container {
+		display: flex;
+		width: 100%;
+		height: 20px;
+		background-color: hsl(29, 52%, 28%);
+		border-radius: 8px;
+		overflow: hidden;
+		margin: 8px 0;
+	}
+
+	.progress-bar-segment {
+		height: 100%;
+		transition: width 0.3s ease;
+		border-top-right-radius: 8px;
+		border-bottom-right-radius: 8px;
+		box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+		padding-right: 8px;
+		margin-left: -8px;
+		position: relative; /* Ensure z-index takes effect */
 	}
 </style>
