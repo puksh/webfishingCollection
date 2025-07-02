@@ -393,6 +393,7 @@
 		font-size: 10px;
 		line-break: normal;
 		line-height: 1;
+		
 	}
 	.cosmetic-card-title {
 		width: auto !important;
@@ -444,8 +445,7 @@
 	.mark-all-button {
 		border: 1px solid var(--color-primary);
 		cursor: pointer;
-		background-color: var(--color-primary);
-		color: var(--color-light);
+		background-color: var(--color-secondary);
 		position: absolute;
 		top: 10px;
 		left: 120px;
@@ -458,12 +458,10 @@
 		transition: all var(--transition-main);
 	}
 	.mark-all-button:hover {
-		background-color: var(--color-light);
-		color: var(--color-primary);
+		background-color: transparent;
 	}
 	.mark-all-button:active {
-		background-color: var(--color-primary);
-		color: var(--color-light);
+		background-color: var(--color-secondary);
 		transform: scale(0.9);
 	}
 </style>

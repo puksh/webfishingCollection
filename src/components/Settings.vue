@@ -2,6 +2,23 @@
 	<div class="settings-container">
 		<h1>Settings</h1>
 		<section>
+			<h2>Theme</h2>
+			<div class="theme-toggle">
+				<label>
+					<input type="radio" value="auto" v-model="theme" @change="applyTheme" />
+					Auto
+				</label>
+				<label>
+					<input type="radio" value="light" v-model="theme" @change="applyTheme" />
+					Light
+				</label>
+				<label>
+					<input type="radio" value="dark" v-model="theme" @change="applyTheme" />
+					Dark
+				</label>
+			</div>
+		</section>
+		<section>
 			<h2>Export / Import</h2>
 			<section class="export-import-section">
 				<button @click="exportSettings" class="export-button"> Export Collection </button>
@@ -38,7 +55,16 @@
 				circleNames: ["Normal", "Shining", "Glistening", "Opulent", "Radiant", "Alpha"],
 				clickedStates: JSON.parse(localStorage.getItem("clickedStates") || "[]"),
 				fishList: fishData,
+				theme: localStorage.getItem("theme") || "auto",
 			};
+		},
+		watch: {
+			theme() {
+				this.applyTheme();
+			},
+		},
+		mounted() {
+			this.applyTheme();
 		},
 		methods: {
 			resetSettings() {
@@ -114,6 +140,15 @@
 			saveToLocalStorage() {
 				localStorage.setItem("clickedStates", JSON.stringify(this.clickedStates));
 			},
+			applyTheme() {
+				let theme = this.theme;
+				if (theme === "auto") {
+					const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+					theme = prefersDark ? "dark" : "light";
+				}
+				document.documentElement.setAttribute("data-theme", theme);
+				localStorage.setItem("theme", this.theme);
+			},
 		},
 	};
 </script>
@@ -153,16 +188,13 @@
 
 	.export-button {
 		background-color: var(--color-info);
-		color: white;
 	}
 
 	.import-button {
 		background-color: var(--color-success);
-		color: white;
 	}
 	.reset-button {
 		background-color: var(--color-danger);
-		color: white;
 		gap: 20px;
 	}
 	.reset-button:hover,
@@ -221,6 +253,19 @@
 	}
 	.export-import-section {
 		flex-direction: row;
+	}
+	.theme-toggle {
+		display: flex;
+		justify-content: center;
+		gap: 20px;
+		margin-bottom: 16px;
+	}
+	.theme-toggle label {
+		font-size: 16px;
+		cursor: pointer;
+	}
+	.theme-toggle input[type="radio"] {
+		margin-right: 6px;
 	}
 	@media (max-width: 582px) {
 		.export-button,

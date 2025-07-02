@@ -330,7 +330,8 @@
 		height: 35px;
 		font-size: 18px;
 		line-height: 10px;
-		transition: background-color var(--transition-main), color var(--transition-main), transform 0.2s ease, font-weight var(--transition-main);
+		transition: background-color var(--transition-main), color var(--transition-main), transform 0.2s ease,
+			font-weight var(--transition-main);
 		font-family: var(--font-main);
 	}
 	.tab-button {
@@ -338,9 +339,9 @@
 	}
 	.tabs .tab-button.active {
 		background-color: var(--color-primary);
-		color: var(--color-light);
 		font-weight: bold;
 		transform: scale(0.9);
+		color: #e6e6e6;
 	}
 	.tabs .tab-button:not(.active):hover {
 		transform: scale(1.08);
@@ -501,6 +502,8 @@
 		height: auto;
 		width: 100%;
 		align-items: center;
+		background-color: var(--color-bg);
+		color: var(--color-text);
 	}
 
 	.cell {
@@ -563,14 +566,14 @@
 	}
 
 	.fishname-popup {
-		color: #d1b12d;
+		color: var(--color-warning);
 	}
 	.latin {
 		font-style: italic;
 		color: #d48256;
 	}
 	.catchphrase {
-		color: var(--color-secondary);
+		color: #fff;
 	}
 	.fish-img {
 		opacity: 1;
@@ -580,7 +583,7 @@
 		display: flex;
 		width: 100%;
 		height: 20px;
-		background-color: hsl(29, 52%, 28%);
+		background-color: var(--color-primary);
 		border-radius: 8px;
 		overflow: hidden;
 		margin: 8px 0;

@@ -55,7 +55,7 @@
 		min-width: 250px;
 		text-align: center;
 		animation: fadeInOut 3s forwards;
-		box-shadow: 0 19px 38px var(--color-shadow), 0 15px 12px rgba(0, 0, 0, 0.2);
+		box-shadow: 0 4px 4px var(--color-shadow);
 		font-family: var(--font-main);
 	}
 	.notification button {

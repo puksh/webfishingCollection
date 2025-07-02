@@ -18,6 +18,23 @@
 			Sidebar,
 			NotificationMessage,
 		},
+		mounted() {
+			const applyTheme = () => {
+				let theme = localStorage.getItem("theme") || "auto";
+				if (theme === "auto") {
+					const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+					theme = prefersDark ? "dark" : "light";
+				}
+				document.documentElement.setAttribute("data-theme", theme);
+			};
+			applyTheme();
+			// Listen for system theme changes if auto
+			window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+				if ((localStorage.getItem("theme") || "auto") === "auto") {
+					applyTheme();
+				}
+			});
+		},
 	};
 </script>
 

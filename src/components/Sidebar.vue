@@ -39,13 +39,12 @@
 
 	.sidebar-button {
 		background-color: var(--color-secondary);
-		color: #333;
 		height: 66px;
 		padding: 10px;
 		font-size: 12px;
 		border-radius: var(--border-radius);
 		cursor: pointer;
-		border: 2px solid var(--color-primary);
+		border: 2px solid var(--color-secondary);
 		transition: all var(--transition-main);
 		display: flex;
 		align-items: center;
@@ -55,7 +54,6 @@
 	}
 	.sidebar-button:hover {
 		background-color: var(--color-highlight);
-		color: #222;
 		border-color: #3e8e41;
 		box-shadow: 0 0 5px var(--color-shadow);
 		transform: scale(1.05);
@@ -63,7 +61,6 @@
 
 	.sidebar-button:active {
 		background-color: #ff9900;
-		color: #111;
 		border-color: #2f6f2f;
 		box-shadow: inset 0 0 5px var(--color-shadow);
 		transform: scale(0.9);
