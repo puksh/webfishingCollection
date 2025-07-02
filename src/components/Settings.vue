@@ -42,7 +42,6 @@
 		},
 		methods: {
 			resetSettings() {
-				// Reset clickedStates
 				if (confirm("Are you sure you want to reset your collection? This will delete all your saved collection.")) {
 					if (confirm("Double-checking... Are you REALLY sure you want to reset them? This will delete all of it.")) {
 						localStorage.removeItem("clickedStates");
@@ -51,25 +50,27 @@
 				}
 			},
 			exportSettings() {
-				// Export settings as an encrypted string and copy to clipboard
-				const settings = localStorage.getItem("clickedStates");
-				const encryptedSettings = btoa(settings); // Simple base64 encryption
-				navigator.clipboard
-					.writeText(encryptedSettings)
-					.then(() => {
-						addNotification("Collection has been exported to clipboard!", "blue");
-					})
-					.catch((err) => {
-						addNotification("Failed to copy your collection!", "red");
-					});
+				try {
+					const settings = localStorage.getItem("clickedStates");
+					if (!settings) throw new Error("No collection data to export.");
+					const encryptedSettings = btoa(settings);
+					navigator.clipboard.writeText(encryptedSettings);
+					addNotification("Collection exported to clipboard!", "blue");
+				} catch (err) {
+					addNotification(err.message || "Failed to export collection!", "red");
+				}
 			},
 			importSettings() {
-				// Import settings from user input
-				const encryptedSettings = prompt("Paste your exported Collection here:");
+				const encryptedSettings = prompt("Paste your exported collection here:");
 				if (encryptedSettings) {
-					const settings = atob(encryptedSettings); // Simple base64 decryption
-					localStorage.setItem("clickedStates", settings);
-					addNotification("Collection has been imported!", "blue");
+					try {
+						const settings = atob(encryptedSettings);
+						JSON.parse(settings); // Validate JSON
+						localStorage.setItem("clickedStates", settings);
+						addNotification("Collection imported successfully!", "blue");
+					} catch {
+						addNotification("Invalid or corrupted collection data!", "red");
+					}
 				}
 			},
 			/**
