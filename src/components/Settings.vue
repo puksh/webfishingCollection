@@ -4,70 +4,25 @@
 		<section>
 			<h2>Export / Import</h2>
 			<section class="export-import-section">
-				<button @click="exportSettings" class="export-button">
-					Export Collection
-				</button>
-				<button @click="importSettings" class="import-button">
-					Import Collection
-				</button>
+				<button @click="exportSettings" class="export-button"> Export Collection </button>
+				<button @click="importSettings" class="import-button"> Import Collection </button>
 			</section>
-		</section>
-
-		<section>
-			<h2>Reset</h2>
-			<button @click="resetSettings" class="reset-button">
-				Reset Collection
-			</button>
 		</section>
 
 		<section class="fast-mark">
 			<h3>Mark all fish with selected rarity</h3>
-			<button
-				@click="markAllFishWithType('Normal')"
-				class="mark-all-button normal"
-			>
-				Fill All Normal
-			</button>
-			<button
-				@click="markAllFishWithType('Shining')"
-				class="mark-all-button shining"
-			>
-				Fill All Shining
-			</button>
-			<button
-				@click="markAllFishWithType('Glistening')"
-				class="mark-all-button glistening"
-			>
+			<button @click="markAllFishWithType('Normal')" class="mark-all-button normal"> Fill All Normal </button>
+			<button @click="markAllFishWithType('Shining')" class="mark-all-button shining"> Fill All Shining </button>
+			<button @click="markAllFishWithType('Glistening')" class="mark-all-button glistening">
 				Fill All Glistening
 			</button>
-			<button
-				@click="markAllFishWithType('Opulent')"
-				class="mark-all-button opulent"
-			>
-				Fill All Opulent
-			</button>
-			<button
-				@click="markAllFishWithType('Radiant')"
-				class="mark-all-button radiant"
-			>
-				Fill All Radiant
-			</button>
-			<button
-				@click="markAllFishWithType('Alpha')"
-				class="mark-all-button alpha"
-			>
-				Fill All Alpha
-			</button>
+			<button @click="markAllFishWithType('Opulent')" class="mark-all-button opulent"> Fill All Opulent </button>
+			<button @click="markAllFishWithType('Radiant')" class="mark-all-button radiant"> Fill All Radiant </button>
+			<button @click="markAllFishWithType('Alpha')" class="mark-all-button alpha"> Fill All Alpha </button>
 		</section>
 		<section>
-			<h3>Website visit counter</h3>
-			<div>
-				<a
-					><img
-						src="https://www.free-website-hit-counter.com/zc.php?d=9&id=1687&s=16"
-						alt="Free Website Hit Counter"
-				/></a>
-			</div>
+			<h2>Reset</h2>
+			<button @click="resetSettings" class="reset-button"> Reset Collection </button>
 		</section>
 	</div>
 </template>
@@ -75,37 +30,21 @@
 <script>
 	import fishData from "@/data/fishData.js";
 	import { addNotification } from "@/components/NotificationMessage.vue";
+
 	export default {
 		name: "Settings",
 		data() {
 			return {
-				circleNames: [
-					"Normal",
-					"Shining",
-					"Glistening",
-					"Opulent",
-					"Radiant",
-					"Alpha",
-				],
-				clickedStates: JSON.parse(
-					localStorage.getItem("clickedStates") || "[]",
-				),
+				circleNames: ["Normal", "Shining", "Glistening", "Opulent", "Radiant", "Alpha"],
+				clickedStates: JSON.parse(localStorage.getItem("clickedStates") || "[]"),
 				fishList: fishData,
 			};
 		},
 		methods: {
 			resetSettings() {
 				// Reset clickedStates
-				if (
-					confirm(
-						"Are you sure you want to reset your collection? This will delete all your saved collection.",
-					)
-				) {
-					if (
-						confirm(
-							"Double-checking... Are you REALLY sure you want to reset them? This will delete all of it.",
-						)
-					) {
+				if (confirm("Are you sure you want to reset your collection? This will delete all your saved collection.")) {
+					if (confirm("Double-checking... Are you REALLY sure you want to reset them? This will delete all of it.")) {
 						localStorage.removeItem("clickedStates");
 						addNotification("Collection reset!", "red");
 					}
@@ -118,10 +57,7 @@
 				navigator.clipboard
 					.writeText(encryptedSettings)
 					.then(() => {
-						addNotification(
-							"Collection has been exported to clipboard!",
-							"blue",
-						);
+						addNotification("Collection has been exported to clipboard!", "blue");
 					})
 					.catch((err) => {
 						addNotification("Failed to copy your collection!", "red");
@@ -129,9 +65,7 @@
 			},
 			importSettings() {
 				// Import settings from user input
-				const encryptedSettings = prompt(
-					"Paste your exported Collection here:",
-				);
+				const encryptedSettings = prompt("Paste your exported Collection here:");
 				if (encryptedSettings) {
 					const settings = atob(encryptedSettings); // Simple base64 decryption
 					localStorage.setItem("clickedStates", settings);
@@ -150,9 +84,7 @@
 				// Step 1: Iterate over each fish in the fishList
 				this.fishList.forEach((fish) => {
 					// Find if the fish already exists in clickedStates
-					const existingEntry = this.clickedStates.find(
-						(entry) => entry.id === fish.id,
-					);
+					const existingEntry = this.clickedStates.find((entry) => entry.id === fish.id);
 
 					if (existingEntry) {
 						// If the fish exists, check if the caught type is already included
@@ -179,10 +111,7 @@
 				this.saveToLocalStorage();
 			},
 			saveToLocalStorage() {
-				localStorage.setItem(
-					"clickedStates",
-					JSON.stringify(this.clickedStates),
-				);
+				localStorage.setItem("clickedStates", JSON.stringify(this.clickedStates));
 			},
 		},
 	};
@@ -215,8 +144,7 @@
 		border-radius: 2vb;
 		height: 45px;
 		font-size: 20px;
-		transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease,
-			font-weight 0.3s ease;
+		transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, font-weight 0.3s ease;
 		font-family: "IBMPlexMono", monospace;
 		gap: 20px;
 	}

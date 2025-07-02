@@ -30,11 +30,7 @@
 
 		<!-- Tables: Render based on selected tab -->
 		<main class="tables-container">
-			<section
-				v-if="selectedTab === 'Freshwater'"
-				class="table"
-				aria-labelledby="freshwater-table"
-			>
+			<section v-if="selectedTab === 'Freshwater'" class="table" aria-labelledby="freshwater-table">
 				<h2 id="freshwater-table" class="visually-hidden">Freshwater Fish</h2>
 				<div
 					class="cell"
@@ -48,18 +44,12 @@
 				>
 					<!-- Front of the card -->
 					<div class="card-face card-front">
-						<div
-							class="circles"
-							role="group"
-							:aria-label="'Color selection for ' + fish.name"
-						>
+						<div class="circles" role="group" :aria-label="'Color selection for ' + fish.name">
 							<button
 								v-for="(name, index) in circleNames"
 								:key="`freshwater-${fish.id}-${index}`"
 								:style="{
-									backgroundColor: isTypeSelected(fish.id, 'freshwater', name)
-										? colors[index]
-										: '#ffeed5',
+									backgroundColor: isTypeSelected(fish.id, 'freshwater', name) ? colors[index] : '#ffeed5',
 									borderColor: colors[index],
 								}"
 								@click.stop="toggleCircle('freshwater', fish.id, name)"
@@ -68,11 +58,7 @@
 								:aria-pressed="isTypeSelected(fish.id, 'freshwater', name)"
 							></button>
 						</div>
-						<img
-							:src="'/images/' + fish.imageName"
-							:alt="fish.name + ' image'"
-							class="fish-img, loaded"
-						/>
+						<img :src="'/images/' + fish.imageName" :alt="fish.name + ' image'" class="fish-img, loaded" />
 					</div>
 
 					<!-- Back of the card -->
@@ -83,9 +69,7 @@
 						aria-describedby="fish-description"
 						tabindex="0"
 					>
-						<h2 id="fish-name" class="fishname-popup" aria-live="polite">
-							{{ fish.name }} - Tier {{ fish.tier }}
-						</h2>
+						<h2 id="fish-name" class="fishname-popup" aria-live="polite"> {{ fish.name }} - Tier {{ fish.tier }} </h2>
 						<p id="fish-description" class="latin" aria-hidden="false">
 							{{ fish.latinName }}
 						</p>
@@ -94,11 +78,7 @@
 				</div>
 			</section>
 
-			<section
-				v-if="selectedTab === 'Saltwater'"
-				class="table"
-				aria-labelledby="saltwater-table"
-			>
+			<section v-if="selectedTab === 'Saltwater'" class="table" aria-labelledby="saltwater-table">
 				<h2 id="Saltwater-table" class="visually-hidden">Freshwater Fish</h2>
 				<div
 					class="cell"
@@ -112,18 +92,12 @@
 				>
 					<!-- Front of the card -->
 					<div class="card-face card-front">
-						<div
-							class="circles"
-							role="group"
-							:aria-label="'Color selection for ' + fish.name"
-						>
+						<div class="circles" role="group" :aria-label="'Color selection for ' + fish.name">
 							<button
 								v-for="(name, index) in circleNames"
 								:key="`saltwater-${fish.id}-${index}`"
 								:style="{
-									backgroundColor: isTypeSelected(fish.id, 'saltwater', name)
-										? colors[index]
-										: '#ffeed5',
+									backgroundColor: isTypeSelected(fish.id, 'saltwater', name) ? colors[index] : '#ffeed5',
 									borderColor: colors[index],
 								}"
 								@click.stop="toggleCircle('saltwater', fish.id, name)"
@@ -132,11 +106,7 @@
 								:aria-pressed="isTypeSelected(fish.id, 'saltwater', name)"
 							></button>
 						</div>
-						<img
-							:src="'/images/' + fish.imageName"
-							:alt="fish.name + ' image'"
-							class="fish-img"
-						/>
+						<img :src="'/images/' + fish.imageName" :alt="fish.name + ' image'" class="fish-img" />
 					</div>
 
 					<!-- Back of the card -->
@@ -147,9 +117,7 @@
 						aria-describedby="fish-description"
 						tabindex="0"
 					>
-						<h2 id="fish-name" class="fishname-popup" aria-live="polite">
-							{{ fish.name }} - Tier {{ fish.tier }}
-						</h2>
+						<h2 id="fish-name" class="fishname-popup" aria-live="polite"> {{ fish.name }} - Tier {{ fish.tier }} </h2>
 						<p id="fish-description" class="latin" aria-hidden="false">
 							{{ fish.latinName }}
 						</p>
@@ -158,11 +126,7 @@
 				</div>
 			</section>
 
-			<section
-				v-if="selectedTab === 'Misc'"
-				class="table"
-				aria-labelledby="misc-table"
-			>
+			<section v-if="selectedTab === 'Misc'" class="table" aria-labelledby="misc-table">
 				<h2 id="Misc-table" class="visually-hidden">Freshwater Fish</h2>
 				<div
 					class="cell"
@@ -176,18 +140,12 @@
 				>
 					<!-- Front of the card -->
 					<div class="card-face card-front">
-						<div
-							class="circles"
-							role="group"
-							:aria-label="'Color selection for ' + fish.name"
-						>
+						<div class="circles" role="group" :aria-label="'Color selection for ' + fish.name">
 							<button
 								v-for="(name, index) in circleNames"
 								:key="`misc-${fish.id}-${index}`"
 								:style="{
-									backgroundColor: isTypeSelected(fish.id, 'misc', name)
-										? colors[index]
-										: '#ffeed5',
+									backgroundColor: isTypeSelected(fish.id, 'misc', name) ? colors[index] : '#ffeed5',
 									borderColor: colors[index],
 								}"
 								@click.stop="toggleCircle('misc', fish.id, name)"
@@ -196,11 +154,7 @@
 								:aria-pressed="isTypeSelected(fish.id, 'misc', name)"
 							></button>
 						</div>
-						<img
-							:src="'/images/' + fish.imageName"
-							:alt="fish.name + ' image'"
-							class="fish-img"
-						/>
+						<img :src="'/images/' + fish.imageName" :alt="fish.name + ' image'" class="fish-img" />
 					</div>
 
 					<!-- Back of the card -->
@@ -211,9 +165,7 @@
 						aria-describedby="fish-description"
 						tabindex="0"
 					>
-						<h2 id="fish-name" class="fishname-popup" aria-live="polite">
-							{{ fish.name }} - Tier {{ fish.tier }}
-						</h2>
+						<h2 id="fish-name" class="fishname-popup" aria-live="polite"> {{ fish.name }} - Tier {{ fish.tier }} </h2>
 						<p id="fish-description" class="latin" aria-hidden="false">
 							{{ fish.latinName }}
 						</p>
@@ -240,26 +192,10 @@
 				fishImages: {}, // To store resolved image URLs
 
 				fishList: fishData,
-				colors: [
-					"#d8b077",
-					"#d8b077",
-					"#a49d9c",
-					"#008583",
-					"#e69d00",
-					"#cd0462",
-				],
-				circleNames: [
-					"Normal",
-					"Shining",
-					"Glistening",
-					"Opulent",
-					"Radiant",
-					"Alpha",
-				],
+				colors: ["#d8b077", "#d8b077", "#a49d9c", "#008583", "#e69d00", "#cd0462"],
+				circleNames: ["Normal", "Shining", "Glistening", "Opulent", "Radiant", "Alpha"],
 
-				clickedStates: JSON.parse(
-					localStorage.getItem("clickedStates") || "[]",
-				),
+				clickedStates: JSON.parse(localStorage.getItem("clickedStates") || "[]"),
 			};
 		},
 		computed: {
@@ -283,9 +219,7 @@
 					return;
 				}
 
-				const fishEntry = this.clickedStates.find(
-					(entry) => entry.id === fishId && entry.category === category,
-				);
+				const fishEntry = this.clickedStates.find((entry) => entry.id === fishId && entry.category === category);
 
 				if (fishEntry) {
 					const typeIndex = fishEntry.caughtTypes.indexOf(type);
@@ -311,17 +245,12 @@
 			},
 
 			isTypeSelected(fishId, category, type) {
-				const fishEntry = this.clickedStates.find(
-					(entry) => entry.id === fishId && entry.category === category,
-				);
+				const fishEntry = this.clickedStates.find((entry) => entry.id === fishId && entry.category === category);
 				return fishEntry ? fishEntry.caughtTypes.includes(type) : false;
 			},
 			saveToLocalStorage() {
 				// Convert the clicked states to JSON and save it
-				localStorage.setItem(
-					"clickedStates",
-					JSON.stringify(this.clickedStates),
-				);
+				localStorage.setItem("clickedStates", JSON.stringify(this.clickedStates));
 			},
 
 			loadFromLocalStorage() {
@@ -331,53 +260,10 @@
 					this.clickedStates = Array.isArray(parsedStates) ? parsedStates : [];
 				} catch (error) {
 					addNotification("Failed to load Collection from your browser", "red");
-					console.warn(
-						"Failed to load clickedStates from localStorage:",
-						error,
-					);
+					console.warn("Failed to load clickedStates from localStorage:", error);
 					this.clickedStates = [];
 				}
 			},
-
-			/*async loadFishImage(fish) {
-      // check if the image is already stored in IndexedDB
-      try {
-        const cachedImage = await getImage(fish.id);
-        if (cachedImage) {
-          this.fishImages[fish.id] = URL.createObjectURL(cachedImage.imageBlob);
-          return; // image found in IndexedDB, dont load
-        }
-      } catch (error) {
-        console.error(
-          `Error accessing IndexedDB for fish ${fish.name}:`,
-          error
-        );
-      }
-
-      // if the image not in IndexedDB, load it from the network
-      const imagePath = `/images/${fish.imageName}`;
-      try {
-        const img = new Image();
-        img.src = imagePath;
-
-        // wait 4 it
-        await new Promise((resolve, reject) => {
-          img.onload = resolve;
-          img.onerror = reject;
-        });
-
-        // create a BLOB URL for the fish
-        const blob = await fetch(imagePath).then((res) => res.blob());
-
-        // save the fish in IndexedDB
-        await saveImage(fish.id, blob);
-
-        // store the image URL in the component state
-        this.fishImages[fish.id] = URL.createObjectURL(blob);
-      } catch (error) {
-        console.error(`Error loading image for fish ${fish.name}:`, error);
-      }
-    },*/
 			toggleFlip(fishId) {
 				this.flippedFish = this.flippedFish === fishId ? null : fishId; // Toggle flip state
 			},
@@ -419,8 +305,7 @@
 		height: 35px;
 		font-size: 18px;
 		line-height: 10px;
-		transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease,
-			font-weight 0.3s ease;
+		transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, font-weight 0.3s ease;
 		font-family: "IBMPlexMono", monospace;
 	}
 	.tab-button {

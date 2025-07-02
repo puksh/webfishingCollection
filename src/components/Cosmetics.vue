@@ -1,11 +1,6 @@
 <template>
 	<div>
-		<section
-			class="mark-all-button"
-			role="button"
-			@click="markAllDefault()"
-			:aria-label="'Mark all default'"
-		>
+		<section class="mark-all-button" role="button" @click="markAllDefault()" :aria-label="'Mark all default'">
 			Mark all default
 		</section>
 		<p>Species</p>
@@ -18,11 +13,7 @@
 					role="button"
 					:aria-label="'Toggle collected state for ' + cosmetic.name"
 				>
-					<img
-						:src="'/images/' + cosmetic.imageName"
-						:alt="cosmetic.name + ' image'"
-						class="cosmetic-img"
-					/>
+					<img :src="'/images/' + cosmetic.imageName" :alt="cosmetic.name + ' image'" class="cosmetic-img" />
 					<h3>{{ cosmetic.name }}</h3>
 				</section>
 			</div>
@@ -37,11 +28,7 @@
 					role="button"
 					:aria-label="'Toggle collected state for ' + cosmetic.name"
 				>
-					<img
-						:src="'/images/' + cosmetic.imageName"
-						:alt="cosmetic.name + ' image'"
-						class="cosmetic-img"
-					/>
+					<img :src="'/images/' + cosmetic.imageName" :alt="cosmetic.name + ' image'" class="cosmetic-img" />
 					<h3>{{ cosmetic.name }}</h3>
 				</section>
 			</div>
@@ -56,11 +43,7 @@
 					role="button"
 					:aria-label="'Toggle collected state for ' + cosmetic.name"
 				>
-					<img
-						:src="'/images/' + cosmetic.imageName"
-						:alt="cosmetic.name + ' image'"
-						class="cosmetic-img"
-					/>
+					<img :src="'/images/' + cosmetic.imageName" :alt="cosmetic.name + ' image'" class="cosmetic-img" />
 					<h3>{{ cosmetic.name }}</h3>
 				</section>
 			</div>
@@ -75,11 +58,7 @@
 					role="button"
 					:aria-label="'Toggle collected state for ' + cosmetic.name"
 				>
-					<img
-						:src="'/images/' + cosmetic.imageName"
-						:alt="cosmetic.name + ' image'"
-						class="cosmetic-img"
-					/>
+					<img :src="'/images/' + cosmetic.imageName" :alt="cosmetic.name + ' image'" class="cosmetic-img" />
 					<h3>{{ cosmetic.name }}</h3>
 				</section>
 			</div>
@@ -94,11 +73,7 @@
 					role="button"
 					:aria-label="'Toggle collected state for ' + cosmetic.name"
 				>
-					<img
-						:src="'/images/' + cosmetic.imageName"
-						:alt="cosmetic.name + ' image'"
-						class="cosmetic-img"
-					/>
+					<img :src="'/images/' + cosmetic.imageName" :alt="cosmetic.name + ' image'" class="cosmetic-img" />
 					<h3>{{ cosmetic.name }}</h3>
 				</section>
 			</div>
@@ -113,11 +88,7 @@
 					role="button"
 					:aria-label="'Toggle collected state for ' + cosmetic.name"
 				>
-					<img
-						:src="'/images/' + cosmetic.imageName"
-						:alt="cosmetic.name + ' image'"
-						class="cosmetic-img"
-					/>
+					<img :src="'/images/' + cosmetic.imageName" :alt="cosmetic.name + ' image'" class="cosmetic-img" />
 					<h3>{{ cosmetic.name }}</h3>
 				</section>
 			</div>
@@ -132,11 +103,7 @@
 					role="button"
 					:aria-label="'Toggle collected state for ' + cosmetic.name"
 				>
-					<img
-						:src="'/images/' + cosmetic.imageName"
-						:alt="cosmetic.name + ' image'"
-						class="cosmetic-img"
-					/>
+					<img :src="'/images/' + cosmetic.imageName" :alt="cosmetic.name + ' image'" class="cosmetic-img" />
 					<h3>{{ cosmetic.name }}</h3>
 				</section>
 			</div>
@@ -151,11 +118,7 @@
 					role="button"
 					:aria-label="'Toggle collected state for ' + cosmetic.name"
 				>
-					<img
-						:src="'/images/' + cosmetic.imageName"
-						:alt="cosmetic.name + ' image'"
-						class="cosmetic-img"
-					/>
+					<img :src="'/images/' + cosmetic.imageName" :alt="cosmetic.name + ' image'" class="cosmetic-img" />
 					<h3>{{ cosmetic.name }}</h3>
 				</section>
 			</div>
@@ -170,11 +133,7 @@
 					role="button"
 					:aria-label="'Toggle collected state for ' + cosmetic.name"
 				>
-					<img
-						:src="'/images/' + cosmetic.imageName"
-						:alt="cosmetic.name + ' image'"
-						class="cosmetic-img"
-					/>
+					<img :src="'/images/' + cosmetic.imageName" :alt="cosmetic.name + ' image'" class="cosmetic-img" />
 					<h3>{{ cosmetic.name }}</h3>
 				</section>
 			</div>
@@ -189,11 +148,7 @@
 					role="button"
 					:aria-label="'Toggle collected state for ' + cosmetic.name"
 				>
-					<img
-						:src="'/images/' + cosmetic.imageName"
-						:alt="cosmetic.name + ' image'"
-						class="cosmetic-img"
-					/>
+					<img :src="'/images/' + cosmetic.imageName" :alt="cosmetic.name + ' image'" class="cosmetic-img" />
 					<h3>{{ cosmetic.name }}</h3>
 				</section>
 			</div>
@@ -208,11 +163,7 @@
 					role="button"
 					:aria-label="'Toggle collected state for ' + cosmetic.name"
 				>
-					<img
-						:src="'/images/' + cosmetic.imageName"
-						:alt="cosmetic.name + ' image'"
-						class="cosmetic-img"
-					/>
+					<img :src="'/images/' + cosmetic.imageName" :alt="cosmetic.name + ' image'" class="cosmetic-img" />
 					<h3>{{ cosmetic.name }}</h3>
 				</section>
 			</div>
@@ -227,11 +178,7 @@
 					role="button"
 					:aria-label="'Toggle collected state for ' + cosmetic.name"
 				>
-					<img
-						:src="'/images/' + cosmetic.imageName"
-						:alt="cosmetic.name + ' image'"
-						class="cosmetic-img"
-					/>
+					<img :src="'/images/' + cosmetic.imageName" :alt="cosmetic.name + ' image'" class="cosmetic-img" />
 					<h3>{{ cosmetic.name }}</h3>
 				</section>
 			</div>
@@ -265,92 +212,48 @@
 				cosmeticsData,
 				titlesData,
 				cosmeticImages: {},
-				clickedStates: JSON.parse(
-					localStorage.getItem("clickedStates") || "[]",
-				),
+				clickedStates: JSON.parse(localStorage.getItem("clickedStates") || "[]"),
 			};
 		},
 		computed: {
 			cosmeticsSpecies() {
-				return this.cosmeticsData.filter(
-					(cosmetic) => cosmetic.category === "species",
-				);
+				return this.cosmeticsData.filter((cosmetic) => cosmetic.category === "species");
 			},
 			cosmeticColours() {
-				return this.cosmeticsData.filter(
-					(cosmetic) => cosmetic.category === "colours",
-				);
+				return this.cosmeticsData.filter((cosmetic) => cosmetic.category === "colours");
 			},
 			cosmeticPatterns() {
-				return this.cosmeticsData.filter(
-					(cosmetic) => cosmetic.category === "patterns",
-				);
+				return this.cosmeticsData.filter((cosmetic) => cosmetic.category === "patterns");
 			},
 			cosmeticAccessories() {
-				return this.cosmeticsData.filter(
-					(cosmetic) => cosmetic.category === "accessories",
-				);
+				return this.cosmeticsData.filter((cosmetic) => cosmetic.category === "accessories");
 			},
 			cosmeticBobbers() {
-				return this.cosmeticsData.filter(
-					(cosmetic) => cosmetic.category === "bobbers",
-				);
+				return this.cosmeticsData.filter((cosmetic) => cosmetic.category === "bobbers");
 			},
 			cosmeticEyes() {
-				return this.cosmeticsData.filter(
-					(cosmetic) => cosmetic.category === "eyes",
-				);
+				return this.cosmeticsData.filter((cosmetic) => cosmetic.category === "eyes");
 			},
 			cosmeticNoses() {
-				return this.cosmeticsData.filter(
-					(cosmetic) => cosmetic.category == "noses",
-				);
+				return this.cosmeticsData.filter((cosmetic) => cosmetic.category == "noses");
 			},
 			cosmeticMouths() {
-				return this.cosmeticsData.filter(
-					(cosmetic) => cosmetic.category == "mouths",
-				);
+				return this.cosmeticsData.filter((cosmetic) => cosmetic.category == "mouths");
 			},
 			cosmeticHats() {
-				return this.cosmeticsData.filter(
-					(cosmetic) => cosmetic.category == "hats",
-				);
+				return this.cosmeticsData.filter((cosmetic) => cosmetic.category == "hats");
 			},
 			cosmeticPants() {
-				return this.cosmeticsData.filter(
-					(cosmetic) => cosmetic.category == "pants",
-				);
+				return this.cosmeticsData.filter((cosmetic) => cosmetic.category == "pants");
 			},
 			cosmeticShirts() {
-				return this.cosmeticsData.filter(
-					(cosmetic) => cosmetic.category == "shirts",
-				);
+				return this.cosmeticsData.filter((cosmetic) => cosmetic.category == "shirts");
 			},
 			cosmeticsTails() {
-				return this.cosmeticsData.filter(
-					(cosmetic) => cosmetic.category == "tails",
-				);
+				return this.cosmeticsData.filter((cosmetic) => cosmetic.category == "tails");
 			},
 		},
 		methods: {
-			/*async loadCosmeticImage(cosmetic) {
-      const id = cosmetic.id;
-
-      try {
-        const imagePath = `/images/${cosmetic.imageName}`;
-        const response = await fetch(imagePath);
-        if (!response.ok)
-          throw new Error(`Failed to fetch image: ${response.statusText}`);
-
-        this.cosmeticImages[id] = imagePath;
-      } catch (error) {
-        console.error(
-          `Error loading image for cosmetic ${cosmetic.name}:`,
-          error
-        );
-      }
-    },*/
-
 			toggleCollected(cosmeticId) {
 				const now = new Date().toISOString().split("T")[0];
 
@@ -360,16 +263,14 @@
 					console.warn(`Cosmetic with ID ${cosmetic.cosmeticId} not found.`);
 					return;
 				}
-				const cosmeticEntry = this.clickedStates.find(
-					(entry) => entry.id === cosmeticId,
-				);
+				const cosmeticEntry = this.clickedStates.find((entry) => entry.id === cosmeticId);
 				if (cosmeticEntry) {
-					const typeIndex = cosmeticEntry.aquired;
+					const typeIndex = cosmeticEntry.acquired;
 					if (typeIndex == true) {
-						cosmeticEntry.aquired = false;
+						cosmeticEntry.acquired = false;
 						addNotification("Unmarked " + cosmetic.name + "!", "red");
 					} else {
-						cosmeticEntry.aquired = true;
+						cosmeticEntry.acquired = true;
 						addNotification("Marked " + cosmetic.name + "!", "blue");
 					}
 					cosmeticEntry.modifiedAt = now;
@@ -377,7 +278,7 @@
 					this.clickedStates.push({
 						id: cosmeticId,
 						category: cosmetic.category,
-						aquired: true,
+						acquired: true,
 						modifiedAt: now,
 					});
 					addNotification("Marked " + cosmetic.name + "!", "blue");
@@ -393,16 +294,14 @@
 					console.warn(`Cosmetic with ID ${title.titleId} not found.`);
 					return;
 				}
-				const titleEntry = this.clickedStates.find(
-					(entry) => entry.id === titleId,
-				);
+				const titleEntry = this.clickedStates.find((entry) => entry.id === titleId);
 				if (titleEntry) {
-					const typeIndex = titleEntry.aquired;
+					const typeIndex = titleEntry.acquired;
 					if (typeIndex == true) {
-						titleEntry.aquired = false;
+						titleEntry.acquired = false;
 						addNotification("Unmarked " + title.title + "!", "red");
 					} else {
-						titleEntry.aquired = true;
+						titleEntry.acquired = true;
 						addNotification("Marked " + title.title + "!", "blue");
 					}
 					titleEntry.modifiedAt = now;
@@ -410,7 +309,7 @@
 					this.clickedStates.push({
 						id: titleId,
 						category: "title",
-						aquired: true,
+						acquired: true,
 						modifiedAt: now,
 					});
 					addNotification("Marked " + title.name + "!", "blue");
@@ -418,15 +317,10 @@
 				this.saveToLocalStorage();
 			},
 			isCollected(cosmeticId) {
-				return this.clickedStates.some(
-					(entry) => entry.id === cosmeticId && entry.aquired === true,
-				);
+				return this.clickedStates.some((entry) => entry.id === cosmeticId && entry.acquired === true);
 			},
 			saveToLocalStorage() {
-				localStorage.setItem(
-					"clickedStates",
-					JSON.stringify(this.clickedStates),
-				);
+				localStorage.setItem("clickedStates", JSON.stringify(this.clickedStates));
 			},
 			loadFromLocalStorage() {
 				const savedStates = localStorage.getItem("clickedStates");
@@ -444,9 +338,6 @@
 		},
 		async mounted() {
 			this.loadFromLocalStorage();
-			//for (const cosmetic of cosmeticsData) {
-			//  await this.loadCosmeticImage(cosmetic);
-			//}
 		},
 	};
 </script>

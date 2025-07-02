@@ -1,9 +1,7 @@
 <template>
 	<aside class="sidebar">
 		<router-link to="/" class="sidebar-button"> Fish </router-link>
-		<router-link to="/cosmetics" class="sidebar-button">
-			Cosmetics
-		</router-link>
+		<router-link to="/cosmetics" class="sidebar-button"> Cosmetics </router-link>
 		<router-link to="/about" class="sidebar-button">About</router-link>
 		<router-link to="/settings" class="sidebar-button"> Settings </router-link>
 	</aside>
