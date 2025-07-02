@@ -45,3 +45,9 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+
+      - name: Purge Cloudflare Cache
+        uses: jakejarvis/cloudflare-purge-action@v0.3.0
+        with:
+          zone: ${{ secrets.CLOUDFLARE_ZONE }}
+          token: ${{ secrets.CLOUDFLARE_TOKEN }}
