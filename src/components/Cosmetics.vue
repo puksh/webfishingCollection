@@ -235,22 +235,22 @@
 				return this.cosmeticsData.filter((cosmetic) => cosmetic.category === "eyes");
 			},
 			cosmeticNoses() {
-				return this.cosmeticsData.filter((cosmetic) => cosmetic.category == "noses");
+				return this.cosmeticsData.filter((cosmetic) => cosmetic.category === "noses");
 			},
 			cosmeticMouths() {
-				return this.cosmeticsData.filter((cosmetic) => cosmetic.category == "mouths");
+				return this.cosmeticsData.filter((cosmetic) => cosmetic.category === "mouths");
 			},
 			cosmeticHats() {
-				return this.cosmeticsData.filter((cosmetic) => cosmetic.category == "hats");
+				return this.cosmeticsData.filter((cosmetic) => cosmetic.category === "hats");
 			},
 			cosmeticPants() {
-				return this.cosmeticsData.filter((cosmetic) => cosmetic.category == "pants");
+				return this.cosmeticsData.filter((cosmetic) => cosmetic.category === "pants");
 			},
 			cosmeticShirts() {
-				return this.cosmeticsData.filter((cosmetic) => cosmetic.category == "shirts");
+				return this.cosmeticsData.filter((cosmetic) => cosmetic.category === "shirts");
 			},
 			cosmeticsTails() {
-				return this.cosmeticsData.filter((cosmetic) => cosmetic.category == "tails");
+				return this.cosmeticsData.filter((cosmetic) => cosmetic.category === "tails");
 			},
 		},
 		methods: {
@@ -260,13 +260,13 @@
 				const cosmetic = this.cosmeticsData.find((f) => f.id === cosmeticId);
 
 				if (!cosmetic) {
-					console.warn(`Cosmetic with ID ${cosmetic.cosmeticId} not found.`);
+					console.warn(`Cosmetic with ID ${cosmeticId} not found.`);
 					return;
 				}
 				const cosmeticEntry = this.clickedStates.find((entry) => entry.id === cosmeticId);
 				if (cosmeticEntry) {
 					const typeIndex = cosmeticEntry.acquired;
-					if (typeIndex == true) {
+					if (typeIndex === true) {
 						cosmeticEntry.acquired = false;
 						addNotification("Unmarked " + cosmetic.name + "!", "red");
 					} else {
@@ -291,13 +291,13 @@
 				const title = this.titlesData.find((f) => f.id === titleId);
 
 				if (!title) {
-					console.warn(`Cosmetic with ID ${title.titleId} not found.`);
+					console.warn(`Cosmetic with ID ${titleId} not found.`);
 					return;
 				}
 				const titleEntry = this.clickedStates.find((entry) => entry.id === titleId);
 				if (titleEntry) {
 					const typeIndex = titleEntry.acquired;
-					if (typeIndex == true) {
+					if (typeIndex === true) {
 						titleEntry.acquired = false;
 						addNotification("Unmarked " + title.title + "!", "red");
 					} else {
@@ -312,7 +312,7 @@
 						acquired: true,
 						modifiedAt: now,
 					});
-					addNotification("Marked " + title.name + "!", "blue");
+					addNotification("Marked " + title.title + "!", "blue");
 				}
 				this.saveToLocalStorage();
 			},
@@ -327,13 +327,11 @@
 				this.clickedStates = savedStates ? JSON.parse(savedStates) : [];
 			},
 			markAllDefault() {
-				for (const cosmetic of cosmeticsData) {
-					if (!this.isCollected(cosmetic.id)) {
-						if (cosmetic.unlock === "No unlock requirement") {
-							this.toggleCollected(cosmetic.id);
-						}
+				[...this.cosmeticsData, ...this.titlesData].forEach((item) => {
+					if (!this.isCollected(item.id) && item.unlock === "No unlock requirement") {
+						this.toggleCollected(item.id);
 					}
-				}
+				});
 			},
 		},
 		async mounted() {
